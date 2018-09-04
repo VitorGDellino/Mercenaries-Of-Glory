@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ranger : Player {
+public class Ranger : Character {
 
-	private double reinforcearrowcd;	//Cooldown da habilidade Reforçar flecha
-	private double lightfeetcd;		//Cooldown da habilidade Pés leves
+    private float cdBasicAtk;
+    private float cdTwoDaggersAtk;
+    private float cdReinforceArrow;	//Cooldown da habilidade Reforçar flecha
+	private float cdLightFeet;      //Cooldown da habilidade Pés leves
 
-	// Use this for initialization
+    public Ranger(string name, Status status, Weapon weapon, Armor armor)
+        : base(name, status, weapon, armor){
+    }
+    // Use this for initialization
 	void Start () {
 		this.rb = GetComponent<Rigidbody2D>();
 	}

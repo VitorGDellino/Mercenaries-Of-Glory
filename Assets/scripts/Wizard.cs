@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wizard : Player {
-	
-	private double blizzardcd;		//Cooldown da habilidade Nevasca
-	private double thundercd;		//Cooldown da habilidade Trovão
-	private double barriercd;		//Cooldown da habilidade Barreira
+public class Wizard : Character {
 
-	// Use this for initialization
-	void Start () {
+    private float cdBasicAtk;
+	private float cdBlizzard;		//Cooldown da habilidade Nevasca
+	private float cdThunder;		//Cooldown da habilidade Trovão
+	private float cdBarrier;		//Cooldown da habilidade Barreira
+
+
+    public Wizard(string name, Status status, Weapon weapon, Armor armor)
+        : base(name, status, weapon, armor){
+    }
+        // Use this for initialization
+        void Start () {
 		this.rb = GetComponent<Rigidbody2D>();
 	}
 	
@@ -37,5 +42,16 @@ public class Wizard : Player {
 	void BasicAtk(){
 
 	}
-	
+
+    public float GetCdBasicAtk() { return this.cdBasicAtk; }
+    public float GetCdBlizzard() { return this.cdBlizzard; }
+    public float GetCdThunder() { return this.cdThunder; }
+    public float GetCdBarrier() { return this.cdBarrier; }
+
+    public void SetCdBasicAtk(float cdBasicAtk) { this.cdBasicAtk = cdBasicAtk; }
+    public void SetCdBlizzard(float cdBlizzard) { this.cdBlizzard = cdBlizzard; }
+    public void SetCdThunder(float cdThunder) { this.cdThunder = cdThunder; }
+    public void SetCdBarrier(float cdBarrier) { this.cdBarrier = cdBarrier; }
+
+
 }
