@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour {
+public class Test : MonoBehaviour {
     // Atributos e Equipamentos
     protected string name;          //Nome do Personagem
     protected int totalAtk;         //Ataque total do personagem
@@ -31,7 +31,7 @@ public class Character : MonoBehaviour {
 	public float dashcooldown = 5.0f;	//Cooldown do dash
    
 
-    public Character(string name, Status status, Weapon weapon, Armor armor) {
+    public Test(string name, Status status, Weapon weapon, Armor armor) {
         this.name = name;
         this.totalAtk = status.GetAtk() + weapon.GetAtk();
         this.totalDef = status.GetDef() + armor.GetDef();
@@ -41,7 +41,7 @@ public class Character : MonoBehaviour {
     }
 
     private void HorizontalMove(){
-        float move = Input.GetAxis("Horizontal");
+        /*float move = Input.GetAxis("Horizontal");
 
         if (move < -0.1f){
             this.sprite.flipX = true;
@@ -53,7 +53,7 @@ public class Character : MonoBehaviour {
 
         if (move != 0){
             this.rb.velocity = new Vector2(move * this.status.GetSpeed(), this.rb.velocity.y);
-        }
+        }*/
     }
 
     private void DashMove() {
@@ -118,6 +118,15 @@ public class Character : MonoBehaviour {
         this.armor = armor;
     }
 
+    void Start () {
+        
+	}
+
+    void Update(){
+        
+        
+    }
+
     //Getters
     public int getAtk(){ return this.totalAtk; }
 	public int getDef(){ return this.totalDef; }
@@ -125,6 +134,6 @@ public class Character : MonoBehaviour {
 
     //Método para auxiliar quando um personagem toma dano
     public void takeDamage(int damage){
-        //Debug.Log(damage);
+        //Debug.Log("AEEEEEEEEEEEEEEEE");
 	}
 }
