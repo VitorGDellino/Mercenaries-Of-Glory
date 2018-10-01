@@ -83,16 +83,6 @@ public class Ranger : Character {
 			ReinforceArrow ();
 		}
 
-		if (Input.GetAxisRaw ("Horizontal") == 1) {
-			transform.localRotation = Quaternion.Euler (0, 0, 0);
-			facingRight = true;
-			Debug.Log ("Direita");
-		}if(Input.GetAxisRaw ("Horizontal") == -1){
-			transform.localRotation = Quaternion.Euler (0, 180, 0);
-			facingRight = false;
-			Debug.Log ("Esquerda");
-		}
-
 		TimeBasicAtk -= Time.deltaTime;
 		TimeTrap -= Time.deltaTime;
 		TimeLightFeet -= Time.deltaTime;

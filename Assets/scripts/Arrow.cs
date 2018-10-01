@@ -93,17 +93,17 @@ public class Arrow : MonoBehaviour {
 
 		Destroy (gameObject);
 
-	}
+	}*/
 
 	void OnCollisionEnter2D(Collision2D col){
-
+/* 
 		if (col.gameObject.tag == "Player" && player.gameObject != col.gameObject){
 			Debug.Log(col.gameObject.name);
 			Debug.Log("Apanhei");
 			col.gameObject.SendMessageUpwards("takeDamage", this.player.getAtk());
-		}    
+		}   */ 
 
 		Destroy (gameObject);
 
-	}*/
+	}
 }
