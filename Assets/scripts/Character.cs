@@ -122,8 +122,9 @@ public class Character : MonoBehaviour {
     public int getAtk(){ return this.totalAtk; }
 	public int getDef(){ return this.totalDef; }
 
-    //Método para auxiliar quando um personagem toma dano
-    protected void takeDamage(int damage){
-	
+	//Método para auxiliar quando um personagem toma dano
+	void takeDamage(float damage){
+		/*hp -= damage - def;
+		Debug.Log ("Tomou dano");*/
 	}
 }

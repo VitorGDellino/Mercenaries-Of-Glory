@@ -1,4 +1,7 @@
-﻿
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 public class Status {
     private int hp;
     private int atk;
@@ -33,4 +36,6 @@ public class Status {
     public void SetDef(int def) { this.def = def; }
     public void SetSpeed(float speed) { this.speed = speed; }
     public void SetRespawnTime(float respawnTime) { this.respawnTime = respawnTime; }
+
+
 }
