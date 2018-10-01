@@ -10,10 +10,16 @@ public class Arrow : MonoBehaviour {
 
 	private Transform myTransform;
 
+	private Character player;
+
 	/*private Vector3 mousePoint;
 
 	private bool canTranslate = true;
 	private bool canRotate = false;*/
+
+	void Awake(){
+		this.player = GetComponentInParent<Character>();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -77,14 +83,27 @@ public class Arrow : MonoBehaviour {
 		canRotate = false;
 	}*/
 
-	void OnCollisionEnter2D(Collision2D col){
+	/*void OnTriggerEnter2D(Collider2D other){
 
-		/*if(collider2D.gameObject.name == "Player"){
-			collider2D.gameObject.GetComponent<
-		}else if(collider2D.gameObject.name == "Enemy"){
-			collider2D.gameObject.GetComponent<Enemy> ().takeDamage (damage);
-		}*/
+		if (other.gameObject.tag == "Player" && player.gameObject != other.gameObject){
+			Debug.Log(other.gameObject.name);
+			Debug.Log("Apanhei");
+			other.gameObject.SendMessageUpwards("takeDamage", this.player.getAtk());
+		}    
 
 		Destroy (gameObject);
+
 	}
+
+	void OnCollisionEnter2D(Collision2D col){
+
+		if (col.gameObject.tag == "Player" && player.gameObject != col.gameObject){
+			Debug.Log(col.gameObject.name);
+			Debug.Log("Apanhei");
+			col.gameObject.SendMessageUpwards("takeDamage", this.player.getAtk());
+		}    
+
+		Destroy (gameObject);
+
+	}*/
 }
