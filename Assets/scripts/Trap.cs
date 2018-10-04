@@ -20,7 +20,7 @@ public class Trap : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 
 		if(col.gameObject.tag == "Player"){
-			//collider2D.gameObject.GetComponent<
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
 			Destroy (gameObject);
 		}else if(col.gameObject.tag == "Enemy"){
 			//collider2D.gameObject.GetComponent<Enemy> ().takeDamage (damage);

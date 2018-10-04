@@ -45,7 +45,7 @@ public class Ranger : Character {
 		TimeReinforceArrow = 0.0f;
 		TimeLightFeet = 0.0f;
 
-		this.status = new Status(10, 10, 10, 1.5f, 10.0f);
+		this.status = new Status(100, 10, 10, 1.5f, 10.0f);
 		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
 		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
@@ -56,7 +56,7 @@ public class Ranger : Character {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		this.Movement();
 
 		h = Input.GetAxisRaw ("Horizontal");
@@ -81,6 +81,12 @@ public class Ranger : Character {
 		if(Input.GetKey(KeyCode.R) && TimeReinforceArrow <= 0){
 			TimeReinforceArrow = cdReinforceArrow;
 			ReinforceArrow ();
+		}
+
+		if (Input.GetAxisRaw ("Horizontal") == 1) {
+			facingRight = true;
+		}if(Input.GetAxisRaw ("Horizontal") == -1){
+			facingRight = false;
 		}
 
 		TimeBasicAtk -= Time.deltaTime;

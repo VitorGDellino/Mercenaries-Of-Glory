@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour {
 
-	public float damage = 5;
-	public float rotationSpeed;
-	public float arrowSpeed = 5;
+	public int damage = 5;
+	//public float rotationSpeed;
+	public float arrowSpeed = 1;
 
 	private Transform myTransform;
 
@@ -47,7 +47,7 @@ public class Arrow : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		myTransform.Translate (new Vector3 (-1, 0, 0) * arrowSpeed * Time.deltaTime);
 
@@ -96,14 +96,10 @@ public class Arrow : MonoBehaviour {
 	}*/
 
 	void OnCollisionEnter2D(Collision2D col){
-/* 
-		if (col.gameObject.tag == "Player" && player.gameObject != col.gameObject){
-			Debug.Log(col.gameObject.name);
-			Debug.Log("Apanhei");
-			col.gameObject.SendMessageUpwards("takeDamage", this.player.getAtk());
-		}   */ 
-
+		if(col.gameObject.tag == "Player"){
+			//Debug.Log("Entrei");
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+		}
 		Destroy (gameObject);
-
 	}
 }
