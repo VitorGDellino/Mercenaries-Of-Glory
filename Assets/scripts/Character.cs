@@ -125,6 +125,7 @@ public class Character : MonoBehaviour {
 
     //Método para auxiliar quando um personagem toma dano
     public void takeDamage(int damage){
-        //Debug.Log(damage);
+        status.SetHp(status.GetHp()-damage);
+        Debug.Log("Vida: " + status.GetHp());
 	}
 }
