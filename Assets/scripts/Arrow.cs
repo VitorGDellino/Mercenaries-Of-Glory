@@ -6,7 +6,7 @@ public class Arrow : MonoBehaviour {
 
 	public int damage = 5;
 	//public float rotationSpeed;
-	public float arrowSpeed = 1;
+	public float arrowSpeed = 5;
 
 	private Transform myTransform;
 

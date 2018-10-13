@@ -122,6 +122,7 @@ public class Character : MonoBehaviour {
     public int getAtk(){ return this.totalAtk; }
 	public int getDef(){ return this.totalDef; }
     public int getDirection(){ return this.direction; }
+    public bool getOnTheFloor(){ return this.onthefloor; }
 
     //Método para auxiliar quando um personagem toma dano
     public void takeDamage(int damage){
