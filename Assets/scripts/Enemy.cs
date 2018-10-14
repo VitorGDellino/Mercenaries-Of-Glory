@@ -1,108 +1,104 @@
-<<<<<<< HEAD
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-    protected Status status;        //Status do personagem
+	public GameObject meteor;
+	public GameObject vulcan;
+	public GameObject acid;
 
-	private float TimeEarthquake;
+	private float TimEarthquake;
 	private float TimeVulcan;
 	private float TimeMeteor;
 	private float TimeAcid;
 
-	private float cdEarthquake;
-	private float cdVulcan;
-	private float cdMeteor;
-	private float cdAcid;
+	private float cdEarthquake = 5.0f;
+	private float cdVulcan = 5.0f;
+	private float cdMeteor = 5.0f;
+	private float cdAcid = 5.0f;
 
-	/*Terremotos de magnitude 10.666;	Porrada com as duas maos q treme o chao, dano e atordoa
-	Erupções vulcânicas;		Sobe sobre o chão
-	Meteoros do Apocalipse;		Cair meteoros aleatorios pelo mapa
-	Chuva de Ácido Sulfúrico;	Cuspir acido, lentidao e dano	*/
+    protected Status status;        //Status do personagem
+
+	private GameObject[] Players;
+	private Vector3 startPosition;
+	private Vector3 endPosition;
+	private Vector3 rotation;
 
 	// Use this for initialization
 	void Start () {
-		this.status = new Status(300, 10, 10, 1.5f, 10.0f); //hp, attack, def, speed, respawn time
+		this.status = new Status(100, 10, 10, 1.5f, 10.0f); //hp, attack, def, speed, respawn time
 		
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		//Debug.Log (h);
-
-		if(Input.GetKey(KeyCode.Q) && TimeEarthquake <= 0){
-			TimeEarthquake = cdEarthquake;
+		if(Input.GetKey(KeyCode.Z) && TimEarthquake <= 0){
+			TimEarthquake = cdEarthquake;
 			Earthquake ();
 		}
 
-		if(Input.GetKey(KeyCode.W) && TimeVulcan <= 0){
+		if(Input.GetKey(KeyCode.X) && TimeVulcan <= 0){
 			TimeVulcan = cdVulcan;
 			Vulcan ();
 		}
 
-		if(Input.GetKey(KeyCode.E) && TimeMeteor <= 0){
+		if(Input.GetKey(KeyCode.C) && TimeMeteor <= 0){
 			TimeMeteor = cdMeteor;
 			Meteor ();
 		}
 
-		if(Input.GetKey(KeyCode.R) && TimeAcid <= 0){
+		if(Input.GetKey(KeyCode.V) && TimeAcid <= 0){
 			TimeAcid = cdAcid;
 			Acid ();
 		}
-
-		TimeEarthquake -= Time.deltaTime;
+		
+		TimEarthquake -= Time.deltaTime;
 		TimeVulcan -= Time.deltaTime;
 		TimeMeteor -= Time.deltaTime;
 		TimeAcid -= Time.deltaTime;
 	}
 
+	//Metodo que implementa a habilidade terremoto
 	void Earthquake(){
-		//Animacao das maos
-		//
+		Players = GameObject.FindGameObjectsWithTag("Player");
+
+		for(int i=0; i<Players.Length; i++){
+			if(Players[i].GetComponent<Character>().getOnTheFloor()){
+				Players[i].SendMessageUpwards("takeDamage", 10);
+			}
+		}
 	}
 
+	//Metodo que implementa o ataque vulcao
 	void Vulcan(){
-
+		startPosition = new Vector3(Random.Range(-2.0f, 0.0f), -10, 0);
+		for(int i=0; i<10; i++){
+			Instantiate (vulcan, startPosition, Quaternion.Euler (0, 0, 0));
+			startPosition.x += 3.0f;
+		}
 	}
 
+	//Metodo que implementa a habilidade meteoro
 	void Meteor(){
 
+		for(int i=0; i<10; i++){
+			startPosition = new Vector3(Random.Range(-2.0f, 9.0f), Random.Range(3.0f, 4.0f), 0);
+			endPosition = new Vector3(Random.Range(0.0f, 7.0f), 0, 0);
+			Vector3 diference = endPosition - startPosition;
+			Vector3 frente = new Vector3(1, 0, 0);
+       		float angle = Vector3.Angle(diference, frente);
+			Instantiate (meteor, startPosition, Quaternion.Euler (0, 0, -angle));
+		}
 	}
 
+	//Metodo que implementa o golpe acido
 	void Acid(){
-		
-	}
-
-	/*Terremotos de magnitude 10.666;	Porrada com as duas maos q treme o chao, dano e atordoa
-	Erupções vulcânicas;		Sobe sobre o chão
-	Meteoros do Apocalipse;		Cair meteoros aleatorios pelo mapa
-	Chuva de Ácido Sulfúrico;	Cuspir acido, lentidao e dano	*/
-
-	public void takeDamage(int damage){
-        status.SetHp(status.GetHp()-damage);
-        Debug.Log("Vida: " + status.GetHp());
-	}
-
-}
-=======
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Enemy : MonoBehaviour {
-
-
-	// Use this for initialization
-	void Start () {
-		//this.status = new Status(10, 10, 10, 1.5f, 10.0f); //hp, attack, def, speed, respawn time
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		startPosition = transform.position;
+		endPosition = new Vector3(Random.Range(0.0f, 7.0f), 0, 0);
+		Vector3 diference = endPosition - startPosition;
+		Vector3 frente = new Vector3(1, 0, 0);
+		float angle = Vector3.Angle(diference, frente);
+		Instantiate (meteor, startPosition, Quaternion.Euler (0, 0, -angle));
 	}
 }
->>>>>>> acc70a96a27582c9545e3f7ec8eff68dded37726
