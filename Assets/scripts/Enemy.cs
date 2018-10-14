@@ -72,19 +72,18 @@ public class Enemy : MonoBehaviour {
 
 	//Metodo que implementa o ataque vulcao
 	void Vulcan(){
-		startPosition = new Vector3(Random.Range(-2.0f, 0.0f), -10, 0);
+		startPosition = new Vector3(Random.Range(-5.0f, -4.0f), -10, 0);
 		for(int i=0; i<10; i++){
 			Instantiate (vulcan, startPosition, Quaternion.Euler (0, 0, 0));
-			startPosition.x += 3.0f;
+			startPosition.x += 2.0f;
 		}
 	}
 
 	//Metodo que implementa a habilidade meteoro
 	void Meteor(){
-
 		for(int i=0; i<10; i++){
-			startPosition = new Vector3(Random.Range(-2.0f, 9.0f), Random.Range(3.0f, 4.0f), 0);
-			endPosition = new Vector3(Random.Range(0.0f, 7.0f), 0, 0);
+			startPosition = new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(3.0f, 4.0f), 0);
+			endPosition = new Vector3(Random.Range(-3.5f, 3.5f), 0, 0);
 			Vector3 diference = endPosition - startPosition;
 			Vector3 frente = new Vector3(1, 0, 0);
        		float angle = Vector3.Angle(diference, frente);
