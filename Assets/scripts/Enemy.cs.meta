@@ -1,5 +1,4 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
 fileFormatVersion: 2
 guid: 79848dde0ac54684b9441425bcb5481c
 MonoImporter:
@@ -24,16 +23,3 @@ MonoImporter:
   assetBundleName: 
   assetBundleVariant: 
 >>>>>>> acc70a96a27582c9545e3f7ec8eff68dded37726
-=======
-fileFormatVersion: 2
-guid: 79848dde0ac54684b9441425bcb5481c
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
->>>>>>> pm

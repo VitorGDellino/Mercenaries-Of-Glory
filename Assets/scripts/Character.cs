@@ -138,14 +138,8 @@ public class Character : MonoBehaviour {
     public void setDirection(int direction){ this.direction =  direction; }
 
     //Método para auxiliar quando um personagem toma dano
-<<<<<<< HEAD
-    public void takeDamage(int damage){
-        status.SetHp(status.GetHp()-damage);
-        Debug.Log("Vida: " + status.GetHp());
-=======
     public virtual void takeDamage(int damage){
-        //Debug.Log(damage);
->>>>>>> pm
+        Debug.Log(damage);
 	}
 
     public int GetHp(){

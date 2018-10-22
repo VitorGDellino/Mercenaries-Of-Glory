@@ -123,6 +123,7 @@ public class Wizard : Character {
     public void SetCdBarrier(float cdBarrier) { this.cdBarrier = cdBarrier; }
 
 	public override void takeDamage(int damage){
+		Debug.Log("fhajksdhfalhjsdflak");
 		if(!barrier){
 			//take damage
 		}
