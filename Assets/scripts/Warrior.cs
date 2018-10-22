@@ -88,6 +88,8 @@ public class Warrior : Character {
         this.cdWarScream = 0.0f;
         this.warScreamTime = 5.0f;
         this.cdGale = 0.0f;
+
+        
         
 	}
 

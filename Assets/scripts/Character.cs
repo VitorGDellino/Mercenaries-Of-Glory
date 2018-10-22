@@ -13,6 +13,7 @@ public class Character : MonoBehaviour {
 
     protected Rigidbody2D rb;   //Referencia o Personagem
     protected SpriteRenderer sprite;
+    protected Transform t;
     public Transform GroundCheck;
     protected Animator anim;
 
@@ -42,12 +43,20 @@ public class Character : MonoBehaviour {
 
     private void HorizontalMove(){
         float move = Input.GetAxis("Horizontal");
-
-        if (move < -0.1f){
-            this.sprite.flipX = true;
+        Vector3 temp;
+        //Debug.Log(move);
+        //Debug.Log(direction);
+        if (move < -0.1f && this.direction == 1){
+            temp = this.t.localScale;
+            temp[0] = temp[0]*(-1);
+            this.t.localScale = temp;
+            //this.sprite.flipX = true;
             this.direction = -1;
-        } else if (move > 0.1f){
-            this.sprite.flipX = false;
+        } else if (move > 0.1f && this.direction == -1){
+            temp = this.t.localScale;
+            temp[0] = temp[0]*(-1);
+            this.t.localScale = temp;
+           // this.sprite.flipX = false;
             this.direction = 1;
         }
 
@@ -78,6 +87,7 @@ public class Character : MonoBehaviour {
     }
 
     private void JumpMove(){
+        if(Input.GetButtonDown("Jump")) Debug.Log(this.onthefloor);
         if (Input.GetButtonDown("Jump") && this.onthefloor){
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpstr));
@@ -124,9 +134,21 @@ public class Character : MonoBehaviour {
     public int getDirection(){ return this.direction; }
     public bool getOnTheFloor(){ return this.onthefloor; }
 
+    public void serAtk(int atk){ this.totalAtk = atk; }
+    public void setDirection(int direction){ this.direction =  direction; }
+
     //Método para auxiliar quando um personagem toma dano
+<<<<<<< HEAD
     public void takeDamage(int damage){
         status.SetHp(status.GetHp()-damage);
         Debug.Log("Vida: " + status.GetHp());
+=======
+    public virtual void takeDamage(int damage){
+        //Debug.Log(damage);
+>>>>>>> pm
 	}
+
+    public int GetHp(){
+        return this.status.GetHp();
+    }
 }
