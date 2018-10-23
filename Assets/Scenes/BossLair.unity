@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nPlayers: 3
-  classesChosen: 010000000100000001000000
+  classesChosen: 000000000100000002000000
   classes:
   - {fileID: 1643283171507440, guid: 286a013a5ae24a54981becae36f776ac, type: 2}
   - {fileID: 1746198742461808, guid: 21a966d1b287a6c47bdbf018e75acbdb, type: 2}
@@ -6839,7 +6839,7 @@ GameObject:
   - component: {fileID: 977610435}
   m_Layer: 8
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: LastGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
