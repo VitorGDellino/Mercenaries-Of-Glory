@@ -14,6 +14,7 @@ public class CanvasManager : MonoBehaviour{
         canvas = new GameObject[MainMenuController.instance.nPlayers];
         scripts = new Character[MainMenuController.instance.nPlayers];
         for(int i = 0; i < MainMenuController.instance.nPlayers; i++){
+            Debug.Log(GameManager.instance.players[i].name + "Canvas");
             canvas[i] = GameObject.Find(GameManager.instance.players[i].name + "Canvas");
             if(MainMenuController.instance.classesChosen[i] == 0){
                 scripts[i] = GameManager.instance.players[i].GetComponent<Warrior>();
@@ -29,7 +30,6 @@ public class CanvasManager : MonoBehaviour{
         Init();
         SetHpBar();
         SetCds();
-        Debug.Log(scripts[0].GetHp());
     }
 
     void Update(){

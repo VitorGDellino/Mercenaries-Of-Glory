@@ -92,8 +92,7 @@ public class Character : MonoBehaviour {
     }
 
     private void JumpMove(){
-        if(Input.GetButtonDown("Jump")) Debug.Log(this.onthefloor);
-        if (Input.GetButtonDown("Jump") && this.onthefloor){
+        if (Input.GetButtonDown("Jump") && this.onthefloor && Input.GetAxis("Vertical") >= 0){
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpstr));
             this.doublejump = true;

@@ -64,7 +64,7 @@ public class Ranger : Character {
 	void FixedUpdate () {
 		this.Movement();
 
-		h = Input.GetAxisRaw ("Horizontal");
+		//h = Input.GetAxisRaw ("Horizontal");
 
 		//Debug.Log (h);
 
