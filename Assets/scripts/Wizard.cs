@@ -27,6 +27,11 @@ public class Wizard : Character {
     }
 
 	void Awake(){
+		this.status = new Status(10, 10, 10, 1.5f, 10.0f);
+		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
+		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
+		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
+		this.totalDef = this.armor.GetDef() + this.status.GetDef();
 		blizzard.enabled = false;
 	}
     // Use this for initialization
@@ -36,16 +41,13 @@ public class Wizard : Character {
 		cdBlizzard = 30.0f;
 
 		timeBasicAtk = 0.0f;
+		Time1 = timeBarrier = 0.0f;
+        Time2 = timeThunder = 0.0f;
+        Time3 = timeBlizzard = 0.0f;
 
 		barrier = false;
 
 		setDirection(1);
-
-        this.status = new Status(10, 10, 10, 1.5f, 10.0f);
-		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
-		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
-		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
-		this.totalDef = this.armor.GetDef() + this.status.GetDef();
 
         this.rb = GetComponent<Rigidbody2D>();
         this.sprite = GetComponent<SpriteRenderer>();
@@ -78,9 +80,17 @@ public class Wizard : Character {
 			timeBarrier -= Time.deltaTime;
 		}
 
+		if(timeBarrier <= 0) timeBarrier = 0;
+		if(timeThunder <= 0) timeThunder = 0;
+		if(timeBlizzard <= 0) timeBlizzard = 0;
+
 		if(timeBlizzard <= 18.0f){
 			blizzard.enabled = false;
 		}
+
+		Time1 = timeBarrier;
+		Time2 = timeThunder;
+		Time3 = timeBlizzard;
 	}
 
 	//Metodo que implementa a habilidade Nevasca
@@ -130,5 +140,4 @@ public class Wizard : Character {
 		
 		barrier = false;
 	}
-
 }
