@@ -31,6 +31,11 @@ public class Character : MonoBehaviour {
 	public float jumpstr;		//Força de salto
 	public float dashcooldown = 5.0f;	//Cooldown do dash
    
+    // Cd generico
+
+    protected float Time1;
+    protected float Time2;
+    protected float Time3;
 
     public Character(string name, Status status, Weapon weapon, Armor armor) {
         this.name = name;
@@ -134,7 +139,6 @@ public class Character : MonoBehaviour {
     public int getDirection(){ return this.direction; }
     public bool getOnTheFloor(){ return this.onthefloor; }
 
-    public void serAtk(int atk){ this.totalAtk = atk; }
     public void setDirection(int direction){ this.direction =  direction; }
 
     //Método para auxiliar quando um personagem toma dano
@@ -145,4 +149,12 @@ public class Character : MonoBehaviour {
     public int GetHp(){
         return this.status.GetHp();
     }
+
+    public void SetHp(int hp){
+        this.status.SetHp(hp);
+    }
+
+    public float GetCd1(){ return this.Time1; }
+    public float GetCd2(){ return this.Time2; }
+    public float GetCd3(){ return this.Time3; }
 }

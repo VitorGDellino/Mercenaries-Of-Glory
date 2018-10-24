@@ -258,7 +258,7 @@ MonoBehaviour:
   nPlayers: 3
   classesChosen: 000000000100000002000000
   classes:
-  - {fileID: 1643283171507440, guid: 286a013a5ae24a54981becae36f776ac, type: 2}
+  - {fileID: 1966665514968036, guid: f0515329c186d3c4eb7c3461b4649278, type: 2}
   - {fileID: 1746198742461808, guid: 21a966d1b287a6c47bdbf018e75acbdb, type: 2}
   - {fileID: 1010367730333348, guid: c26c2c5de03e82546a4fe31a9af0e660, type: 2}
   winner: -1
@@ -7991,7 +7991,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fc4f03ed916364586e980e2b448fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: []
+  canvas:
+  - {fileID: 1518326487289220, guid: 766536557a56f6c48b44c356abd1d004, type: 2}
+  - {fileID: 1117021490551502, guid: 917bf8ac53d8538458513139230b682e, type: 2}
+  scripts: []
 --- !u!4 &1922203361
 Transform:
   m_ObjectHideFlags: 0

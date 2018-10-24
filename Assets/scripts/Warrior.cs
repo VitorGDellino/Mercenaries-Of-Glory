@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Guerreiro : Character{
+public class Warrior : Character{
 
     private float cdBasicAtk;
     private float cdScream;
@@ -25,11 +25,16 @@ public class Guerreiro : Character{
 
     public GameObject sharpGale;
 
-    public Guerreiro(string name, Status status, Weapon weapon, Armor armor)
+    public Warrior(string name, Status status, Weapon weapon, Armor armor)
         : base(name, status, weapon, armor){
     }
 
     void Awake(){
+        this.status = new Status(10, 10, 10, 1.5f, 10.0f);
+		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
+		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
+		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
+		this.totalDef = this.armor.GetDef() + this.status.GetDef();
         attack.enabled = false;
         smash.enabled = false;
         gale.enabled = false;
@@ -46,17 +51,12 @@ public class Guerreiro : Character{
         screaming = false;
 
         timeBasicAtk = 0.0f;
-        timeSmash = 0.0f;
-        timeScream = 0.0f;
-        timeGale = 0.0f;
+        Time1 = timeSmash = 0.0f;
+        Time2 = timeScream = 0.0f;
+        Time3 = timeGale = 0.0f;
 
         setDirection(1);
 
-        this.status = new Status(10, 10, 10, 1.5f, 10.0f);
-		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
-		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
-		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
-		this.totalDef = this.armor.GetDef() + this.status.GetDef();
 
         this.rb = GetComponent<Rigidbody2D>();
         this.sprite = GetComponent<SpriteRenderer>();
@@ -95,6 +95,18 @@ public class Guerreiro : Character{
         timeScream -= Time.deltaTime;
         timeGale -= Time.deltaTime;
 
+        if(timeSmash <= 0){
+            timeSmash = 0;
+        }
+
+        if(timeScream <= 0){
+            timeScream = 0;
+        }
+
+        if(timeGale <= 0){
+            timeGale = 0;
+        }
+
         if(timeBasicAtk <= 0.5f){
             attack.enabled = false;
         }
@@ -111,6 +123,10 @@ public class Guerreiro : Character{
             setAtk(getAtk() - 15);
             ScreamBuff = false;
         }
+
+        Time1 = timeSmash;
+		Time2 = timeScream;
+		Time3 = timeGale;
 
     }
 
