@@ -7,16 +7,21 @@ public class Enemy : MonoBehaviour {
 	public GameObject meteor;
 	public GameObject vulcan;
 	public GameObject acid;
+	public GameObject KahalHead;
+	public GameObject KahalLHand;
+	public GameObject KahalRHand;
 
 	private float TimEarthquake;
 	private float TimeVulcan;
 	private float TimeMeteor;
 	private float TimeAcid;
+	private float TimeHead;
 
-	private float cdEarthquake = 5.0f;
-	private float cdVulcan = 5.0f;
-	private float cdMeteor = 5.0f;
-	private float cdAcid = 5.0f;
+	private float cdEarthquake = 2.0f;
+	private float cdVulcan = 2.0f;
+	private float cdMeteor = 2.0f;
+	private float cdAcid = 2.0f;
+	private float cdHead = 2.0f;
 
     protected Status status;        //Status do personagem
 
@@ -24,11 +29,12 @@ public class Enemy : MonoBehaviour {
 	private Vector3 startPosition;
 	private Vector3 endPosition;
 	private Vector3 rotation;
+	private bool headPos;
 
 	// Use this for initialization
 	void Start () {
 		this.status = new Status(100, 10, 10, 1.5f, 10.0f); //hp, attack, def, speed, respawn time
-		
+		headPos = true;
 	}
 	
 	// Update is called once per frame
@@ -53,10 +59,22 @@ public class Enemy : MonoBehaviour {
 			Acid ();
 		}
 		
+		if(Input.GetKey(KeyCode.B) && TimeHead <= 0){
+			TimeHead = cdHead;
+			if(headPos){
+				TeleportHead (0.1f, 2.7f);
+				headPos = false;
+			}else{
+				TeleportHead (0.1f, 1.0f);
+				headPos = true;
+			}
+		}
+		
 		TimEarthquake -= Time.deltaTime;
 		TimeVulcan -= Time.deltaTime;
 		TimeMeteor -= Time.deltaTime;
 		TimeAcid -= Time.deltaTime;
+		TimeHead -= Time.deltaTime;
 	}
 
 	//Metodo que implementa a habilidade terremoto
@@ -99,5 +117,12 @@ public class Enemy : MonoBehaviour {
 		Vector3 frente = new Vector3(1, 0, 0);
 		float angle = Vector3.Angle(diference, frente);
 		Instantiate (meteor, startPosition, Quaternion.Euler (0, 0, -angle));
+	}
+
+	void TeleportHead(float x, float y){
+		//KahalHead.transform.position = (x, y, 0);
+	}
+	void MoveHand(GameObject hand, int x, int y){
+		
 	}
 }
