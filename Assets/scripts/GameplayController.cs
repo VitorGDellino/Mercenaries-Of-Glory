@@ -35,15 +35,11 @@ public class GameplayController : MonoBehaviour{
                     GameManager.instance.players[i].name = "Player" + (i+1);
                     GameManager.instance.players[i].tag = "Player" + (i+1);
                     GameManager.instance.playersUI[i].name = "Player"+ (i+1) + "Canvas";
-
                 }
             }
         }
     }
 
-    private void InitUI(int index){
-        //GameManager.instance.playersUI[index]. 
-    }
     private void MakeInstance(){
         if(instance != null){
             instance = this;

@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 61526984332525220}
   - component: {fileID: 212345990821209402}
   - component: {fileID: 114610026973161540}
+  - component: {fileID: 114539721987029180}
   m_Layer: 0
   m_Name: Ranger
   m_TagString: Player
@@ -155,6 +156,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8eeca6c940dc641a8e7aff7881561a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114539721987029180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1667623538423222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c564804c203e038409d1f81a5f0737ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nPlayer: 0
 --- !u!114 &114610026973161540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,6 +184,7 @@ MonoBehaviour:
   dashTime: 0
   jumpstr: 200
   dashcooldown: 0
+  inputGamepad: {fileID: 0}
   Arrow: {fileID: 1632614150340812, guid: 9bca19a46f8b6f343986a25cf3bd3dc3, type: 2}
   trap: {fileID: 1141896835659212, guid: 32f5aef37fcdc0445aeeb7684305dc0e, type: 2}
 --- !u!212 &212345990821209402

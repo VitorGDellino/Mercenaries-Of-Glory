@@ -22,7 +22,9 @@ public class CanvasManager : MonoBehaviour{
                 scripts[i] = GameManager.instance.players[i].GetComponent<Wizard>();
             }else if(MainMenuController.instance.classesChosen[i] == 2){
                 scripts[i] = GameManager.instance.players[i].GetComponent<Ranger>();
-            }   
+            }
+
+            scripts[i].inputGamepad.nPlayer = i + 1;
         }
     }
 

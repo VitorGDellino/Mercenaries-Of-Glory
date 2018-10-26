@@ -39,6 +39,8 @@ public class Warrior : Character{
         smash.enabled = false;
         gale.enabled = false;
 
+        inputGamepad = this.GetComponent<PlayerInput>();
+
     }
 
     void Start(){
@@ -65,25 +67,26 @@ public class Warrior : Character{
     }
 
     void Update(){
+        //InputManager.prevState = InputManager.state;
         if(!screaming){
             this.Movement();
 
-            if(Input.GetKey(KeyCode.Q) && timeBasicAtk <= 0){
+            if(inputGamepad.GetAttack() && timeBasicAtk <= 0){
                 timeBasicAtk = cdBasicAtk;
                 BasicAtk();
             }
 
-            if(Input.GetKey(KeyCode.W) && timeSmash <= 0){
+            if(inputGamepad.GetSkill1() && timeSmash <= 0){
                 timeSmash = cdSmash;
                 Smash();
             }
 
-            if(Input.GetKey(KeyCode.E)  && timeScream <= 0){
+            if(inputGamepad.GetSkill2()  && timeScream <= 0){
                 timeScream = cdScream;
                 Scream();
             }
 
-            if(Input.GetKey(KeyCode.R)  && timeGale <= 0){
+            if(inputGamepad.GetSkill3() && timeGale <= 0){
                 timeGale = cdGale;
                 Gale();
             }

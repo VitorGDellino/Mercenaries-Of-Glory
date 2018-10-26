@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour {
+public class Character : MonoBehaviour{
     // Atributos e Equipamentos
     protected string name;          //Nome do Personagem
     protected int totalAtk;         //Ataque total do personagem
@@ -30,6 +30,8 @@ public class Character : MonoBehaviour {
 
 	public float jumpstr;		//Força de salto
 	public float dashcooldown = 5.0f;	//Cooldown do dash
+
+    public PlayerInput inputGamepad;
    
     // Cd generico
 
@@ -47,10 +49,8 @@ public class Character : MonoBehaviour {
     }
 
     private void HorizontalMove(){
-        float move = Input.GetAxis("Horizontal");
+        float move = inputGamepad.GetHorizontal();
         Vector3 temp;
-        //Debug.Log(move);
-        //Debug.Log(direction);
         if (move < -0.1f && this.direction == 1){
             temp = this.t.localScale;
             temp[0] = temp[0]*(-1);
@@ -72,13 +72,14 @@ public class Character : MonoBehaviour {
 
     private void DashMove() {
         //Dash e Dash aéreo
-        if ((Input.GetKeyDown(KeyCode.X) && this.candash) || (Input.GetKeyDown(KeyCode.X) && this.canairdash)){
-            this.rb.velocity = new Vector2(this.dashspeed * this.direction, 0);
-            this.dashing = true;
-            this.dashTime = 1.0f;
-            this.candash = false;
-            this.canairdash = false;
-            Debug.Log("DASH");
+        if(inputGamepad.GetDash()){
+            if(this.candash || this.canairdash){
+                this.rb.velocity = new Vector2(this.dashspeed * this.direction, 0);
+                this.dashing = true;
+                this.dashTime = 1.0f;
+                this.candash = false;
+                this.canairdash = false;
+            }
         }
 
         //Finalizando o cooldown da habilidade de dash
@@ -92,15 +93,17 @@ public class Character : MonoBehaviour {
     }
 
     private void JumpMove(){
-        if (Input.GetButtonDown("Jump") && this.onthefloor && Input.GetAxis("Vertical") >= 0){
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(new Vector2(0, jumpstr));
-            this.doublejump = true;
-            this.canairdash = true;
-        } else if (Input.GetButtonDown("Jump") && this.doublejump) {
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(new Vector2(0, jumpstr));
-            this.doublejump = false;
+        if(inputGamepad.GetJump()){
+            if(onthefloor){
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.AddForce(new Vector2(0, jumpstr));
+                this.doublejump = true;
+                this.canairdash = true;
+            }else if(doublejump){
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.AddForce(new Vector2(0, jumpstr));
+                this.doublejump = false;
+            }
         }
     }
 
@@ -151,6 +154,10 @@ public class Character : MonoBehaviour {
 
     public void SetHp(int hp){
         this.status.SetHp(hp);
+    }
+
+    public void SetDoubleJump(){
+        this.doublejump = true;
     }
 
     public float GetCd1(){ return this.Time1; }
