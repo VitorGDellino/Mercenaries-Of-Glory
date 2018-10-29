@@ -20,7 +20,7 @@ public class GameplayController : MonoBehaviour{
     }
 
     void LevelFinishedLoading(Scene scene, LoadSceneMode mode){
-        if(scene.name == "BossLairTeste"){
+        if(scene.name == "BossLairFinal"){
             if(MainMenuController.instance.winner == -1){
                 Instantiate(kahalCanvas, new Vector3(3.5f, 5.2f, 0f),  Quaternion.Euler (0, 0, 0));
                 Vector3[] pos = new [] { new Vector3(-2.5f,5.3f,0f), new Vector3(9.5f,5.3f,0f), new Vector3(-2.5f,-1.9f,0f), new Vector3(9.5f,-1.9f,0f) };
