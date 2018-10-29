@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour{
 
-    private float damage = 30;
-    private float fireBallSpeed = 5;
+    public float damage = 30;
+    public float fireBallSpeed = 5;
     private float reach = 2.0f;
 
     private Vector3 pos;
