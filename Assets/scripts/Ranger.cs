@@ -36,6 +36,8 @@ public class Ranger : Character {
 		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
 		this.totalDef = this.armor.GetDef() + this.status.GetDef();
+
+		inputGamepad = this.GetComponent<PlayerInput>();
 	}
 	void Start () {
 
@@ -68,22 +70,22 @@ public class Ranger : Character {
 
 		//Debug.Log (h);
 
-		if(Input.GetKey(KeyCode.Q) && TimeBasicAtk <= 0){
+		if(inputGamepad.GetAttack() && TimeBasicAtk <= 0){
 			TimeBasicAtk = cdBasicAtk;
 			BasicAtk ();
 		}
 
-		if(Input.GetKey(KeyCode.W) && TimeTrap <= 0){
+		if(inputGamepad.GetSkill1() && TimeTrap <= 0){
 			TimeTrap = cdTrap;
 			Trap ();
 		}
 
-		if(Input.GetKey(KeyCode.E) && TimeLightFeet <= 0){
+		if(inputGamepad.GetSkill2() && TimeLightFeet <= 0){
 			TimeLightFeet = cdLightFeet;
 			LightFeet ();
 		}
 
-		if(Input.GetKey(KeyCode.R) && TimeReinforceArrow <= 0){
+		if(inputGamepad.GetSkill3() && TimeReinforceArrow <= 0){
 			TimeReinforceArrow = cdReinforceArrow;
 			ReinforceArrow ();
 		}

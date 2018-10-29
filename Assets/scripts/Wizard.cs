@@ -33,6 +33,8 @@ public class Wizard : Character {
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
 		this.totalDef = this.armor.GetDef() + this.status.GetDef();
 		blizzard.enabled = false;
+
+		inputGamepad = this.GetComponent<PlayerInput>();
 	}
     // Use this for initialization
     void Start () {
@@ -58,17 +60,17 @@ public class Wizard : Character {
 	void Update () {
 		this.Movement();
 
-		if(Input.GetKey(KeyCode.Q) && timeBasicAtk <= 0){
+		if(inputGamepad.GetAttack() && timeBasicAtk <= 0){
             timeBasicAtk = cdBasicAtk;
             BasicAtk();
         }
 
-		if(Input.GetKey(KeyCode.W) && timeBarrier <= 0){
+		if(inputGamepad.GetSkill1() && timeBarrier <= 0){
 			timeBarrier = cdBarrier;
 			Barrier();
 		}
 
-		if(Input.GetKey(KeyCode.R) && timeBlizzard <= 0){
+		if(inputGamepad.GetSkill3() && timeBlizzard <= 0){
 			timeBlizzard = cdBlizzard;
 			Blizzard();
 		}

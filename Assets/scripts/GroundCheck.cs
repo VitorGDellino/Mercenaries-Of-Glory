@@ -15,6 +15,7 @@ public class GroundCheck : MonoBehaviour{
 
     void OnTriggerExit2D(Collider2D col){
         this.player.setOnTheFloor(false);
+        this.player.SetDoubleJump();
     }
 
     void OnTriggerStay2D(Collider2D other){

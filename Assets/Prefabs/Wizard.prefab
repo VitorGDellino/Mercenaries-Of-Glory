@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 61307812997205770}
   - component: {fileID: 212940579342774216}
   - component: {fileID: 114254061189759164}
+  - component: {fileID: 114711621394501878}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Player
@@ -227,9 +228,22 @@ MonoBehaviour:
   dashTime: 0
   jumpstr: 200
   dashcooldown: 0
+  inputGamepad: {fileID: 0}
   blizzard: {fileID: 61776372411500246}
   player: {fileID: 0}
   fireBall: {fileID: 1818027979649320, guid: c2e62fd8aad49044283643930712b04a, type: 2}
+--- !u!114 &114711621394501878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746198742461808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c564804c203e038409d1f81a5f0737ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nPlayer: 0
 --- !u!212 &212259034224744230
 SpriteRenderer:
   m_ObjectHideFlags: 1
