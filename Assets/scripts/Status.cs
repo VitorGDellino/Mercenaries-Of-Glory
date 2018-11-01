@@ -34,9 +34,8 @@ public class Status {
     public void SetSpeed(float speed) { this.speed = speed; }
     public void SetRespawnTime(float respawnTime) { this.respawnTime = respawnTime; }
     
-    public virtual void takeDamage(int damage){
+    /*public virtual void takeDamage(int damage){
         SetHp(GetHp()-damage);
         //Debug.Log(damage);
-	}
-
+    }*/
 }

@@ -23,7 +23,26 @@ public class FireBall : MonoBehaviour{
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other){
-        Destroy(gameObject);
+    void OnTriggerEnter2D(Collider2D col){
+        if(col.gameObject.CompareTag("Player1")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+		if(col.gameObject.CompareTag("Player2")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+		if(col.gameObject.CompareTag("Player3")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+		if(col.gameObject.CompareTag("Player4")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+        if(col.gameObject.CompareTag("Enemy")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
     }
 }

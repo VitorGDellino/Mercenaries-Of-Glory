@@ -27,6 +27,9 @@ public class Character : MonoBehaviour{
     private bool dashing;
     private int direction;
     public float dashTime;
+    public float tempoStun;
+    public bool invincible = false;
+    public float invincibleTime = 0.0f;
 
 	public float jumpstr;		//Força de salto
 	public float dashcooldown = 5.0f;	//Cooldown do dash
@@ -117,7 +120,6 @@ public class Character : MonoBehaviour{
             this.DashMove();
             this.JumpMove();
         }
-
         if (this.dashTime <= 0) this.dashing = false;
         this.dashTime -= 0.05f;
      
@@ -145,8 +147,17 @@ public class Character : MonoBehaviour{
 
     //Método para auxiliar quando um personagem toma dano
     public virtual void takeDamage(int damage){
-        SetHp(GetHp()-damage);
-        Debug.Log(damage);
+        if(!invincible){
+            SetHp(GetHp()-damage);
+            //Debug.Log(damage);
+            invincible = true;
+            invincibleTime = 0.5f;
+        }
+	}
+
+    public virtual void takeStun(int time){
+        tempoStun = time;
+        //Debug.Log(tempoStun);
 	}
 
     public int GetHp(){

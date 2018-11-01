@@ -5,17 +5,18 @@ using UnityEngine;
 public class Arrow : MonoBehaviour {
 
 	public int damage = 5;
-	//public float rotationSpeed;
+	public float rotationSpeed = 100;
 	public float arrowSpeed = 5;
 
 	private Transform myTransform;
 
 	private Character player;
+	SpriteRenderer sprite;
 
 	/*private Vector3 mousePoint;
 
-	private bool canTranslate = true;
-	private bool canRotate = false;*/
+	private bool canTranslate = true;*/
+	//private bool canRotate = true;
 
 	void Awake(){
 		this.player = GetComponentInParent<Character>();
@@ -24,7 +25,8 @@ public class Arrow : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		myTransform = transform;
-
+		rotationSpeed = -100;
+		sprite = GetComponent<SpriteRenderer>();
 		/*mousePoint = v;
 
 		if(mousePoint.y > 200){
@@ -51,16 +53,7 @@ public class Arrow : MonoBehaviour {
 
 		myTransform.Translate (new Vector3 (-1, 0, 0) * arrowSpeed * Time.deltaTime);
 
-
-		//if(){
-
-		//}
-
-
-		/*if (canRotate = true) {
-			myTransform.Rotate (0, (mousePoint.y / 10) * Time.deltaTime * rotationSpeed, 0);
-		}
-		if(canTranslate = true){
+		/*if(canTranslate = true){
 			myTransform.Translate (new Vector3 (-1, 0, 0) * arrowSpeed * Time.deltaTime);
 		}
 		if(myTransform.position.z <= - 2.2f){
@@ -95,10 +88,26 @@ public class Arrow : MonoBehaviour {
 
 	}*/
 
-	void OnCollisionEnter2D(Collision2D col){
-		if(col.gameObject.tag == "Player"){
-			//Debug.Log("Entrei");
+	void OnTriggerEnter2D(Collider2D col){
+		if(col.gameObject.CompareTag("Player1")){
 			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+		if(col.gameObject.CompareTag("Player2")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+		if(col.gameObject.CompareTag("Player3")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+		if(col.gameObject.CompareTag("Player4")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+        if(col.gameObject.CompareTag("Enemy")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
 		}
 		Destroy (gameObject);
 	}

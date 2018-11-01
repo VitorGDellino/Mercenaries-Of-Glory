@@ -58,6 +58,8 @@ public class Warrior : Character{
         Time3 = timeGale = 0.0f;
 
         setDirection(1);
+        
+		tempoStun = 0.0f;
 
 
         this.rb = GetComponent<Rigidbody2D>();
@@ -68,7 +70,7 @@ public class Warrior : Character{
 
     void Update(){
         //InputManager.prevState = InputManager.state;
-        if(!screaming){
+        if(!screaming && tempoStun<=0.0f){
             this.Movement();
 
             if(inputGamepad.GetAttack() && timeBasicAtk <= 0){
@@ -126,6 +128,12 @@ public class Warrior : Character{
             setAtk(getAtk() - 15);
             ScreamBuff = false;
         }
+
+        if(invincibleTime<0.0f && invincible)
+			invincible = false;
+
+		tempoStun -= Time.deltaTime;
+		invincibleTime -= Time.deltaTime;
 
         Time1 = timeSmash;
 		Time2 = timeScream;

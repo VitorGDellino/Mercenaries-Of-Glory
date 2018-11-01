@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour {
 
-	public int damage = 5;
+	public int damage = 20;
 	public float meteorSpeed = 5;
 
 	private Transform myTransform;
@@ -18,21 +18,31 @@ public class Meteor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-
 		myTransform.Translate (new Vector3 (1, 0, 0) * meteorSpeed * Time.deltaTime);
-
 	}
 
-
-	void OnCollisionEnter2D(Collision2D col){
-
-		Debug.Log("Colidi");
-		if(col.gameObject.CompareTag("Player")){
+	
+	void OnTriggerEnter2D(Collider2D col){
+		//Debug.Log("Colidi");
+		//Destroy (gameObject);
+		if(col.gameObject.CompareTag("Player1")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+		if(col.gameObject.CompareTag("Player2")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+		if(col.gameObject.CompareTag("Player3")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			Destroy (gameObject);
+		}
+		if(col.gameObject.CompareTag("Player4")){
 			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
 			Destroy (gameObject);
 		}
 		if(col.gameObject.CompareTag("LastGround")){
-			Destroy (gameObject);	
+			Destroy (gameObject);
 		}
 	}
 }

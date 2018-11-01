@@ -51,8 +51,8 @@ public class Enemy : MonoBehaviour {
 	void FixedUpdate () {
 
 		if(Timer<=0){
-			ataque = Random.Range(3,5);
-			Debug.Log(ataque);
+			ataque = Random.Range(0,6);
+			//Debug.Log(ataque);
 
 			if(ataque==0 && timeEarthquake <= 0){
 				timeEarthquake = cdEarthquake;
@@ -121,13 +121,14 @@ public class Enemy : MonoBehaviour {
 		for(int i=0; i<Players.Length; i++){
 			if(Players[i].GetComponent<Character>().getOnTheFloor()){
 				Players[i].SendMessageUpwards("takeDamage", 10);
+				Players[i].SendMessageUpwards("takeStun", 2);
 			}
 		}
 	}
 
 	//Metodo que implementa o ataque vulcao
 	void Vulcan(){
-		startPosition = new Vector3(Random.Range(-5.0f, -4.0f), -10, 0);
+		startPosition = new Vector3(Random.Range(-5.0f, -4.0f), -1.0f, 0.0f);
 		for(int i=0; i<10; i++){
 			Instantiate (vulcan, startPosition, Quaternion.Euler (0, 0, 0));
 			startPosition.x += 2.0f;
@@ -167,7 +168,7 @@ public class Enemy : MonoBehaviour {
 		Vector3 diference = endPosition - startPosition;
 		Vector3 frente = new Vector3(1, 0, 0);
 		float angle = Vector3.Angle(diference, frente);
-		Instantiate (meteor, startPosition, Quaternion.Euler (0, 0, -angle));
+		Instantiate (acid, startPosition, Quaternion.Euler (0, 0, -angle));
 	}
 
 	void TeleportHead(float x, float y){
@@ -180,4 +181,9 @@ public class Enemy : MonoBehaviour {
 		Vector3 diference = endPosition - startPosition;
 		return diference;
 	}
+
+	public virtual void takeDamage(int damage){
+        status.SetHp(status.GetHp()-damage);
+        Debug.Log("INIMIGOTOMOUDANO");
+    }
 }

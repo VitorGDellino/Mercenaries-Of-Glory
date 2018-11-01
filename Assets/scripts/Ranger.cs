@@ -55,6 +55,8 @@ public class Ranger : Character {
 		Time2 = TimeReinforceArrow = 0.0f;
 		Time3 = TimeLightFeet = 0.0f;
 
+		tempoStun = 0.0f;
+
 		setDirection(1);
 
 		this.rb = GetComponent<Rigidbody2D>();
@@ -64,30 +66,33 @@ public class Ranger : Character {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		this.Movement();
 
-		//h = Input.GetAxisRaw ("Horizontal");
+		if(tempoStun<=0.0f){
+			this.Movement();
 
-		//Debug.Log (h);
+			//h = Input.GetAxisRaw ("Horizontal");
 
-		if(inputGamepad.GetAttack() && TimeBasicAtk <= 0){
-			TimeBasicAtk = cdBasicAtk;
-			BasicAtk ();
-		}
+			//Debug.Log (h);
 
-		if(inputGamepad.GetSkill1() && TimeTrap <= 0){
-			TimeTrap = cdTrap;
-			Trap ();
-		}
+			if(inputGamepad.GetAttack() && TimeBasicAtk <= 0){
+				TimeBasicAtk = cdBasicAtk;
+				BasicAtk ();
+			}
 
-		if(inputGamepad.GetSkill2() && TimeLightFeet <= 0){
-			TimeLightFeet = cdLightFeet;
-			LightFeet ();
-		}
+			if(inputGamepad.GetSkill1() && TimeTrap <= 0){
+				TimeTrap = cdTrap;
+				Trap ();
+			}
 
-		if(inputGamepad.GetSkill3() && TimeReinforceArrow <= 0){
-			TimeReinforceArrow = cdReinforceArrow;
-			ReinforceArrow ();
+			if(inputGamepad.GetSkill2() && TimeLightFeet <= 0){
+				TimeLightFeet = cdLightFeet;
+				LightFeet ();
+			}
+
+			if(inputGamepad.GetSkill3() && TimeReinforceArrow <= 0){
+				TimeReinforceArrow = cdReinforceArrow;
+				ReinforceArrow ();
+			}
 		}
 		
 		if (Input.GetAxisRaw ("Horizontal") == 1) {
@@ -109,6 +114,13 @@ public class Ranger : Character {
 			LightFeetBuff = false;
 		}
 
+		if(invincibleTime<0.0f && invincible)
+			invincible = false;
+
+		tempoStun -= Time.deltaTime;
+		invincibleTime -= Time.deltaTime;
+		
+
 		Time1 = TimeTrap;
 		Time2 = TimeLightFeet;
 		Time3 = TimeReinforceArrow;
@@ -123,10 +135,10 @@ public class Ranger : Character {
 	void Trap(){
 		temp = transform.position;
 		if(!facingRight){
-			temp.x -= 0.3f;
+			temp.x -= 0.5f;
 			Instantiate (trap, temp, transform.localRotation);
 		}else if(facingRight){
-			temp.x += 0.3f;
+			temp.x += 0.5f;
 			Instantiate (trap, temp, transform.localRotation);
 		}
 	}
@@ -141,10 +153,10 @@ public class Ranger : Character {
 	void BasicAtk(){
 		temp = transform.position;
 		if(!facingRight){
-			temp.x -= 0.3f;
+			temp.x -= 0.5f;
 			Instantiate (Arrow, temp, Quaternion.Euler (0, 0, 0));
 		}else if(facingRight){
-			temp.x += 0.3f;
+			temp.x += 0.5f;
 			Instantiate (Arrow, temp, Quaternion.Euler (0, 0, 180));
 		}
 	}

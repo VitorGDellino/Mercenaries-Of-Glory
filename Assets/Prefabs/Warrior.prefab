@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 212162800437769536}
   - component: {fileID: 114778191713943814}
   - component: {fileID: 114250467904845046}
+  - component: {fileID: 61155676761291186}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Player
@@ -142,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1966665514968036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8, y: 0.561, z: 0.1796875}
+  m_LocalPosition: {x: 3.229132, y: -0.68065953, z: 0.1796875}
   m_LocalScale: {x: 0.3077952, y: 0.28895956, z: 1.38}
   m_Children:
   - {fileID: 4131418519950864}
@@ -234,6 +235,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!61 &61155676761291186
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1966665514968036}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.34278834, y: -0.000000059604645}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5, y: 2.2}
+    newSize: {x: 0.72, y: 0.72}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7520964, y: 2.1004186}
   m_EdgeRadius: 0
 --- !u!61 &61542553525885432
 BoxCollider2D:
@@ -347,6 +373,7 @@ MonoBehaviour:
   GroundCheck: {fileID: 4131418519950864}
   dashspeed: 0
   dashTime: 0
+  tempoStun: 0
   jumpstr: 200
   dashcooldown: 0
   inputGamepad: {fileID: 0}

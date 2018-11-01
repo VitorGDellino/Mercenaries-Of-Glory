@@ -51,6 +51,8 @@ public class Wizard : Character {
 
 		setDirection(1);
 
+		tempoStun = 0.0f;
+
         this.rb = GetComponent<Rigidbody2D>();
         this.sprite = GetComponent<SpriteRenderer>();
         this.t = GetComponent<Transform>();
@@ -58,21 +60,23 @@ public class Wizard : Character {
 	
 	// Update is called once per frame
 	void Update () {
-		this.Movement();
+		if(tempoStun<=0.0f){
+			this.Movement();
 
-		if(inputGamepad.GetAttack() && timeBasicAtk <= 0){
-            timeBasicAtk = cdBasicAtk;
-            BasicAtk();
-        }
+			if(inputGamepad.GetAttack() && timeBasicAtk <= 0){
+				timeBasicAtk = cdBasicAtk;
+				BasicAtk();
+			}
 
-		if(inputGamepad.GetSkill1() && timeBarrier <= 0){
-			timeBarrier = cdBarrier;
-			Barrier();
-		}
+			if(inputGamepad.GetSkill1() && timeBarrier <= 0){
+				timeBarrier = cdBarrier;
+				Barrier();
+			}
 
-		if(inputGamepad.GetSkill3() && timeBlizzard <= 0){
-			timeBlizzard = cdBlizzard;
-			Blizzard();
+			if(inputGamepad.GetSkill3() && timeBlizzard <= 0){
+				timeBlizzard = cdBlizzard;
+				Blizzard();
+			}
 		}
 
 		timeBasicAtk -= Time.deltaTime;
@@ -89,6 +93,12 @@ public class Wizard : Character {
 		if(timeBlizzard <= 18.0f){
 			blizzard.enabled = false;
 		}
+
+		if(invincibleTime<0.0f && invincible)
+			invincible = false;
+
+		tempoStun -= Time.deltaTime;
+		invincibleTime -= Time.deltaTime;
 
 		Time1 = timeBarrier;
 		Time2 = timeThunder;
@@ -135,7 +145,7 @@ public class Wizard : Character {
     public void SetCdBarrier(float cdBarrier) { this.cdBarrier = cdBarrier; }
 
 	public override void takeDamage(int damage){
-		Debug.Log("fhajksdhfalhjsdflak");
+		Debug.Log(damage);
 		if(!barrier){
 			//take damage
 		}

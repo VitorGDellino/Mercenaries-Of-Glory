@@ -7,6 +7,7 @@ public class Acid : MonoBehaviour {
 	public int damage = 5;
 	public float acidSpeed = 5;
 
+	public GameObject gosma;
 	private Transform myTransform;
 
 	private Character player;
@@ -21,16 +22,24 @@ public class Acid : MonoBehaviour {
 		myTransform.Translate (new Vector3 (1, 0, 0) * acidSpeed * Time.deltaTime);
 	}
 
-	void OnCollisionEnter2D(Collision2D col){
-
-		Debug.Log("Colidi");
-		if(col.gameObject.CompareTag("Player")){
-			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+	void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.CompareTag("Plataform")){
+			Debug.Log("BateuNaPlataforma");
+			Instantiate (gosma, myTransform.position, Quaternion.Euler (0, 0, 90));
 			Destroy (gameObject);
 		}
-		if(col.gameObject.CompareTag("Plataform")){
-			Debug.Log("BateuNaPlataforma");
-			Destroy (gameObject);	
+		if(col.gameObject.CompareTag("Player1")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
 		}
-	}
+		if(col.gameObject.CompareTag("Player2")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+		}
+		if(col.gameObject.CompareTag("Player3")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+		}
+		if(col.gameObject.CompareTag("Player4")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+		}
+    }
 }
