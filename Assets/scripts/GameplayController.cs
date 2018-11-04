@@ -11,13 +11,36 @@ public class GameplayController : MonoBehaviour{
 
     public GameObject kahalCanvas;
 
+    /*
+    public bool[] isDead = new bool[4];
+    public float[] cdRespawn = new float[4];*/
+
+
     void Awake(){
         MakeInstance();
+        /*for(int i=0; i<4; i++){
+            isDead[i] = false;
+            cdRespawn[i] = 0.0f;
+        }*/
     }
 
     void OnEnable(){
         SceneManager.sceneLoaded += LevelFinishedLoading;
     }
+
+    void FixedUpdate () {
+        /*if(GameManager.instance.players[i]){
+            GameManager.instance.
+        }
+        for(int i=0; i<4; i++){
+            if(isDead[i]){
+                
+                cdRespawn[i] -= Time.deltaTime;
+            }
+        }*/
+    }
+
+
 
     void LevelFinishedLoading(Scene scene, LoadSceneMode mode){
         if(scene.name == "BossLairFinal"){

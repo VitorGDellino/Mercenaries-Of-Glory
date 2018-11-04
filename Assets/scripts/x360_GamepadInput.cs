@@ -68,8 +68,8 @@ public class x360_GamepadInput : PlayerInput{
     }
 
     override public bool GetSkill3(){
-        if (skill2Trigger && InputManager.GetButton(nPlayer, InputManager.button.SKILL2)){
-            skill2Trigger = false;
+        if (skill3Trigger && InputManager.GetButton(nPlayer, InputManager.button.SKILL3)){
+            skill3Trigger = false;
             return true;
         }
 

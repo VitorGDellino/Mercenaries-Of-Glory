@@ -14,6 +14,7 @@ public class Character : MonoBehaviour{
     protected Rigidbody2D rb;   //Referencia o Personagem
     protected SpriteRenderer sprite;
     protected Transform t;
+    public GameObject player;
     public Transform GroundCheck;
     protected Animator anim;
 
@@ -30,12 +31,14 @@ public class Character : MonoBehaviour{
     public float tempoStun;
     public bool invincible = false;
     public float invincibleTime = 0.0f;
+    
+    public float RespawnTime = 10.0f;
+    public float cdRespawn = 0.0f;
 
 	public float jumpstr;		//Força de salto
 	public float dashcooldown = 5.0f;	//Cooldown do dash
 
     public PlayerInput inputGamepad;
-   
     // Cd generico
 
     protected float Time1;
@@ -149,12 +152,17 @@ public class Character : MonoBehaviour{
     public virtual void takeDamage(int damage){
         if(!invincible){
             SetHp(GetHp()-damage);
+            if(GetHp()<0){
+                //gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), -4.0f, 0.0f);
+                cdRespawn = RespawnTime;
+            }
             //Debug.Log(damage);
             invincible = true;
             invincibleTime = 0.5f;
         }
 	}
-
     public virtual void takeStun(int time){
         tempoStun = time;
         //Debug.Log(tempoStun);

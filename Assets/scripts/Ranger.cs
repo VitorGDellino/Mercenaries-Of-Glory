@@ -56,6 +56,7 @@ public class Ranger : Character {
 		Time3 = TimeLightFeet = 0.0f;
 
 		tempoStun = 0.0f;
+		RespawnTime = 10.0f;
 
 		setDirection(1);
 
@@ -67,7 +68,7 @@ public class Ranger : Character {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		if(tempoStun<=0.0f){
+		if(tempoStun<=0.0f || !status.IsDead()){
 			this.Movement();
 
 			//h = Input.GetAxisRaw ("Horizontal");
@@ -114,12 +115,20 @@ public class Ranger : Character {
 			LightFeetBuff = false;
 		}
 
-		if(invincibleTime<0.0f && invincible)
+		if(invincibleTime<0.0f)
 			invincible = false;
+
+		if(cdRespawn<0.0f && status.IsDead()){
+			Debug.Log("Reviveu");
+			status.SetHp(10);
+			gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, -0.05448645f);
+		}
 
 		tempoStun -= Time.deltaTime;
 		invincibleTime -= Time.deltaTime;
-		
+		cdRespawn -= Time.deltaTime;
 
 		Time1 = TimeTrap;
 		Time2 = TimeLightFeet;

@@ -21,13 +21,14 @@ GameObject:
   - component: {fileID: 4000324064849320}
   - component: {fileID: 61776372411500246}
   - component: {fileID: 212259034224744230}
+  - component: {fileID: 114747387351564704}
   m_Layer: 0
   m_Name: Blizzard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1746198742461808
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,16 +212,16 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -253,11 +254,13 @@ MonoBehaviour:
   dashspeed: 3
   dashTime: 0
   tempoStun: 0
+  invincible: 0
+  invincibleTime: 0
   jumpstr: 200
   dashcooldown: 0
   inputGamepad: {fileID: 0}
-  blizzard: {fileID: 61776372411500246}
-  player: {fileID: 0}
+  blizzard: {fileID: 1409137413815044}
+  player: {fileID: 61307812997205770}
   fireBall: {fileID: 1818027979649320, guid: c2e62fd8aad49044283643930712b04a, type: 2}
 --- !u!114 &114711621394501878
 MonoBehaviour:
@@ -271,6 +274,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nPlayer: 0
+--- !u!114 &114747387351564704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1409137413815044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d31aa56ab67184da8b9ff2051c0262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  stun: 2
 --- !u!212 &212259034224744230
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -306,7 +322,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c6f411b03694dff47976d1d7951064ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -314,7 +330,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!212 &212940579342774216

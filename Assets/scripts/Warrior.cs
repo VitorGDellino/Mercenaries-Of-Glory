@@ -61,6 +61,7 @@ public class Warrior : Character{
         
 		tempoStun = 0.0f;
 
+		RespawnTime = 10.0f;
 
         this.rb = GetComponent<Rigidbody2D>();
         this.sprite = GetComponent<SpriteRenderer>();
@@ -70,7 +71,7 @@ public class Warrior : Character{
 
     void Update(){
         //InputManager.prevState = InputManager.state;
-        if(!screaming && tempoStun<=0.0f){
+        if(!screaming || tempoStun<=0.0f || !status.IsDead()){
             this.Movement();
 
             if(inputGamepad.GetAttack() && timeBasicAtk <= 0){
@@ -129,11 +130,20 @@ public class Warrior : Character{
             ScreamBuff = false;
         }
 
-        if(invincibleTime<0.0f && invincible)
+        if(invincibleTime<0.0f)
 			invincible = false;
+        
+        if(cdRespawn<0.0f && status.IsDead()){
+			Debug.Log("Reviveu");
+			status.SetHp(10);
+            this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, -0.05448645f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			gameObject.GetComponent<BoxCollider2D>().enabled = true;
+		}
 
 		tempoStun -= Time.deltaTime;
 		invincibleTime -= Time.deltaTime;
+		cdRespawn -= Time.deltaTime;
 
         Time1 = timeSmash;
 		Time2 = timeScream;
@@ -167,4 +177,5 @@ public class Warrior : Character{
             Instantiate(sharpGale, temp, Quaternion.Euler (0, 0, 180));
         }
     }
+
 }

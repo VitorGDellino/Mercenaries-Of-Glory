@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour {
 	private float cdHead = 2.0f;
 	public float handSpeed = 1.0f;
 
-    protected Status status;        //Status do personagem
+    public Status status;        //Status do personagem
 
 	private GameObject[] Players;
 	private Vector3 startPosition;
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour {
 	void FixedUpdate () {
 
 		if(Timer<=0){
-			ataque = Random.Range(0,6);
+			ataque = Random.Range(7,8);
 			//Debug.Log(ataque);
 
 			if(ataque==0 && timeEarthquake <= 0){

@@ -9,6 +9,8 @@ public class CanvasManager : MonoBehaviour{
    
     public GameObject[] canvas;
     public Character[] scripts;
+    public GameObject canvasEnemy;
+    public Enemy scriptEnemy;
 
     void Init(){
         canvas = new GameObject[MainMenuController.instance.nPlayers];
@@ -26,6 +28,7 @@ public class CanvasManager : MonoBehaviour{
 
             scripts[i].inputGamepad.nPlayer = i + 1;
         }
+        scriptEnemy = GameObject.Find("KaHal").GetComponent<Enemy>();
     }
 
     void Start(){
@@ -46,6 +49,11 @@ public class CanvasManager : MonoBehaviour{
             temp[0] = scripts[i].GetHp()*2;
             aux.localScale = temp;
         }
+
+        /*var auxEnemy = canvasEnemy.transform.GetChild(0);
+        var tempEnemy = auxEnemy.localScale;
+        tempEnemy[0] = scriptEnemy.status.GetHp()*0.5f;
+        auxEnemy.localScale = tempEnemy;*/
     }
 
     private void updateSkill(int i, int skill){
