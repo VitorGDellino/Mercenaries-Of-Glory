@@ -250,18 +250,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9df873433364a60b78f995777ae539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 61307812997205770}
   GroundCheck: {fileID: 4275852501421528}
   dashspeed: 3
   dashTime: 0
   tempoStun: 0
   invincible: 0
   invincibleTime: 0
+  RespawnTime: 0
+  cdRespawn: 0
   jumpstr: 200
   dashcooldown: 0
   inputGamepad: {fileID: 0}
   blizzard: {fileID: 1409137413815044}
   player: {fileID: 61307812997205770}
   fireBall: {fileID: 1818027979649320, guid: c2e62fd8aad49044283643930712b04a, type: 2}
+  clone: {fileID: 0}
 --- !u!114 &114711621394501878
 MonoBehaviour:
   m_ObjectHideFlags: 1

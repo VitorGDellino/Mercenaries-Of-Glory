@@ -20,6 +20,7 @@ public class Ranger : Character {
 	private float cdReinforceArrow;	//Cooldown da habilidade Reforçar flecha
 	private float cdLightFeet;      //Cooldown da habilidade Pés leves
 
+	public GameObject clone;
 
 	private Vector3 temp;
 
@@ -145,11 +146,12 @@ public class Ranger : Character {
 		temp = transform.position;
 		if(!facingRight){
 			temp.x -= 0.5f;
-			Instantiate (trap, temp, transform.localRotation);
+			clone = Instantiate (trap, temp, transform.localRotation);
 		}else if(facingRight){
 			temp.x += 0.5f;
-			Instantiate (trap, temp, transform.localRotation);
+			clone = Instantiate (trap, temp, transform.localRotation);
 		}
+		clone.tag = gameObject.tag;
 	}
 
 	//Metodo que implementa a habilidade aumentar velocidade
@@ -163,10 +165,11 @@ public class Ranger : Character {
 		temp = transform.position;
 		if(!facingRight){
 			temp.x -= 0.5f;
-			Instantiate (Arrow, temp, Quaternion.Euler (0, 0, 0));
+			clone = Instantiate (Arrow, temp, Quaternion.Euler (0, 0, 0));
 		}else if(facingRight){
 			temp.x += 0.5f;
-			Instantiate (Arrow, temp, Quaternion.Euler (0, 0, 180));
+			clone = Instantiate (Arrow, temp, Quaternion.Euler (0, 0, 180));
 		}
+		clone.tag = gameObject.tag;
 	}
 }

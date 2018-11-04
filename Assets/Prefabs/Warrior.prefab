@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4183223340546520}
   - component: {fileID: 61019014989879456}
+  - component: {fileID: 114511798607207858}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -348,6 +349,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nPlayer: 0
+--- !u!114 &114511798607207858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1291604979486972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad5e368f3e81ff4d9b7c01cfc7e9eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114717238243095366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,17 +382,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6193201bd5903e8418b6c5a53ccf05e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   GroundCheck: {fileID: 4131418519950864}
   dashspeed: 0
   dashTime: 0
   tempoStun: 0
+  invincible: 0
+  invincibleTime: 0
+  RespawnTime: 0
+  cdRespawn: 0
   jumpstr: 200
   dashcooldown: 0
   inputGamepad: {fileID: 0}
   attack: {fileID: 61019014989879456}
   smash: {fileID: 61542553525885432}
   gale: {fileID: 61051240465072946}
+  attackObject: {fileID: 1291604979486972}
   sharpGale: {fileID: 1397271630557938, guid: 70b140be6df491c46a95ea985fa4fd07, type: 2}
+  clone: {fileID: 0}
 --- !u!212 &212162800437769536
 SpriteRenderer:
   m_ObjectHideFlags: 1

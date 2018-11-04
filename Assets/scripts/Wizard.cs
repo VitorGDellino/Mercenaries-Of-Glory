@@ -21,6 +21,7 @@ public class Wizard : Character {
 	public Collider2D player;
 
 	public GameObject fireBall;
+	public GameObject clone;
 
 
     public Wizard(string name, Status status, Weapon weapon, Armor armor)
@@ -122,6 +123,7 @@ public class Wizard : Character {
 	//Metodo que implementa a habilidade Nevasca
 	void Blizzard(){
 		timeBlizzard = cdBlizzard;
+		blizzard.tag = gameObject.tag;
 		blizzard.SetActive(true);
 	}
 
@@ -141,11 +143,12 @@ public class Wizard : Character {
 		Vector3 temp = transform.position;
 		if(getDirection() == 1){
             temp.x += 0.4f;
-            Instantiate(fireBall, temp, Quaternion.Euler (0, 0, 0));
+            clone = Instantiate(fireBall, temp, Quaternion.Euler (0, 0, 0));
         }else if(getDirection() == -1){
             temp.x -= 0.4f;
-            Instantiate(fireBall, temp, Quaternion.Euler (0, 0, 180));
+            clone = Instantiate(fireBall, temp, Quaternion.Euler (0, 0, 180));
         }
+		clone.tag = gameObject.tag;
 	}
 
     public float GetCdBasicAtk() { return this.cdBasicAtk; }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour {
 
@@ -40,11 +41,16 @@ public class Enemy : MonoBehaviour {
 
 	private int ataque;
 	private int maxHP = 100;
+	private int[] playersDamage;
 
 	// Use this for initialization
 	void Start () {
 		this.status = new Status(maxHP, 10, 10, 1.5f, 10.0f); //hp, attack, def, speed, respawn time
 		headPos = true;
+		playersDamage = new int[4];
+		for(int i=0; i<4; i++){
+			playersDamage[i] = 0;
+		}
 	}
 	
 	// Update is called once per frame
@@ -182,8 +188,28 @@ public class Enemy : MonoBehaviour {
 		return diference;
 	}
 
-	public virtual void takeDamage(int damage){
-        status.SetHp(status.GetHp()-damage);
-        Debug.Log("INIMIGOTOMOUDANO");
+	public virtual void takeDamage(InfAtk atkInfo){
+        status.SetHp(status.GetHp()-atkInfo.damage);
+		if(atkInfo.playerTag == "Player1"){
+			playersDamage[0] += atkInfo.damage;
+		}
+		if(atkInfo.playerTag == "Player2"){
+			playersDamage[1] += atkInfo.damage;
+		}
+		if(atkInfo.playerTag == "Player3"){
+			playersDamage[2] += atkInfo.damage;
+		}
+		if(atkInfo.playerTag == "Player4"){
+			playersDamage[3] += atkInfo.damage;
+		}
+		if(status.GetHp() <= 0){
+			PlayerPrefs.SetInt("Player1", playersDamage[0]);
+			PlayerPrefs.SetInt("Player2", playersDamage[1]);
+			PlayerPrefs.SetInt("Player3", playersDamage[2]);
+			PlayerPrefs.SetInt("Player4", playersDamage[3]);
+			SceneManager.LoadScene("Vitoria");
+		}
+		Debug.Log(atkInfo.playerTag);
+		Debug.Log(status.GetHp());
     }
 }

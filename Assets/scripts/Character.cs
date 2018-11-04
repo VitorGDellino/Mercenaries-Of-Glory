@@ -45,6 +45,16 @@ public class Character : MonoBehaviour{
     protected float Time2;
     protected float Time3;
 
+    struct AtaqueInfo{
+        public int damage;
+        public string playerTag;
+
+        public AtaqueInfo(int damage, string playerTag){
+            this.damage = damage;
+            this.playerTag = playerTag;
+        }
+    }
+
     public Character(string name, Status status, Weapon weapon, Armor armor) {
         this.name = name;
         this.totalAtk = status.GetAtk() + weapon.GetAtk();

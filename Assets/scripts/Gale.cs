@@ -11,6 +11,7 @@ public class Gale : MonoBehaviour{
     private Vector3 pos;
 
     private Transform myTransform;
+    public InfAtk atkInfo;
 
     private Character player;
 
@@ -21,6 +22,7 @@ public class Gale : MonoBehaviour{
     void Start(){
         myTransform = transform;
         pos = myTransform.position;
+        atkInfo = new InfAtk(damage, gameObject.tag);
     }
 
     void Update(){
@@ -29,4 +31,22 @@ public class Gale : MonoBehaviour{
             Destroy(gameObject);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D col){
+		if(col.gameObject.CompareTag("Player1")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+		}
+		if(col.gameObject.CompareTag("Player2")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+		}
+		if(col.gameObject.CompareTag("Player3")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+		}
+		if(col.gameObject.CompareTag("Player4")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+		}
+        if(col.gameObject.CompareTag("Enemy")){
+			col.gameObject.SendMessageUpwards("takeDamage", this.atkInfo);
+		}
+	}
 }

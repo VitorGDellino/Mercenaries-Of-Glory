@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour{
 
-    public float damage = 30;
+    public int damage = 30;
     public float fireBallSpeed = 5;
     private float reach = 2.0f;
 
     private Vector3 pos;
     private Transform myTransform;
+    public InfAtk atkInfo;
 
     void Start(){
         myTransform = transform;
         pos = myTransform.position;
+        atkInfo = new InfAtk(damage, gameObject.tag);
     }
 
     void Update(){
@@ -41,7 +43,7 @@ public class FireBall : MonoBehaviour{
 			Destroy (gameObject);
 		}
         if(col.gameObject.CompareTag("Enemy")){
-			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			col.gameObject.SendMessageUpwards("takeDamage", this.atkInfo);
 			Destroy (gameObject);
 		}
     }

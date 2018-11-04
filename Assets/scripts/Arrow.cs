@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour {
 
-	public int damage = 5;
+	private int damage = 45;
 	public float rotationSpeed = 100;
 	public float arrowSpeed = 5;
 
 	private Transform myTransform;
+    public InfAtk atkInfo;
 
 	private Character player;
 	SpriteRenderer sprite;
@@ -27,6 +28,7 @@ public class Arrow : MonoBehaviour {
 		myTransform = transform;
 		rotationSpeed = -100;
 		sprite = GetComponent<SpriteRenderer>();
+        atkInfo = new InfAtk(damage, gameObject.tag);
 		/*mousePoint = v;
 
 		if(mousePoint.y > 200){
@@ -106,7 +108,7 @@ public class Arrow : MonoBehaviour {
 			Destroy (gameObject);
 		}
         if(col.gameObject.CompareTag("Enemy")){
-			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+			col.gameObject.SendMessageUpwards("takeDamage", this.atkInfo);
 			Destroy (gameObject);
 		}
 		Destroy (gameObject);

@@ -23,7 +23,10 @@ public class Warrior : Character{
     public Collider2D smash;
     public Collider2D gale;
 
+    public GameObject attackObject;
     public GameObject sharpGale;
+    public GameObject clone;
+
 
     public Warrior(string name, Status status, Weapon weapon, Armor armor)
         : base(name, status, weapon, armor){
@@ -67,6 +70,7 @@ public class Warrior : Character{
         this.sprite = GetComponent<SpriteRenderer>();
         this.t = GetComponent<Transform>();
 
+        attackObject.tag = gameObject.tag;
     }
 
     void Update(){
@@ -153,6 +157,7 @@ public class Warrior : Character{
 
     void BasicAtk(){
         attack.enabled = true;
+
         timeBasicAtk = cdBasicAtk;
     }                                                                                                                                                                                                                                                                                                                                                                                                                           
 
@@ -171,11 +176,12 @@ public class Warrior : Character{
         Vector3 temp = transform.position;
         if(getDirection() == 1){
             temp.x += 0.4f;
-            Instantiate(sharpGale, temp, Quaternion.Euler (0, 0, 0));
+            clone = Instantiate(sharpGale, temp, Quaternion.Euler (0, 0, 0));
         }else if(getDirection() == -1){
             temp.x -= 0.4f;
-            Instantiate(sharpGale, temp, Quaternion.Euler (0, 0, 180));
+            clone = Instantiate(sharpGale, temp, Quaternion.Euler (0, 0, 180));
         }
+        clone.tag = gameObject.tag;
     }
 
 }
