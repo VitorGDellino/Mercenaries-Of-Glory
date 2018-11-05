@@ -20,12 +20,13 @@ public class InputManager : MonoBehaviour{
 
     public enum menu{
         SUBMIT,
-        PREVIOUS,
+        BACK,
         PAUSE,
         LEFT,
         RIGHT,
         UP,
-        DOWN
+        DOWN,
+        START
     }
 
     public enum xboxButton{
@@ -58,6 +59,14 @@ public class InputManager : MonoBehaviour{
     public xboxButton skill2Button;
     public xboxButton skill3Button;
 
+    public xboxButton submitButton;
+    public xboxButton backButton;
+    public xboxButton leftButton;
+    public xboxButton rightButton;
+    public xboxButton downButton;
+    public xboxButton upButton;
+    public xboxButton startButton;
+
     public static InputManager instance;
 
      void Awake(){
@@ -71,6 +80,75 @@ public class InputManager : MonoBehaviour{
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+    
+    public static bool GetMenuButton(menu _button){
+
+        bool pressed = false;
+
+        for(int i = 0; i < 4; i++){
+
+            GamePadState state = GamePad.GetState((PlayerIndex) (i));
+
+            switch(_button){
+                case menu.SUBMIT:
+                    pressed |= GetButton(state, instance.submitButton);
+                    break;
+                case menu.BACK:
+                    pressed |= GetButton(state, instance.backButton);
+                    break;
+                case menu.LEFT:
+                    pressed |= GetButton(state, instance.leftButton)  || state.ThumbSticks.Left.X < -instance.triggMinRatio;
+                    break;
+                case menu.RIGHT:
+                    pressed |= GetButton(state, instance.rightButton) || state.ThumbSticks.Left.X > instance.triggMinRatio;;
+                    break;
+                case menu.UP:
+                    pressed |= GetButton(state, instance.upButton) || state.ThumbSticks.Left.Y > instance.triggMinRatio;;
+                    break;
+                case menu.DOWN:
+                    pressed |= GetButton(state, instance.downButton) || state.ThumbSticks.Left.Y < -instance.triggMinRatio;;
+                    break;
+            }
+        }
+
+        return pressed;
+    }
+
+     public static bool GetMenuButton(int player, menu _button){
+
+        bool pressed = false;
+        if(player < 0 || player >= 4){
+            return false;
+        }
+
+        GamePadState state = GamePad.GetState((PlayerIndex) (player));
+
+        switch(_button){
+            case menu.SUBMIT:
+                pressed |= GetButton(state, instance.submitButton);
+                break;
+            case menu.BACK:
+                pressed |= GetButton(state, instance.backButton);
+                break;
+            case menu.LEFT:
+                pressed |= GetButton(state, instance.leftButton)  || state.ThumbSticks.Left.X < -instance.triggMinRatio;
+                break;
+            case menu.RIGHT:
+                pressed |= GetButton(state, instance.rightButton) || state.ThumbSticks.Left.X > instance.triggMinRatio;;
+                break;
+            case menu.UP:
+                pressed |= GetButton(state, instance.upButton) || state.ThumbSticks.Left.Y > instance.triggMinRatio;;
+                break;
+            case menu.DOWN:
+                pressed |= GetButton(state, instance.downButton) || state.ThumbSticks.Left.Y < -instance.triggMinRatio;;
+                break; 
+            case menu.START:
+                pressed |= GetButton(state, instance.startButton); 
+                break;
+        }
+
+        return pressed;
     }
 
     public static bool GetButton(int player, button _button){
@@ -105,7 +183,7 @@ public class InputManager : MonoBehaviour{
             return 0f;
         }
 
-        GamePadState state = GamePad.GetState((PlayerIndex) (player -1));
+        GamePadState state = GamePad.GetState((PlayerIndex) (player - 1));
 
         switch(_axis){
             case axis.HORIZONTAL:
@@ -117,9 +195,9 @@ public class InputManager : MonoBehaviour{
         return 0f;
     }
 
-    private static bool GetButton(GamePadState state, xboxButton button){
+    private static bool GetButton(GamePadState state, xboxButton _button){
 
-        switch(button){
+        switch(_button){
 
             case xboxButton.TRIGG_LEFT:
                 return state.Triggers.Left > instance.triggMinRatio;
