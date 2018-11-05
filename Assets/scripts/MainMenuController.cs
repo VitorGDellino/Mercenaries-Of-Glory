@@ -5,8 +5,9 @@ public class MainMenuController : MonoBehaviour{
 
     public static MainMenuController instance;
 
-    public int nPlayers;
+    public int nPlayers = 0;
     public int[] classesChosen;
+    public int[] status;
     public GameObject[] classes; 
 
     public int winner = -1;

@@ -59,4 +59,8 @@ public class Menu : MonoBehaviour {
 		panelSettings.SetActive (false);
 		panelCharacterSelection.SetActive (true);
 	}
+
+	public void QuitGame(){
+		Application.Quit();
+	}
 }
