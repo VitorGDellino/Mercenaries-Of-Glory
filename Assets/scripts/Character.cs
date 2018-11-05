@@ -16,7 +16,8 @@ public class Character : MonoBehaviour{
     protected Transform t;
     public GameObject player;
     public Transform GroundCheck;
-    protected Animator anim;
+    public Animator anim;
+    protected RuntimeAnimatorController anC;
 
     // Auxiliam na movimentação
     protected bool onthefloor;  //Indica se o personagem está ou nao sobr eo chão
@@ -40,6 +41,10 @@ public class Character : MonoBehaviour{
 
     public PlayerInput inputGamepad;
     // Cd generico
+
+    public bool jumping;
+    public bool jumpCheckpoint;
+    public bool attacking;
 
     protected float Time1;
     protected float Time2;
@@ -111,6 +116,9 @@ public class Character : MonoBehaviour{
     private void JumpMove(){
         if(inputGamepad.GetJump()){
             if(onthefloor){
+                jumping = true; // animation
+                anim.SetBool("jumping", true);
+                anim.SetBool("goingDown", false); // animation
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, jumpstr));
                 this.doublejump = true;
@@ -160,9 +168,9 @@ public class Character : MonoBehaviour{
 
     //Método para auxiliar quando um personagem toma dano
     public virtual void takeDamage(int damage){
-        if(!invincible){
+        if(!invincible && !status.IsDead()){
             SetHp(GetHp()-damage);
-            if(GetHp()<0){
+            if(GetHp()<=0){
                 //gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 //gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), -4.0f, 0.0f);
@@ -193,4 +201,67 @@ public class Character : MonoBehaviour{
     public float GetCd1(){ return this.Time1; }
     public float GetCd2(){ return this.Time2; }
     public float GetCd3(){ return this.Time3; }
+
+    protected void updateAnimation(){
+
+		if(isGoingDown()) {
+			anim.SetBool("goingDown", true);
+			jumpCheckpoint = true;
+		}
+
+		if(isGrounded()) {
+			if(!jumping){
+				anim.SetBool("grounded", true);                                          
+
+				if(isWalking()) 
+					anim.SetBool("walking", true);
+				else 
+					anim.SetBool("walking",false);
+			}
+			else{
+				anim.SetBool("walking",false);
+            	anim.SetBool("grounded", false);
+				if(jumpCheckpoint) {
+					jumping = jumpCheckpoint =  false; //so that player completes the jump before set bool as false 
+                    anim.SetBool("jumping", false);
+                }
+            }
+		}
+		else {
+			anim.SetBool("grounded", false);
+			anim.SetBool("walking",false);
+		}
+
+	}
+
+    //---------------------------------------------------------------------------------
+	bool isGrounded(){
+		return (Mathf.Abs(rb.velocity.y) <= 0.05f)? true : false;
+	}
+	//---------------------------------------------------------------------------------
+	bool isWalking(){
+		return (Mathf.Abs(rb.velocity.x) > 0.7)? true: false;
+	}
+	//---------------------------------------------------------------------------------
+	bool isGoingDown(){
+		Debug.Log(rb.velocity.y);
+		return (rb.velocity.y < 0f)? true : false;
+	}
+
+	//---------------------------------------------------------------------------------
+	protected float getClipTime(string animationName){
+		float time = 0f;
+		for(int i = 0; i< anC.animationClips.Length; i++){
+			if(animationName.Equals(anC.animationClips[i].name)){
+				time = anC.animationClips[i].length;
+				break;
+			}
+		}
+		return time;	
+	}
+
+    protected void stopShootingAnimation(){
+		anim.SetBool("attacking", false);
+		attacking = false;
+	}
 }

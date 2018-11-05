@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nPlayers: 4
-  classesChosen: 00000000010000000000000001000000
+  classesChosen: 02000000020000000000000001000000
   classes:
   - {fileID: 1966665514968036, guid: f0515329c186d3c4eb7c3461b4649278, type: 2}
   - {fileID: 1746198742461808, guid: 21a966d1b287a6c47bdbf018e75acbdb, type: 2}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gosma : MonoBehaviour {
 
-	public int damage = 20;
+	private int damage = 20;
 	private float time = 3.0f;
 
 	private Transform myTransform;

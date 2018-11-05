@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour {
 
-	private int damage = 45;
+	private int damage = 10;
 	public float rotationSpeed = 100;
 	public float arrowSpeed = 5;
 

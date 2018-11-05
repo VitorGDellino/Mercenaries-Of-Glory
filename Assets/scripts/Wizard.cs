@@ -29,7 +29,7 @@ public class Wizard : Character {
     }
 
 	void Awake(){
-		this.status = new Status(10, 10, 10, 1.5f, 10.0f);
+		this.status = new Status(10, 10, 10, 2.5f, 10.0f);
 		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
 		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
@@ -65,7 +65,7 @@ public class Wizard : Character {
 	
 	// Update is called once per frame
 	void Update () {
-		if(tempoStun<=0.0f || !status.IsDead()){
+		if(tempoStun<=0.0f && !status.IsDead()){
 			this.Movement();
 
 			if(inputGamepad.GetAttack() && timeBasicAtk <= 0){
@@ -107,8 +107,8 @@ public class Wizard : Character {
 			Debug.Log("Reviveu");
 			status.SetHp(10);
             this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, 0.0f);
-			gameObject.GetComponent<SpriteRenderer>().enabled = true;
-			gameObject.GetComponent<BoxCollider2D>().enabled = true;
+			//gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			//gameObject.GetComponent<BoxCollider2D>().enabled = true;
 		}
 
 		tempoStun -= Time.deltaTime;
@@ -163,9 +163,9 @@ public class Wizard : Character {
 
 	public override void takeDamage(int damage){
 		Debug.Log(damage);
-		if(!barrier){
+		if(!barrier && !invincible && !status.IsDead()){
 			SetHp(GetHp()-damage);
-            if(GetHp()<0){
+            if(GetHp()<=0){
                 this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), -4.0f, 0.0f);
                 cdRespawn = RespawnTime;
             }

@@ -33,7 +33,7 @@ public class Warrior : Character{
     }
 
     void Awake(){
-        this.status = new Status(10, 10, 10, 1.5f, 10.0f);
+        this.status = new Status(10, 10, 10, 2.5f, 10.0f);
 		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
 		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
@@ -75,7 +75,7 @@ public class Warrior : Character{
 
     void Update(){
         //InputManager.prevState = InputManager.state;
-        if(!screaming || tempoStun<=0.0f || !status.IsDead()){
+        if(!screaming && tempoStun<=0.0f && !status.IsDead()){
             this.Movement();
 
             if(inputGamepad.GetAttack() && timeBasicAtk <= 0){

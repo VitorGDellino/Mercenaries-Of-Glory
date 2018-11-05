@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
 	private float TimeHead;
 	private float timeHands;
 
-	private float SkillTime = 1.0f;
+	private float SkillTime = 7.0f;
 	private float Timer = 2.0f;
 
 	private float cdEarthquake = 2.0f;
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour {
 	void FixedUpdate () {
 
 		if(Timer<=0){
-			ataque = Random.Range(7,8);
+			ataque = Random.Range(0,6);
 			//Debug.Log(ataque);
 
 			if(ataque==0 && timeEarthquake <= 0){
@@ -122,12 +122,12 @@ public class Enemy : MonoBehaviour {
 
 	//Metodo que implementa a habilidade terremoto
 	void Earthquake(){
-		Players = GameObject.FindGameObjectsWithTag("Player");
-
-		for(int i=0; i<Players.Length; i++){
-			if(Players[i].GetComponent<Character>().getOnTheFloor()){
-				Players[i].SendMessageUpwards("takeDamage", 10);
-				Players[i].SendMessageUpwards("takeStun", 2);
+		for(int i=0; i<4; i++){
+			int j = i+1;
+			Players = GameObject.FindGameObjectsWithTag("Player" + j);
+			if(Players[0].GetComponent<Character>().getOnTheFloor()){
+				Players[0].SendMessageUpwards("takeDamage", 10);
+				Players[0].SendMessageUpwards("takeStun", 2.0f);
 			}
 		}
 	}

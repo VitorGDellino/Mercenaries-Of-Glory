@@ -25,7 +25,7 @@ public class Acid : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.CompareTag("Plataform")){
-			Debug.Log("BateuNaPlataforma");
+			//Debug.Log("BateuNaPlataforma");
 			Instantiate (gosma, myTransform.position, Quaternion.Euler (0, 0, 90));
 			Destroy (gameObject);
 		}

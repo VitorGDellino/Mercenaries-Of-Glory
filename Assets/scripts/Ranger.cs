@@ -32,7 +32,7 @@ public class Ranger : Character {
     // Use this for initialization
 
 	void Awake(){
-		this.status = new Status(100, 10, 10, 1.5f, 10.0f);
+		this.status = new Status(10, 10, 10, 2.5f, 10.0f);
 		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
 		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
@@ -41,6 +41,17 @@ public class Ranger : Character {
 		inputGamepad = this.GetComponent<PlayerInput>();
 	}
 	void Start () {
+
+		this.rb = GetComponent<Rigidbody2D>();
+		this.sprite = GetComponentInChildren<SpriteRenderer>();
+		this.t = GetComponent<Transform>();
+		this.anim = GetComponent<Animator>();
+
+		// Animacoes
+
+		jumping = jumpCheckpoint = attacking = false;
+
+		anC = anim.runtimeAnimatorController;
 
 		facingRight = true;
 
@@ -61,20 +72,14 @@ public class Ranger : Character {
 
 		setDirection(1);
 
-		this.rb = GetComponent<Rigidbody2D>();
-		this.sprite = GetComponentInChildren<SpriteRenderer>();
-		this.t = GetComponent<Transform>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		if(tempoStun<=0.0f || !status.IsDead()){
+		if(tempoStun<=0.0f && !status.IsDead()){
 			this.Movement();
 
-			//h = Input.GetAxisRaw ("Horizontal");
-
-			//Debug.Log (h);
 
 			if(inputGamepad.GetAttack() && TimeBasicAtk <= 0){
 				TimeBasicAtk = cdBasicAtk;
@@ -134,6 +139,8 @@ public class Ranger : Character {
 		Time1 = TimeTrap;
 		Time2 = TimeLightFeet;
 		Time3 = TimeReinforceArrow;
+
+		updateAnimation();
 	}
 
 	//Metodo que implementa a habilidade reforçar flecha
@@ -156,13 +163,22 @@ public class Ranger : Character {
 
 	//Metodo que implementa a habilidade aumentar velocidade
 	void LightFeet(){
-		this.status.SetSpeed (3.0f);
+		this.status.SetSpeed (4.0f);
 		LightFeetBuff = true;
 	}
 
 	//Metodo que implementa o ataque básico da arqueira
 	void BasicAtk(){
+		attacking = true;
+		anim.SetBool("attacking", true);
+		Invoke("stopShootingAnimation", getClipTime("Archer_Shooting"));
+		Invoke("ArrowInstantiate", getClipTime("Archer_Shooting") - 0.25f);
+		//ArrowInstantiate();
+	}
+
+	void ArrowInstantiate(){
 		temp = transform.position;
+		temp.y += 0.4f;
 		if(!facingRight){
 			temp.x -= 0.5f;
 			clone = Instantiate (Arrow, temp, Quaternion.Euler (0, 0, 0));
@@ -172,4 +188,5 @@ public class Ranger : Character {
 		}
 		clone.tag = gameObject.tag;
 	}
+
 }

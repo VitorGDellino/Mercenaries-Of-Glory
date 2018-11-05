@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour {
 
-	public int damage = 20;
+	private int damage = 20;
 	public float meteorSpeed = 5;
 
 	private Transform myTransform;

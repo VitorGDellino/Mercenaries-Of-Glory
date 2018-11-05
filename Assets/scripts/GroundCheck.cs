@@ -11,6 +11,8 @@ public class GroundCheck : MonoBehaviour{
 
     void OnTriggerEnter2D(Collider2D col){
         this.player.setOnTheFloor(true);
+        player.jumping = false; // animation
+        player.jumpCheckpoint = false;
     }
 
     void OnTriggerExit2D(Collider2D col){
