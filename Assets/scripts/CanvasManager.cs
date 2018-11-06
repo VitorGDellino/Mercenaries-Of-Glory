@@ -13,20 +13,23 @@ public class CanvasManager : MonoBehaviour{
     public Enemy scriptEnemy;
 
     void Init(){
-        canvas = new GameObject[MainMenuController.instance.nPlayers];
-        scripts = new Character[MainMenuController.instance.nPlayers];
-        for(int i = 0; i < MainMenuController.instance.nPlayers; i++){
-            Debug.Log(GameManager.instance.players[i].name + "Canvas");
-            canvas[i] = GameObject.Find(GameManager.instance.players[i].name + "Canvas");
-            if(MainMenuController.instance.classesChosen[i] == 0){
-                scripts[i] = GameManager.instance.players[i].GetComponent<Warrior>();
-            }else if(MainMenuController.instance.classesChosen[i] == 1){
-                scripts[i] = GameManager.instance.players[i].GetComponent<Wizard>();
-            }else if(MainMenuController.instance.classesChosen[i] == 2){
-                scripts[i] = GameManager.instance.players[i].GetComponent<Ranger>();
-            }
+        canvas = new GameObject[4];
+        scripts = new Character[4];
+        for(int i = 0; i < 4; i++){
+            if(MainMenuController.instance.classesChosen[i] != -1){
+                //Debug.Log(GameManager.instance.players[i].name + "Canvas");
+                canvas[i] = GameObject.Find(GameManager.instance.players[i].name + "Canvas");
+                if(MainMenuController.instance.classesChosen[i] == 0){
+                    scripts[i] = GameManager.instance.players[i].GetComponent<Warrior>();
+                }else if(MainMenuController.instance.classesChosen[i] == 1){
+                    scripts[i] = GameManager.instance.players[i].GetComponent<Wizard>();
+                }else if(MainMenuController.instance.classesChosen[i] == 2){
+                    scripts[i] = GameManager.instance.players[i].GetComponent<Ranger>();
+                }
 
-            scripts[i].inputGamepad.nPlayer = i + 1;
+                scripts[i].inputGamepad.nPlayer = i + 1;
+            }
+            
         }
         scriptEnemy = GameObject.Find("KaHal").GetComponent<Enemy>();
     }
@@ -43,11 +46,14 @@ public class CanvasManager : MonoBehaviour{
     }
 
     private void SetHpBar(){
-        for(int i = 0; i < MainMenuController.instance.nPlayers; i++){
-            var aux = canvas[i].transform.GetChild(6);
-            var temp = aux.localScale;
-            temp[0] = scripts[i].GetHp()*2;
-            aux.localScale = temp;
+        for(int i = 0; i < 4; i++){
+            if(MainMenuController.instance.classesChosen[i] != -1){
+                var aux = canvas[i].transform.GetChild(6);
+                var temp = aux.localScale;
+                temp[0] = scripts[i].GetHp()*2;
+                aux.localScale = temp;
+            }
+           
         }
 
         /*var auxEnemy = canvasEnemy.transform.GetChild(0);
@@ -71,10 +77,12 @@ public class CanvasManager : MonoBehaviour{
     }
 
     private void SetCds(){
-        for(int i = 0; i < MainMenuController.instance.nPlayers; i++){
-            updateSkill(i, 3);
-            updateSkill(i, 4);
-            updateSkill(i, 5);
+        for(int i = 0; i < 4; i++){
+            if(MainMenuController.instance.classesChosen[i] != -1){
+                updateSkill(i, 3);
+                updateSkill(i, 4);
+                updateSkill(i, 5);
+            }    
         }
 
     }
