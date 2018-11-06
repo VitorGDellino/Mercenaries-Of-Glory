@@ -17,10 +17,12 @@ public class MainMenu : MonoBehaviour{
     public GameObject selectedSettings;
     public GameObject selectedControllers;
     public GameObject selectedQuit;
+    
 
     void Start(){
         inputMenu = this.GetComponent<x360_GamePadMenu>();
     }
+
     void Update(){
         if(inputMenu.GetSubmit()){
             this.Submit();
@@ -37,6 +39,7 @@ public class MainMenu : MonoBehaviour{
     }
 
     private void Submit(){
+
         if(selectedPlay.activeSelf){
             this.showCharacterSelection();
         }else if(selectedControllers.activeSelf){
