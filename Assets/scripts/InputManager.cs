@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour{
         MakeSingleton();
     }
     
-    private void MakeSingleton(){
+    public void MakeSingleton(){
         if(instance != null){
             Destroy(gameObject);
         }else{

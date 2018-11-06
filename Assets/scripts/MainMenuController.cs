@@ -16,7 +16,7 @@ public class MainMenuController : MonoBehaviour{
         MakeSingleton();
     }
     
-    private void MakeSingleton(){
+    public void MakeSingleton(){
         if(instance != null){
             Destroy(gameObject);
         }else{

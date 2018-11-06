@@ -7,12 +7,13 @@ public class GameManager : MonoBehaviour{
 
     public GameObject[] players = new GameObject[4];
     public GameObject[] playersUI = new GameObject[4];
+    public GameObject kahal;
 
     void Awake(){
         MakeSingleton();
     }
     
-    private void MakeSingleton(){
+    public void MakeSingleton(){
         if(instance != null){
             Destroy(gameObject);
         }else{

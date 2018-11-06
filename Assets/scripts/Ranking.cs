@@ -38,7 +38,6 @@ public class Ranking : MonoBehaviour {
 			}
 		}
 
-		Debug.Log("Cheguei aqui");
 		text.text = "Ranking\n\n\nVENCEDOR -> ";
 
 		for(int i=0; i<4; i++){

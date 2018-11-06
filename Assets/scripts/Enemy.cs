@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour {
 	private bool headPos;
 
 	private int ataque;
-	private int maxHP = 100;
+	private int maxHP = 300;
 	private int[] playersDamage;
 
 	// Use this for initialization
@@ -123,11 +123,13 @@ public class Enemy : MonoBehaviour {
 	//Metodo que implementa a habilidade terremoto
 	void Earthquake(){
 		for(int i=0; i<4; i++){
-			int j = i+1;
-			Players = GameObject.FindGameObjectsWithTag("Player" + j);
-			if(Players[0].GetComponent<Character>().getOnTheFloor()){
-				Players[0].SendMessageUpwards("takeDamage", 10);
-				Players[0].SendMessageUpwards("takeStun", 2.0f);
+			if(MainMenuController.instance.classesChosen[i] != -1){
+				int j = i+1;
+				Players = GameObject.FindGameObjectsWithTag("Player" + j);
+				if(Players[0].GetComponent<Character>().getOnTheFloor()){
+					Players[0].SendMessageUpwards("takeDamage", 10);
+					Players[0].SendMessageUpwards("takeStun", 2.0f);
+				}
 			}
 		}
 	}
@@ -209,7 +211,5 @@ public class Enemy : MonoBehaviour {
 			PlayerPrefs.SetInt("Player4", playersDamage[3]);
 			SceneManager.LoadScene("Vitoria");
 		}
-		Debug.Log(atkInfo.playerTag);
-		Debug.Log(status.GetHp());
     }
 }

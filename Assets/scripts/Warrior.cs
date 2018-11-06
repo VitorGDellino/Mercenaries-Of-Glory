@@ -33,7 +33,7 @@ public class Warrior : Character{
     }
 
     void Awake(){
-        this.status = new Status(10, 10, 10, 2.5f, 10.0f);
+        this.status = new Status(10, 10, 10, 3f, 10.0f);
 		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
 		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
@@ -56,9 +56,9 @@ public class Warrior : Character{
         screaming = false;
 
         timeBasicAtk = 0.0f;
-        Time1 = timeSmash = 0.0f;
-        Time2 = timeScream = 0.0f;
-        Time3 = timeGale = 0.0f;
+        //Time1 = timeSmash = 0.0f;
+        Time1 = timeScream = 0.0f;
+        Time2 = timeGale = 0.0f;
 
         setDirection(1);
         
@@ -138,7 +138,6 @@ public class Warrior : Character{
 			invincible = false;
         
         if(cdRespawn<0.0f && status.IsDead()){
-			Debug.Log("Reviveu");
 			status.SetHp(10);
             this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, -0.05448645f);
 			gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -149,9 +148,9 @@ public class Warrior : Character{
 		invincibleTime -= Time.deltaTime;
 		cdRespawn -= Time.deltaTime;
 
-        Time1 = timeSmash;
-		Time2 = timeScream;
-		Time3 = timeGale;
+        //Time1 = timeSmash;
+		Time1 = timeScream;
+		Time2 = timeGale;
 
     }
 

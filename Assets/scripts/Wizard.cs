@@ -29,7 +29,7 @@ public class Wizard : Character {
     }
 
 	void Awake(){
-		this.status = new Status(10, 10, 10, 2.5f, 10.0f);
+		this.status = new Status(10, 10, 10, 3f, 10.0f);
 		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
 		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
@@ -46,8 +46,8 @@ public class Wizard : Character {
 
 		timeBasicAtk = 0.0f;
 		Time1 = timeBarrier = 0.0f;
-        Time2 = timeThunder = 0.0f;
-        Time3 = timeBlizzard = 0.0f;
+        //Time2 = timeThunder = 0.0f;
+        Time2 = timeBlizzard = 0.0f;
 
 		barrier = false;
 
@@ -79,7 +79,6 @@ public class Wizard : Character {
 			}
 
 			if(inputGamepad.GetSkill3() && timeBlizzard <= 0){
-				Debug.Log("Blizzard");
 				timeBlizzard = cdBlizzard;
 				Blizzard();
 			}
@@ -104,7 +103,6 @@ public class Wizard : Character {
 			invincible = false;
 
 		if(cdRespawn<0.0f && status.IsDead()){
-			Debug.Log("Reviveu");
 			status.SetHp(10);
             this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, 0.0f);
 			//gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -116,8 +114,8 @@ public class Wizard : Character {
 		cdRespawn -= Time.deltaTime;
 
 		Time1 = timeBarrier;
-		Time2 = timeThunder;
-		Time3 = timeBlizzard;
+		//Time2 = timeThunder;
+		Time2 = timeBlizzard;
 	}
 
 	//Metodo que implementa a habilidade Nevasca
@@ -162,7 +160,6 @@ public class Wizard : Character {
     public void SetCdBarrier(float cdBarrier) { this.cdBarrier = cdBarrier; }
 
 	public override void takeDamage(int damage){
-		Debug.Log(damage);
 		if(!barrier && !invincible && !status.IsDead()){
 			SetHp(GetHp()-damage);
             if(GetHp()<=0){
