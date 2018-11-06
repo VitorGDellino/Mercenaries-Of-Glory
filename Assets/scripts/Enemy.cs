@@ -99,9 +99,9 @@ public class Enemy : MonoBehaviour {
 			if((status.GetHp() - maxHP)/maxHP < 0.3){
 				Timer = SkillTime;
 			}else if((status.GetHp() - maxHP)/maxHP < 0.6){
-				Timer = SkillTime - 2;
+				Timer = SkillTime - 2.0f;
 			}else{
-				Timer = SkillTime - 4;
+				Timer = SkillTime - -4.0f;
 			}
 
 		}
@@ -131,6 +131,7 @@ public class Enemy : MonoBehaviour {
 					Players[0].SendMessageUpwards("takeStun", 2.0f);
 				}
 			}
+			
 		}
 	}
 
@@ -139,7 +140,7 @@ public class Enemy : MonoBehaviour {
 		startPosition = new Vector3(Random.Range(-5.0f, -4.0f), -1.0f, 0.0f);
 		for(int i=0; i<10; i++){
 			Instantiate (vulcan, startPosition, Quaternion.Euler (0, 0, 0));
-			startPosition.x += 2.0f;
+			startPosition.x += 3.5f;
 		}
 	}
 
