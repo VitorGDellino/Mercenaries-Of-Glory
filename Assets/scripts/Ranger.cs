@@ -117,6 +117,7 @@ public class Ranger : Character {
 		if(TimeReinforceArrow <= 0) TimeReinforceArrow = 0;
 
 		if(LightFeetBuff && TimeLightFeet<=cdLightFeet/2){
+			myAnimation["Archer_Running"].speed = 7; // <---- light feet animation
 			this.status.SetSpeed (1.5f);
 			LightFeetBuff = false;
 		}
@@ -163,6 +164,7 @@ public class Ranger : Character {
 
 	//Metodo que implementa a habilidade aumentar velocidade
 	void LightFeet(){
+		myAnimation["Archer_Running"].speed = 10; // <---- light feet animation
 		this.status.SetSpeed (4.0f);
 		LightFeetBuff = true;
 	}

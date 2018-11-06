@@ -16,7 +16,8 @@ public class Character : MonoBehaviour{
     protected Transform t;
     public GameObject player;
     public Transform GroundCheck;
-    public Animator anim;
+    protected Animator anim;
+    protected Animation myAnimation;
     protected RuntimeAnimatorController anC;
 
     // Auxiliam na movimentação
@@ -91,10 +92,17 @@ public class Character : MonoBehaviour{
         }
     }
 
+    private void finishDashAnimation(){
+        anim.SetBool("dash", false);
+    }
     private void DashMove() {
         //Dash e Dash aéreo
         if(inputGamepad.GetDash()){
             if(this.candash || this.canairdash){
+                
+                anim.SetBool("dash", true);
+                Invoke("finishDashAnimation", 1.0f);
+
                 this.rb.velocity = new Vector2(this.dashspeed * this.direction, 0);
                 this.dashing = true;
                 this.dashTime = 1.0f;
@@ -166,6 +174,11 @@ public class Character : MonoBehaviour{
 
     public void setDirection(int direction){ this.direction =  direction; }
 
+    public void outOfScreen(){
+        this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), -4.0f, 0.0f);
+        anim.SetBool("dying", false);
+    }
+
     //Método para auxiliar quando um personagem toma dano
     public virtual void takeDamage(int damage){
         if(!invincible && !status.IsDead()){
@@ -173,7 +186,8 @@ public class Character : MonoBehaviour{
             if(GetHp()<=0){
                 //gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 //gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), -4.0f, 0.0f);
+                anim.SetBool("dying", true);
+                Invoke("outOfScreen", getClipTime("Archer_Dying"));
                 cdRespawn = RespawnTime;
             }
             //Debug.Log(damage);
