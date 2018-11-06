@@ -32,7 +32,7 @@ public class Ranger : Character {
     // Use this for initialization
 
 	void Awake(){
-		this.status = new Status(10, 10, 10, 2.5f, 10.0f);
+		this.status = new Status(10, 10, 10, 3f, 10.0f);
 		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
 		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
@@ -64,8 +64,8 @@ public class Ranger : Character {
 
 		TimeBasicAtk = 0.0f;
 		Time1 = TimeTrap = 0.0f;
-		Time2 = TimeReinforceArrow = 0.0f;
-		Time3 = TimeLightFeet = 0.0f;
+		//Time2 = TimeReinforceArrow = 0.0f;
+		Time2 = TimeLightFeet = 0.0f;
 
 		tempoStun = 0.0f;
 		RespawnTime = 10.0f;
@@ -102,9 +102,9 @@ public class Ranger : Character {
 			}
 		}
 		
-		if (Input.GetAxisRaw ("Horizontal") == 1) {
+		if (Input.GetAxisRaw ("Horizontal") > 0) {
 			facingRight = true;
-		}if(Input.GetAxisRaw ("Horizontal") == -1){
+		}if(Input.GetAxisRaw ("Horizontal") < 0){
 			facingRight = false;
 		}
 		TimeBasicAtk -= Time.deltaTime;
@@ -126,7 +126,6 @@ public class Ranger : Character {
 			invincible = false;
 
 		if(cdRespawn<0.0f && status.IsDead()){
-			Debug.Log("Reviveu");
 			status.SetHp(10);
 			gameObject.GetComponent<SpriteRenderer>().enabled = true;
 			gameObject.GetComponent<BoxCollider2D>().enabled = true;
@@ -139,7 +138,7 @@ public class Ranger : Character {
 
 		Time1 = TimeTrap;
 		Time2 = TimeLightFeet;
-		Time3 = TimeReinforceArrow;
+		//Time3 = TimeReinforceArrow;
 
 		updateAnimation();
 	}
@@ -152,10 +151,10 @@ public class Ranger : Character {
 	//Metodo que implementa o ataque com suas adagas
 	void Trap(){
 		temp = transform.position;
-		if(!facingRight){
+		if(this.getDirection() == -1){
 			temp.x -= 0.5f;
 			clone = Instantiate (trap, temp, transform.localRotation);
-		}else if(facingRight){
+		}else if(this.getDirection() == 1){
 			temp.x += 0.5f;
 			clone = Instantiate (trap, temp, transform.localRotation);
 		}
@@ -181,10 +180,10 @@ public class Ranger : Character {
 	void ArrowInstantiate(){
 		temp = transform.position;
 		temp.y += 0.4f;
-		if(!facingRight){
+		if(this.getDirection() == -1){
 			temp.x -= 0.5f;
 			clone = Instantiate (Arrow, temp, Quaternion.Euler (0, 0, 0));
-		}else if(facingRight){
+		}else if(this.getDirection() == 1){
 			temp.x += 0.5f;
 			clone = Instantiate (Arrow, temp, Quaternion.Euler (0, 0, 180));
 		}

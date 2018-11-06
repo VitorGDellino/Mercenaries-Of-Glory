@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour {
 	private bool headPos;
 
 	private int ataque;
-	private int maxHP = 100;
+	private int maxHP = 300;
 	private int[] playersDamage;
 
 	// Use this for initialization
@@ -99,9 +99,9 @@ public class Enemy : MonoBehaviour {
 			if((status.GetHp() - maxHP)/maxHP < 0.3){
 				Timer = SkillTime;
 			}else if((status.GetHp() - maxHP)/maxHP < 0.6){
-				Timer = SkillTime - 2;
+				Timer = SkillTime - 2.0f;
 			}else{
-				Timer = SkillTime - 4;
+				Timer = SkillTime - -4.0f;
 			}
 
 		}
@@ -123,12 +123,15 @@ public class Enemy : MonoBehaviour {
 	//Metodo que implementa a habilidade terremoto
 	void Earthquake(){
 		for(int i=0; i<4; i++){
-			int j = i+1;
-			Players = GameObject.FindGameObjectsWithTag("Player" + j);
-			if(Players[0].GetComponent<Character>().getOnTheFloor()){
-				Players[0].SendMessageUpwards("takeDamage", 10);
-				Players[0].SendMessageUpwards("takeStun", 2.0f);
+			if(MainMenuController.instance.classesChosen[i] != -1){
+				int j = i+1;
+				Players = GameObject.FindGameObjectsWithTag("Player" + j);
+				if(Players[0].GetComponent<Character>().getOnTheFloor()){
+					Players[0].SendMessageUpwards("takeDamage", 10);
+					Players[0].SendMessageUpwards("takeStun", 2.0f);
+				}
 			}
+			
 		}
 	}
 
@@ -137,7 +140,7 @@ public class Enemy : MonoBehaviour {
 		startPosition = new Vector3(Random.Range(-5.0f, -4.0f), -1.0f, 0.0f);
 		for(int i=0; i<10; i++){
 			Instantiate (vulcan, startPosition, Quaternion.Euler (0, 0, 0));
-			startPosition.x += 2.0f;
+			startPosition.x += 3.5f;
 		}
 	}
 
@@ -209,7 +212,5 @@ public class Enemy : MonoBehaviour {
 			PlayerPrefs.SetInt("Player4", playersDamage[3]);
 			SceneManager.LoadScene("Vitoria");
 		}
-		Debug.Log(atkInfo.playerTag);
-		Debug.Log(status.GetHp());
     }
 }

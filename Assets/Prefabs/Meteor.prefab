@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61075845077028712}
   - component: {fileID: 114890911486635130}
   - component: {fileID: 50478577663573036}
+  - component: {fileID: 95570913742313006}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Attack
@@ -37,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225276450351990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.426218, y: 0.9949017, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -12.766737, y: -3.5585299, z: 0}
+  m_LocalScale: {x: 0.40563, y: 0.40563, z: 0.40563}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,19 +76,37 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0044664145, y: 0.00004723668}
+  m_Offset: {x: 0.04602182, y: -0.0037031323}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.9, y: 0.57}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.23675847, y: 0.14858562}
+  m_Size: {x: 0.81602955, y: 0.5706117}
   m_EdgeRadius: 0
+--- !u!95 &95570913742313006
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1225276450351990}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c4df567c18f83e40841844e45e5829e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114890911486635130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b19188b727d11b4b89117a2abca1a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
   meteorSpeed: 3
 --- !u!212 &212155483439562244
 SpriteRenderer:
@@ -136,7 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5405a668b84d3a94caa31f2554b5c212, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ccceef01558b364b86e3f4bda38c38e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

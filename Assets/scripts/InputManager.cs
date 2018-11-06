@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour{
         MakeSingleton();
     }
     
-    private void MakeSingleton(){
+    public void MakeSingleton(){
         if(instance != null){
             Destroy(gameObject);
         }else{
@@ -122,7 +122,7 @@ public class InputManager : MonoBehaviour{
             return false;
         }
 
-        GamePadState state = GamePad.GetState((PlayerIndex) (player));
+        GamePadState state = GamePad.GetState((PlayerIndex) (player -1));
 
         switch(_button){
             case menu.SUBMIT:

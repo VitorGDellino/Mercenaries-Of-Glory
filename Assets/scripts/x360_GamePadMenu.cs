@@ -36,7 +36,6 @@ public class x360_GamePadMenu : MonoBehaviour{
 
     public bool GetLeft(){
         if (leftTrigger && InputManager.GetMenuButton(InputManager.menu.LEFT)){
-            Debug.Log("nao era pra entrar aqui");
             leftTrigger = false;
             return true;
         }

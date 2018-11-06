@@ -258,7 +258,6 @@ public class Character : MonoBehaviour{
 	}
 	//---------------------------------------------------------------------------------
 	bool isGoingDown(){
-		Debug.Log(rb.velocity.y);
 		return (rb.velocity.y < 0f)? true : false;
 	}
 
