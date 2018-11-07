@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
 	private float TimeHead;
 	private float timeHands;
 
-	private float SkillTime = 7.0f;
+	//private float SkillTime = 3.0f;
 	private float Timer = 2.0f;
 
 	private float cdEarthquake = 2.0f;
@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour {
 	private Vector3 rightHandDiference;
 	private Vector3 rotation;
 	private bool headPos;
+	private Vector3 hpos;
 
 	private int ataque;
 	private int maxHP = 1000;
@@ -49,8 +50,12 @@ public class Enemy : MonoBehaviour {
 
 	public Camera camera;
 
+	private bool quaking = false;
+	private int n = 0;
+
 	void Awake(){
 		source = GetComponent<AudioSource>();
+		hpos = KahalHead.transform.position;
 		
 		
 	}
@@ -64,6 +69,14 @@ public class Enemy : MonoBehaviour {
 			playersDamage[i] = 0;
 		}
 	}
+
+	void Update(){
+		KahalHead.transform.position = hpos;
+		if(quaking){
+			shakeHead(n);
+			n++;
+		}
+	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -72,6 +85,8 @@ public class Enemy : MonoBehaviour {
 			
 
 			if(ataque==0 && timeEarthquake <= 0){
+				quaking = true;
+				n = 0;
 				source.clip = kahalScream;
 				source.PlayOneShot(kahalScream, 0.7f);
 				timeEarthquake = cdEarthquake;
@@ -112,11 +127,11 @@ public class Enemy : MonoBehaviour {
 				timeHands = 0.0f;
 			}
 			if((status.GetHp() - maxHP)/maxHP < 0.3){
-				Timer = SkillTime;
+				Timer = 2f;
 			}else if((status.GetHp() - maxHP)/maxHP < 0.6){
-				Timer = SkillTime - 2.0f;
+				Timer = 3f;
 			}else{
-				Timer = SkillTime - -4.0f;
+				Timer = 4f;
 			}
 
 		}
@@ -148,6 +163,7 @@ public class Enemy : MonoBehaviour {
 			}
 			
 		}
+		quaking = false;
 	}
 
 	//Metodo que implementa o ataque vulcao
@@ -231,6 +247,12 @@ public class Enemy : MonoBehaviour {
 			}
 		}
     }
+
+	void shakeHead(int n){
+		Vector3 pos = KahalHead.transform.position;
+		pos.x += Mathf.Pow(-1, n)*0.3f;
+		KahalHead.transform.position = pos;
+	}
 	void CarregarCenaVitoria(){
 			SceneManager.LoadScene("Vitoria");
 	}
