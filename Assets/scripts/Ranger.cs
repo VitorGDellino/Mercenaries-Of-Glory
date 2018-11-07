@@ -103,15 +103,15 @@ public class Ranger : Character {
 				Trap ();
 			}
 
-			if(inputGamepad.GetSkill2() && TimeLightFeet <= 0){
+			if(inputGamepad.GetSkill3() && TimeLightFeet <= 0){
 				TimeLightFeet = cdLightFeet;
 				LightFeet ();
 			}
 
-			if(inputGamepad.GetSkill3() && TimeReinforceArrow <= 0){
+			/*if(inputGamepad.GetSkill3() && TimeReinforceArrow <= 0){
 				TimeReinforceArrow = cdReinforceArrow;
 				ReinforceArrow ();
-			}
+			}*/
 		}
 		
 		if (Input.GetAxisRaw ("Horizontal") > 0) {
@@ -129,8 +129,8 @@ public class Ranger : Character {
 		if(TimeReinforceArrow <= 0) TimeReinforceArrow = 0;
 
 		if(LightFeetBuff && TimeLightFeet<=cdLightFeet/2){
-			myAnimation["Archer_Running"].speed = 7; // <---- light feet animation
-			this.status.SetSpeed (1.5f);
+			//myAnimation["Archer_Running"].speed = 7; // <---- light feet animation
+			this.status.SetSpeed (3f);
 			LightFeetBuff = false;
 		}
 
@@ -144,6 +144,10 @@ public class Ranger : Character {
 			gameObject.GetComponent<BoxCollider2D>().enabled = true;
             
 		}
+
+		if(cdRespawn < 0){
+            cdRespawn = 0;
+        }
 
 		if(KaHal.GetComponent<Enemy>().status.GetHp()<=0){
 			anim.SetBool("win", true);
@@ -180,8 +184,8 @@ public class Ranger : Character {
 
 	//Metodo que implementa a habilidade aumentar velocidade
 	void LightFeet(){
-		myAnimation["Archer_Running"].speed = 10; // <---- light feet animation
-		this.status.SetSpeed (4.0f);
+		//myAnimation["Archer_Running"].speed = 10; // <---- light feet animation
+		this.status.SetSpeed (5.0f);
 		LightFeetBuff = true;
 	}
 

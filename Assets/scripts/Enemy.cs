@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(Timer<=0){
-			ataque = Random.Range(3,4);
+			ataque = 3;//Random.Range(0,6);
 			
 
 			if(ataque==0 && timeEarthquake <= 0){

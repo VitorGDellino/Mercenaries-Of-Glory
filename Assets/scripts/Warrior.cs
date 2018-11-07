@@ -157,12 +157,16 @@ public class Warrior : Character{
         if(invincibleTime<0.0f)
 			invincible = false;
         
-        if(cdRespawn<0.0f && status.IsDead()){
+        if(cdRespawn< 0.0f && status.IsDead()){
 			status.SetHp(this.hp);
             this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, -0.05448645f);
 			gameObject.GetComponent<SpriteRenderer>().enabled = true;
 			gameObject.GetComponent<BoxCollider2D>().enabled = true;
 		}
+
+        if(cdRespawn < 0){
+            cdRespawn = 0;
+        }
 
 		tempoStun -= Time.deltaTime;
 		invincibleTime -= Time.deltaTime;

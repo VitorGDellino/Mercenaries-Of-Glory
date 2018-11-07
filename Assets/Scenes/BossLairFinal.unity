@@ -11934,7 +11934,7 @@ GameObject:
   - component: {fileID: 541186247}
   m_Layer: 11
   m_Name: Plataform1
-  m_TagString: Untagged
+  m_TagString: Plataform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12174,7 +12174,7 @@ GameObject:
   - component: {fileID: 1082806467}
   m_Layer: 11
   m_Name: Plataform4
-  m_TagString: Untagged
+  m_TagString: Plataform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12248,7 +12248,7 @@ GameObject:
   - component: {fileID: 1086727420}
   m_Layer: 11
   m_Name: Plataform2
-  m_TagString: Untagged
+  m_TagString: Plataform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12322,7 +12322,7 @@ GameObject:
   - component: {fileID: 1120866969}
   m_Layer: 11
   m_Name: Plataform5
-  m_TagString: Untagged
+  m_TagString: Plataform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

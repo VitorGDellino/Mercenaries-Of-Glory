@@ -26,9 +26,21 @@ public class Acid : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.CompareTag("Plataform")){
+			Debug.Log(col.gameObject.name);
+			if(col.gameObject.name == "Plataform1"){
+				gosmaSpawn = new Vector3(0.143f, 0.008f, 0.1879883f);
+			}else if(col.gameObject.name == "Plataform2"){
+				gosmaSpawn = new Vector3(6.748f, 0.009f, 0.1879883f);
+			}else if(col.gameObject.name == "Plataform4"){
+				gosmaSpawn = new Vector3(0.295f, 2.537f, 0.1879883f);
+			}else if(col.gameObject.name == "Plataform5"){
+				gosmaSpawn = new Vector3(6.741f, 2.556f, 0.1879883f);
+			}else{
+				gosmaSpawn = new Vector3(3.524f, 1.276f, 0.1879883f);
+			}
 			//Debug.Log("BateuNaPlataforma");
-			gosmaSpawn = myTransform.position;
-			gosmaSpawn.y += 0.45f;
+			//gosmaSpawn = myTransform.position;
+			gosmaSpawn.y += 0.48f;
 			Instantiate (gosma, gosmaSpawn, Quaternion.Euler (0, 0, 0));
 			Destroy (gameObject);
 		}

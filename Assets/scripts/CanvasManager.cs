@@ -78,6 +78,8 @@ public class CanvasManager : MonoBehaviour{
             val = (int)Mathf.Round(scripts[i].GetCd2());
         }else if(skill == 5){
             val = (int)Mathf.Round(scripts[i].GetCd3());
+        }else if(skill == 3){
+            val = (int)Mathf.Round(scripts[i].cdRespawn);
         }
 
         aux.GetComponent<Text>().text = val.ToString(); 
@@ -88,6 +90,7 @@ public class CanvasManager : MonoBehaviour{
             if(MainMenuController.instance.classesChosen[i] != -1){
                 updateSkill(i, 0);
                 updateSkill(i, 1);
+                updateSkill(i, 3);
             }
         }
     }

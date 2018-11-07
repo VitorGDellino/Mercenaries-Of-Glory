@@ -127,6 +127,10 @@ public class Wizard : Character {
             
 		}
 
+		if(cdRespawn < 0){
+            cdRespawn = 0;
+        }
+
 		updateAnimation();
 
 		tempoStun -= Time.deltaTime;
