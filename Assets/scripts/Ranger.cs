@@ -21,6 +21,7 @@ public class Ranger : Character {
 	private float cdLightFeet;      //Cooldown da habilidade Pés leves
 
 	public GameObject clone;
+    public GameObject KaHal;
 
 	private Vector3 temp;
 
@@ -55,6 +56,7 @@ public class Ranger : Character {
 		// Animacoes
 
 		jumping = jumpCheckpoint = attacking = false;
+		anim.SetBool("win", false);
 
 		anC = anim.runtimeAnimatorController;
 
@@ -76,6 +78,8 @@ public class Ranger : Character {
 		RespawnTime = 10.0f;
 
 		setDirection(1);
+		
+        KaHal = GameObject.Find("KaHal");
 
 	}
 	
@@ -136,6 +140,10 @@ public class Ranger : Character {
 			gameObject.GetComponent<SpriteRenderer>().enabled = true;
 			gameObject.GetComponent<BoxCollider2D>().enabled = true;
             
+		}
+
+		if(KaHal.GetComponent<Enemy>().status.GetHp()<=0){
+			anim.SetBool("win", true);
 		}
 
 		tempoStun -= Time.deltaTime;

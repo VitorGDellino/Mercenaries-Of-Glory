@@ -364,6 +364,7 @@ MonoBehaviour:
   player: {fileID: 61307812997205770}
   fireBall: {fileID: 1818027979649320, guid: c2e62fd8aad49044283643930712b04a, type: 2}
   clone: {fileID: 0}
+  KaHal: {fileID: 1833808752792896, guid: f77d44a4f1cb00a47af71331c3dc5278, type: 2}
 --- !u!114 &114711621394501878
 MonoBehaviour:
   m_ObjectHideFlags: 1

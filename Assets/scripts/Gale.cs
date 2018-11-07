@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gale : MonoBehaviour{
     private int damage = 30;
-    private float galeSpeed = 5;
+    private float galeSpeed = 8.0f;
 
     private float reach = 4.0f;
 

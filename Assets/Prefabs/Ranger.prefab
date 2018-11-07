@@ -322,7 +322,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   GroundCheck: {fileID: 4432304280903384}
-  anim: {fileID: 0}
   dashspeed: 5
   dashTime: 0
   tempoStun: 0
@@ -339,6 +338,7 @@ MonoBehaviour:
   Arrow: {fileID: 1632614150340812, guid: 9bca19a46f8b6f343986a25cf3bd3dc3, type: 2}
   trap: {fileID: 1141896835659212, guid: 32f5aef37fcdc0445aeeb7684305dc0e, type: 2}
   clone: {fileID: 0}
+  KaHal: {fileID: 1833808752792896, guid: f77d44a4f1cb00a47af71331c3dc5278, type: 2}
   shootSound: {fileID: 8300000, guid: ed97a6355a16d7844ad34b71c0465514, type: 3}
 --- !u!212 &212345990821209402
 SpriteRenderer:

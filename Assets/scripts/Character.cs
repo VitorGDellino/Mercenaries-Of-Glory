@@ -187,7 +187,7 @@ public class Character : MonoBehaviour{
                 //gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 //gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 anim.SetBool("dying", true);
-                Invoke("outOfScreen", getClipTime("Archer_Dying"));
+                Invoke("outOfScreen", 1.0f);
                 cdRespawn = RespawnTime;
             }
             //Debug.Log(damage);

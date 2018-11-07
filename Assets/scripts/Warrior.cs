@@ -26,10 +26,13 @@ public class Warrior : Character{
     public GameObject attackObject;
     public GameObject sharpGale;
     public GameObject clone;
+    public GameObject KaHal;
+    Enemy enemy;
 
     public AudioClip soundAttack;
     public AudioClip soundAttackGale;
     private AudioSource source;
+    
 
     public Warrior(string name, Status status, Weapon weapon, Armor armor)
         : base(name, status, weapon, armor){
@@ -60,6 +63,7 @@ public class Warrior : Character{
 		// Animacoes
 
 		jumping = jumpCheckpoint = attacking = false;
+		anim.SetBool("win", false);
 
 		anC = anim.runtimeAnimatorController;
 
@@ -70,10 +74,6 @@ public class Warrior : Character{
 
         ScreamBuff = false;
         screaming = false;
-
-        jumping = jumpCheckpoint = attacking = false;
-        
-        anC = anim.runtimeAnimatorController;
 
         timeBasicAtk = 0.0f;
         Time1 = timeScream = 0.0f;
@@ -86,6 +86,8 @@ public class Warrior : Character{
 		RespawnTime = 10.0f;
 
         attackObject.tag = gameObject.tag;
+
+        KaHal = GameObject.Find("KaHal");
     }
 
     void Update(){
@@ -163,6 +165,12 @@ public class Warrior : Character{
 		invincibleTime -= Time.deltaTime;
 		cdRespawn -= Time.deltaTime;
 
+		updateAnimation();
+
+        if(KaHal.GetComponent<Enemy>().status.GetHp()<=0){
+			anim.SetBool("win", true);
+		}
+
         //Time1 = timeSmash;
 		Time1 = timeScream;
 		Time2 = timeGale;
@@ -171,6 +179,8 @@ public class Warrior : Character{
 
     void BasicAtk(){
         attack.enabled = true;
+        anim.SetBool("attacking", true);
+        Invoke("stopShootingAnimation", 0.2f);
 		source.clip = soundAttack;
 		source.PlayOneShot(soundAttack, 0.7f);
         timeBasicAtk = cdBasicAtk;
@@ -189,13 +199,15 @@ public class Warrior : Character{
 
     void Gale(){
         Vector3 temp = transform.position;
+        anim.SetBool("attacking", true);
+        Invoke("stopShootingAnimation", 0.2f);
 		source.clip = soundAttackGale;
 		source.PlayOneShot(soundAttackGale, 0.7f);
         if(getDirection() == 1){
-            temp.x += 0.4f;
+            temp.x += 0.8f;
             clone = Instantiate(sharpGale, temp, Quaternion.Euler (0, 0, 0));
         }else if(getDirection() == -1){
-            temp.x -= 0.4f;
+            temp.x -= 0.8f;
             clone = Instantiate(sharpGale, temp, Quaternion.Euler (0, 0, 180));
         }
         clone.tag = gameObject.tag;

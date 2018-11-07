@@ -192,25 +192,31 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public virtual void takeDamage(InfAtk atkInfo){
-        status.SetHp(status.GetHp()-atkInfo.damage);
-		if(atkInfo.playerTag == "Player1"){
-			playersDamage[0] += atkInfo.damage;
-		}
-		if(atkInfo.playerTag == "Player2"){
-			playersDamage[1] += atkInfo.damage;
-		}
-		if(atkInfo.playerTag == "Player3"){
-			playersDamage[2] += atkInfo.damage;
-		}
-		if(atkInfo.playerTag == "Player4"){
-			playersDamage[3] += atkInfo.damage;
-		}
-		if(status.GetHp() <= 0){
-			PlayerPrefs.SetInt("Player1", playersDamage[0]);
-			PlayerPrefs.SetInt("Player2", playersDamage[1]);
-			PlayerPrefs.SetInt("Player3", playersDamage[2]);
-			PlayerPrefs.SetInt("Player4", playersDamage[3]);
-			SceneManager.LoadScene("Vitoria");
+        if(status.GetHp() > 0){
+			status.SetHp(status.GetHp()-atkInfo.damage);
+			if(atkInfo.playerTag == "Player1"){
+				playersDamage[0] += atkInfo.damage;
+			}
+			if(atkInfo.playerTag == "Player2"){
+				playersDamage[1] += atkInfo.damage;
+			}
+			if(atkInfo.playerTag == "Player3"){
+				playersDamage[2] += atkInfo.damage;
+			}
+			if(atkInfo.playerTag == "Player4"){
+				playersDamage[3] += atkInfo.damage;
+			}
+			if(status.GetHp() <= 0){
+				PlayerPrefs.SetInt("Player1", playersDamage[0]);
+				PlayerPrefs.SetInt("Player2", playersDamage[1]);
+				PlayerPrefs.SetInt("Player3", playersDamage[2]);
+				PlayerPrefs.SetInt("Player4", playersDamage[3]);
+				
+				Invoke("CarregarCenaVitoria", 3.0f);
+			}
 		}
     }
+	void CarregarCenaVitoria(){
+			SceneManager.LoadScene("Vitoria");
+	}
 }

@@ -23,6 +23,7 @@ public class Wizard : Character {
 
 	public GameObject fireBall;
 	public GameObject clone;
+    public GameObject KaHal;
 
 
     public Wizard(string name, Status status, Weapon weapon, Armor armor)
@@ -51,6 +52,7 @@ public class Wizard : Character {
 		// Animacoes
 
 		jumping = jumpCheckpoint = attacking = false;
+		anim.SetBool("win", false);
 
 		anC = anim.runtimeAnimatorController;
 
@@ -71,6 +73,7 @@ public class Wizard : Character {
 
 		RespawnTime = 10.0f;
 
+        KaHal = GameObject.Find("KaHal");
 		//blizzard = t.Find("Blizzard").gameObject;
 		//shield = t.Find("Shield").gameObject;
 	}
@@ -128,6 +131,10 @@ public class Wizard : Character {
 		invincibleTime -= Time.deltaTime;
 		cdRespawn -= Time.deltaTime;
 
+		if(KaHal.GetComponent<Enemy>().status.GetHp()<=0){
+			anim.SetBool("win", true);
+		}
+
 		Time1 = timeBarrier;
 		//Time2 = timeThunder;
 		Time2 = timeBlizzard;
@@ -138,6 +145,12 @@ public class Wizard : Character {
 		timeBlizzard = cdBlizzard;
 		blizzard.tag = gameObject.tag;
 		blizzard.SetActive(true);
+		anim.SetBool("hab2", true);
+		Invoke("stopHab2Animation", 0.1f);
+	}
+
+	void stopHab2Animation(){
+		anim.SetBool("hab2", false);
 	}
 
 	//Metodo que implementa a habilidade Trovão
@@ -195,7 +208,8 @@ public class Wizard : Character {
 		if(!barrier && !invincible && !status.IsDead()){
 			SetHp(GetHp()-damage);
             if(GetHp()<=0){
-                this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), -4.0f, 0.0f);
+				anim.SetBool("dying", true);
+                Invoke("outOfScreen", 1.0f);
                 cdRespawn = RespawnTime;
             }
             //Debug.Log(damage);
