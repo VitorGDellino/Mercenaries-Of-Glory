@@ -46,6 +46,9 @@ public class Enemy : MonoBehaviour {
 
 	public AudioClip kahalScream;
 	public AudioClip kahalSpit;
+	public AudioClip kahalDying;
+	public AudioClip fanfare;
+
     private AudioSource source;
 
 	public Camera camera;
@@ -53,11 +56,12 @@ public class Enemy : MonoBehaviour {
 	private bool quaking = false;
 	private int n = 0;
 
+	private bool dead;
+
 	void Awake(){
+		dead = false;
 		source = GetComponent<AudioSource>();
 		hpos = KahalHead.transform.position;
-		
-		
 	}
 	// Use this for initialization
 	void Start () {
@@ -71,83 +75,87 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Update(){
-		KahalHead.transform.position = hpos;
-		if(quaking){
-			shakeHead(n);
-			n++;
+		if(!dead){
+			KahalHead.transform.position = hpos;
+			if(quaking){
+				shakeHead(n);
+				n++;
+			}
 		}
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(Timer<=0){
-			ataque = 3;//Random.Range(0,6);
-			
+		if(!dead){
+			if(Timer<=0){
+				ataque = Random.Range(0,6);
+				
 
-			if(ataque==0 && timeEarthquake <= 0){
-				quaking = true;
-				n = 0;
-				source.clip = kahalScream;
-				source.PlayOneShot(kahalScream, 0.7f);
-				timeEarthquake = cdEarthquake;
-				Invoke("Earthquake", 2.0f);
-			}
-
-			if(ataque==1 && TimeVulcan <= 0){
-				TimeVulcan = cdVulcan;
-				Vulcan ();
-			}
-
-			if(ataque==2 && TimeMeteor <= 0){
-				TimeMeteor = cdMeteor;
-				Meteor ();
-			}
-
-			if(ataque==3 && TimeAcid <= 0){
-				source.clip = kahalSpit;
-				source.PlayOneShot(kahalSpit, 0.7f);
-				TimeAcid = cdAcid;
-				Acid ();
-			}
-
-			if(ataque==4 && TimeHead <= 0){
-				TimeHead = cdHead;
-				if(headPos){
-					TeleportHead (3.5f, 0.0f);
-					headPos = false;
-				}else{
-					TeleportHead (3.5f, 3.5f);
-					headPos = true;
+				if(ataque==0 && timeEarthquake <= 0){
+					quaking = true;
+					n = 0;
+					source.clip = kahalScream;
+					source.PlayOneShot(kahalScream, 0.7f);
+					timeEarthquake = cdEarthquake;
+					Invoke("Earthquake", 2.0f);
 				}
+
+				if(ataque==1 && TimeVulcan <= 0){
+					TimeVulcan = cdVulcan;
+					Vulcan ();
+				}
+
+				if(ataque==2 && TimeMeteor <= 0){
+					TimeMeteor = cdMeteor;
+					Meteor ();
+				}
+
+				if(ataque==3 && TimeAcid <= 0){
+					source.clip = kahalSpit;
+					source.PlayOneShot(kahalSpit, 0.7f);
+					TimeAcid = cdAcid;
+					Acid ();
+				}
+
+				if(ataque==4 && TimeHead <= 0){
+					TimeHead = cdHead;
+					if(headPos){
+						TeleportHead (3.5f, 0.0f);
+						headPos = false;
+					}else{
+						TeleportHead (3.5f, 3.5f);
+						headPos = true;
+					}
+				}
+
+				if(ataque==5){
+					leftHandDiference = MoveHand(KahalLHand);
+					rightHandDiference = MoveHand(KahalRHand);
+					timeHands = 0.0f;
+				}
+				if((status.GetHp() - maxHP)/maxHP < 0.3){
+					Timer = 2f;
+				}else if((status.GetHp() - maxHP)/maxHP < 0.6){
+					Timer = 3f;
+				}else{
+					Timer = 4f;
+				}
+
 			}
 
-			if(ataque==5){
-				leftHandDiference = MoveHand(KahalLHand);
-				rightHandDiference = MoveHand(KahalRHand);
-				timeHands = 0.0f;
-			}
-			if((status.GetHp() - maxHP)/maxHP < 0.3){
-				Timer = 2f;
-			}else if((status.GetHp() - maxHP)/maxHP < 0.6){
-				Timer = 3f;
-			}else{
-				Timer = 4f;
+			if(timeHands <= 1.0f){
+				KahalLHand.transform.Translate(leftHandDiference * Time.deltaTime * handSpeed);
+				KahalRHand.transform.Translate(rightHandDiference * Time.deltaTime * handSpeed);
+				timeHands += Time.deltaTime;
 			}
 
+			Timer -= Time.deltaTime;
+			timeEarthquake -= Time.deltaTime;
+			TimeVulcan -= Time.deltaTime;
+			TimeMeteor -= Time.deltaTime;
+			TimeAcid -= Time.deltaTime;
+			TimeHead -= Time.deltaTime;
 		}
-
-		if(timeHands <= 1.0f){
-			KahalLHand.transform.Translate(leftHandDiference * Time.deltaTime * handSpeed);
-			KahalRHand.transform.Translate(rightHandDiference * Time.deltaTime * handSpeed);
-			timeHands += Time.deltaTime;
-		}
-
-		Timer -= Time.deltaTime;
-		timeEarthquake -= Time.deltaTime;
-		TimeVulcan -= Time.deltaTime;
-		TimeMeteor -= Time.deltaTime;
-		TimeAcid -= Time.deltaTime;
-		TimeHead -= Time.deltaTime;
 	}
 
 	//Metodo que implementa a habilidade terremoto
@@ -238,12 +246,20 @@ public class Enemy : MonoBehaviour {
 				playersDamage[3] += atkInfo.damage;
 			}
 			if(status.GetHp() <= 0){
+				dead = true;
+				var aux = camera.GetComponent<AudioSource>();
+				aux.Stop();
+				aux.clip = fanfare;
+				aux.PlayOneShot(fanfare,0.7f);
+				source.Stop();
+				source.clip = kahalDying;
+				source.PlayOneShot(kahalDying, 0.7f);
 				PlayerPrefs.SetInt("Player1", playersDamage[0]);
 				PlayerPrefs.SetInt("Player2", playersDamage[1]);
 				PlayerPrefs.SetInt("Player3", playersDamage[2]);
 				PlayerPrefs.SetInt("Player4", playersDamage[3]);
 				
-				Invoke("CarregarCenaVitoria", 3.0f);
+				Invoke("CarregarCenaVitoria", 4.7f);
 			}
 		}
     }

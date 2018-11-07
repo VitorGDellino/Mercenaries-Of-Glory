@@ -11758,6 +11758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526473104}
   - component: {fileID: 526473103}
+  - component: {fileID: 526473106}
   - component: {fileID: 526473102}
   - component: {fileID: 526473105}
   m_Layer: 0
@@ -11922,6 +11923,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &526473106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 526473101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1370c7ad0c882474586519337755fe17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 0}
+  mainTheme: {fileID: 8300000, guid: 337b1e105fb28454781a2af8748b001a, type: 3}
 --- !u!1 &541186246
 GameObject:
   m_ObjectHideFlags: 0
@@ -14224,6 +14238,16 @@ Prefab:
       propertyPath: camera
       value: 
       objectReference: {fileID: 526473103}
+    - target: {fileID: 114986510802256306, guid: f77d44a4f1cb00a47af71331c3dc5278,
+        type: 2}
+      propertyPath: kahalDying
+      value: 
+      objectReference: {fileID: 8300000, guid: daa46ad375afa8244ab8b96a386ac563, type: 3}
+    - target: {fileID: 114986510802256306, guid: f77d44a4f1cb00a47af71331c3dc5278,
+        type: 2}
+      propertyPath: fanfare
+      value: 
+      objectReference: {fileID: 8300000, guid: 222c1bedc51157e448341d22c0dd857b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f77d44a4f1cb00a47af71331c3dc5278, type: 2}
   m_IsPrefabAsset: 0
