@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212791533222729304}
   - component: {fileID: 50075095310472286}
   - component: {fileID: 61826192961597006}
-  - component: {fileID: 114843025629009608}
   - component: {fileID: 95005325144320090}
   - component: {fileID: 82126199569551900}
+  - component: {fileID: 114986510802256306}
   m_Layer: 0
   m_Name: KaHal
   m_TagString: Enemy
@@ -77,7 +77,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010103226, y: 0.08970529}
+  m_Offset: {x: 0.010181904, y: 0.036993742}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -88,7 +88,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3165288, y: 2.5483174}
+  m_Size: {x: 2.4259162, y: 2.6053429}
   m_EdgeRadius: 0
 --- !u!82 &82126199569551900
 AudioSource:
@@ -203,7 +203,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114843025629009608
+--- !u!114 &114986510802256306
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,6 +222,8 @@ MonoBehaviour:
   KahalRHand: {fileID: 0}
   handSpeed: 1
   kahalScream: {fileID: 8300000, guid: 60761c295af09634f8a92bf31b17a823, type: 3}
+  kahalSpit: {fileID: 8300000, guid: 091ab3ce4efea4441bd7917949c59dd7, type: 3}
+  camera: {fileID: 0}
 --- !u!212 &212791533222729304
 SpriteRenderer:
   m_ObjectHideFlags: 1

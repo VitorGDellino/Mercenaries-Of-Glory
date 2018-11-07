@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 033e9c1d1bc4fc547a5ab007a09239f5
+guid: 957ace1ce3b2a7640a7ea67e198989c8
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Winning (1)_0
-    21300002: Winning (1)_1
+    21300000: KaHal hand_0
+    21300002: KaHal hand_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -38,7 +38,7 @@ TextureImporter:
     mipBias: -100
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -97,41 +97,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Winning (1)_0
+      name: KaHal hand_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 102
-        width: 54
-        height: 84
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 415
+        y: 570
+        width: 530
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c95ce2af8bb1e534280d1e530432603e
+      spriteID: a9a8336cd1e004f47ad08cfe23e21ac4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Winning (1)_1
+      name: KaHal hand_1
       rect:
         serializedVersion: 2
-        x: 9
-        y: 6
-        width: 54
-        height: 81
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 55
+        y: 90
+        width: 530
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d70e338d0aa42ce4691db36fb32ff476
+      spriteID: 61f6f0ea7d2e7184f8f50d282d3a0fab
       vertices: []
       indices: 
       edges: []
@@ -139,7 +139,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: eb3b18099f0df3541b07bf252100bacc
+    spriteID: 54d5bcdf13f48ea4398333e832f58b12
     vertices: []
     indices: 
     edges: []

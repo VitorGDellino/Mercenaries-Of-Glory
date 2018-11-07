@@ -10,6 +10,7 @@ TextureImporter:
     21300010: "\xE1cido_5"
     21300012: "\xE1cido_6"
     21300014: "\xE1cido_7"
+    21300016: "\xE1cido_8"
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -96,17 +97,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 96
-        height: 96
+        y: 576
+        width: 288
+        height: 288
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1add39ac039b40543aa2fda958247f59
+      spriteID: e4038ba6a2dc39d479442a7ea843936c
       vertices: []
       indices: 
       edges: []
@@ -115,18 +116,18 @@ TextureImporter:
       name: "\xE1cido_1"
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
-        width: 96
-        height: 96
+        x: 288
+        y: 576
+        width: 288
+        height: 288
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 818e9382fda188b4db2a8a3a795c9322
+      spriteID: 303e8bce737cdd840a357740c18d63ba
       vertices: []
       indices: 
       edges: []
@@ -135,18 +136,18 @@ TextureImporter:
       name: "\xE1cido_2"
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 96
-        height: 96
+        x: 0
+        y: 288
+        width: 288
+        height: 288
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 657d3bb59e27b6a4da1060ae1073c8f2
+      spriteID: 27ae77409fd339c498061e888d222887
       vertices: []
       indices: 
       edges: []
@@ -155,18 +156,18 @@ TextureImporter:
       name: "\xE1cido_3"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
-        width: 96
-        height: 96
+        x: 288
+        y: 288
+        width: 288
+        height: 288
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2211c301496dcaf42a23367e4ab3a550
+      spriteID: 78adf30df0c38f245a667da16d1a65fa
       vertices: []
       indices: 
       edges: []
@@ -175,18 +176,18 @@ TextureImporter:
       name: "\xE1cido_4"
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
-        width: 96
-        height: 96
+        x: 576
+        y: 288
+        width: 288
+        height: 288
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d47e6b8365942949b6d760e811c18f4
+      spriteID: bae53ac7fffad934ca97199f3b2cdc32
       vertices: []
       indices: 
       edges: []
@@ -195,18 +196,18 @@ TextureImporter:
       name: "\xE1cido_5"
       rect:
         serializedVersion: 2
-        x: 192
-        y: 96
-        width: 96
-        height: 96
+        x: 0
+        y: 0
+        width: 288
+        height: 288
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd3119e2229c39a4ea86b61c75883573
+      spriteID: de09525218773c940b4934df7f5910ba
       vertices: []
       indices: 
       edges: []
@@ -215,18 +216,18 @@ TextureImporter:
       name: "\xE1cido_6"
       rect:
         serializedVersion: 2
-        x: 0
+        x: 288
         y: 0
-        width: 96
-        height: 96
+        width: 288
+        height: 288
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 835063a355296074d9c29a262f3c9760
+      spriteID: 13197f6c1cf319247b80362b95620565
       vertices: []
       indices: 
       edges: []
@@ -235,18 +236,18 @@ TextureImporter:
       name: "\xE1cido_7"
       rect:
         serializedVersion: 2
-        x: 96
+        x: 576
         y: 0
-        width: 96
-        height: 96
+        width: 288
+        height: 288
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84476ad59535a3b4293794cd40b02b2f
+      spriteID: 806c6a5b68747a043a9563c9b62eae63
       vertices: []
       indices: 
       edges: []

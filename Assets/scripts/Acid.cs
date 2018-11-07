@@ -9,6 +9,7 @@ public class Acid : MonoBehaviour {
 
 	public GameObject gosma;
 	private Transform myTransform;
+	private Vector3 gosmaSpawn;
 
 	private Character player;
 
@@ -26,7 +27,9 @@ public class Acid : MonoBehaviour {
     {
         if(col.gameObject.CompareTag("Plataform")){
 			//Debug.Log("BateuNaPlataforma");
-			Instantiate (gosma, myTransform.position, Quaternion.Euler (0, 0, 90));
+			gosmaSpawn = myTransform.position;
+			gosmaSpawn.y += 0.45f;
+			Instantiate (gosma, gosmaSpawn, Quaternion.Euler (0, 0, 0));
 			Destroy (gameObject);
 		}
 		if(col.gameObject.CompareTag("Player1")){
