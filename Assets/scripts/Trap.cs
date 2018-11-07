@@ -10,9 +10,17 @@ public class Trap : MonoBehaviour {
 	private Transform myTransform;
     public InfAtk atkInfo;
 
+	public AudioClip closingTrap;
+    private AudioSource source;
+
 	// Use this for initialization
 	void Start () {
         atkInfo = new InfAtk(damage, gameObject.tag);
+	}
+
+	void Awake(){
+		source = GetComponent<AudioSource>();
+		source.clip = closingTrap;
 	}
 
 	// Update is called once per frame
@@ -24,26 +32,31 @@ public class Trap : MonoBehaviour {
 		if(col.gameObject.CompareTag("Player1")){
 			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
 			col.gameObject.SendMessageUpwards("takeStun", this.stun);
-			Destroy (gameObject);
+			source.PlayOneShot(closingTrap, 0.7f);
 		}
 		if(col.gameObject.CompareTag("Player2")){
 			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
 			col.gameObject.SendMessageUpwards("takeStun", this.stun);
-			Destroy (gameObject);
+			source.PlayOneShot(closingTrap, 0.7f);
 		}
 		if(col.gameObject.CompareTag("Player3")){
 			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
 			col.gameObject.SendMessageUpwards("takeStun", this.stun);
-			Destroy (gameObject);
+			source.PlayOneShot(closingTrap, 0.7f);
 		}
 		if(col.gameObject.CompareTag("Player4")){
 			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
 			col.gameObject.SendMessageUpwards("takeStun", this.stun);
-			Destroy (gameObject);
+			source.PlayOneShot(closingTrap, 0.7f);
 		}
         if(col.gameObject.CompareTag("Enemy")){
 			col.gameObject.SendMessageUpwards("takeDamage", this.atkInfo);
-			Destroy (gameObject);
+			source.PlayOneShot(closingTrap, 0.7f);
 		}
+		Invoke("DestruirObjeto", 1.0f);
+	}
+
+	void DestruirObjeto(){
+		Destroy (gameObject);
 	}
 }

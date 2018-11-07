@@ -27,6 +27,9 @@ public class Warrior : Character{
     public GameObject sharpGale;
     public GameObject clone;
 
+    public AudioClip soundAttack;
+    public AudioClip soundAttackGale;
+    private AudioSource source;
 
     public Warrior(string name, Status status, Weapon weapon, Armor armor)
         : base(name, status, weapon, armor){
@@ -44,9 +47,22 @@ public class Warrior : Character{
 
         inputGamepad = this.GetComponent<PlayerInput>();
 
+		source = GetComponent<AudioSource>();
     }
 
     void Start(){
+
+        this.rb = GetComponent<Rigidbody2D>();
+		this.sprite = GetComponentInChildren<SpriteRenderer>();
+		this.t = GetComponent<Transform>();
+		this.anim = GetComponent<Animator>();
+
+		// Animacoes
+
+		jumping = jumpCheckpoint = attacking = false;
+
+		anC = anim.runtimeAnimatorController;
+
         cdBasicAtk = 1.0f;
         cdSmash = 5.0f;
         cdScream = 10.0f;
@@ -65,10 +81,6 @@ public class Warrior : Character{
 		tempoStun = 0.0f;
 
 		RespawnTime = 10.0f;
-
-        this.rb = GetComponent<Rigidbody2D>();
-        this.sprite = GetComponent<SpriteRenderer>();
-        this.t = GetComponent<Transform>();
 
         attackObject.tag = gameObject.tag;
     }
@@ -156,7 +168,8 @@ public class Warrior : Character{
 
     void BasicAtk(){
         attack.enabled = true;
-
+		source.clip = soundAttack;
+		source.PlayOneShot(soundAttack, 0.7f);
         timeBasicAtk = cdBasicAtk;
     }                                                                                                                                                                                                                                                                                                                                                                                                                           
 
@@ -173,6 +186,8 @@ public class Warrior : Character{
 
     void Gale(){
         Vector3 temp = transform.position;
+		source.clip = soundAttackGale;
+		source.PlayOneShot(soundAttackGale, 0.7f);
         if(getDirection() == 1){
             temp.x += 0.4f;
             clone = Instantiate(sharpGale, temp, Quaternion.Euler (0, 0, 0));

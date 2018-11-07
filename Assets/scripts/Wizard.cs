@@ -17,6 +17,7 @@ public class Wizard : Character {
 	private bool barrier;
 
 	public GameObject blizzard;
+	public GameObject shield;
 
 	public Collider2D player;
 
@@ -35,11 +36,24 @@ public class Wizard : Character {
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
 		this.totalDef = this.armor.GetDef() + this.status.GetDef();
 		blizzard.SetActive(false);
+		shield.SetActive(false);
 
 		inputGamepad = this.GetComponent<PlayerInput>();
 	}
     // Use this for initialization
     void Start () {
+
+		this.rb = GetComponent<Rigidbody2D>();
+		this.sprite = GetComponentInChildren<SpriteRenderer>();
+		this.t = GetComponent<Transform>();
+		this.anim = GetComponent<Animator>();
+
+		// Animacoes
+
+		jumping = jumpCheckpoint = attacking = false;
+
+		anC = anim.runtimeAnimatorController;
+
 		cdBasicAtk = 1.0f;
 		cdBarrier = 15.0f;
 		cdBlizzard = 10.0f;
@@ -57,10 +71,8 @@ public class Wizard : Character {
 
 		RespawnTime = 10.0f;
 
-        this.rb = GetComponent<Rigidbody2D>();
-        this.sprite = GetComponent<SpriteRenderer>();
-        this.t = GetComponent<Transform>();
-		blizzard = t.Find("Blizzard").gameObject;
+		//blizzard = t.Find("Blizzard").gameObject;
+		//shield = t.Find("Shield").gameObject;
 	}
 	
 	// Update is called once per frame
@@ -109,6 +121,8 @@ public class Wizard : Character {
 			//gameObject.GetComponent<BoxCollider2D>().enabled = true;
 		}
 
+		updateAnimation();
+
 		tempoStun -= Time.deltaTime;
 		invincibleTime -= Time.deltaTime;
 		cdRespawn -= Time.deltaTime;
@@ -134,16 +148,33 @@ public class Wizard : Character {
 	void Barrier(){
 		timeBarrier = cdBarrier;
 		barrier = true;
+		shield.tag = gameObject.tag;
+		shield.SetActive(true);
+		anim.SetBool("hab1", true);
+		Invoke("stopHab1Animation", 0.1f);
+	}
+
+	void stopHab1Animation(){
+		anim.SetBool("hab1", false);
 	}
 
 	//Metodo que implementa o ataque básico da arqueira
 	void BasicAtk(){
+		attacking = true;
+		anim.SetBool("attacking", true);
+		Invoke("stopShootingAnimation", 0.1f);
+		Invoke("ArrowInstantiate", 0.1f);
+		//source.clip = shootSound;
+		//source.PlayOneShot(shootSound, 0.7f);
+	}
+
+	void ArrowInstantiate(){
 		Vector3 temp = transform.position;
 		if(getDirection() == 1){
-            temp.x += 0.4f;
+            temp.x += 0.5f;
             clone = Instantiate(fireBall, temp, Quaternion.Euler (0, 0, 0));
         }else if(getDirection() == -1){
-            temp.x -= 0.4f;
+            temp.x -= 0.5f;
             clone = Instantiate(fireBall, temp, Quaternion.Euler (0, 0, 180));
         }
 		clone.tag = gameObject.tag;
@@ -171,6 +202,7 @@ public class Wizard : Character {
             invincibleTime = 0.5f;
 		}
 		
+		shield.SetActive(false);
 		barrier = false;
 	}
 }

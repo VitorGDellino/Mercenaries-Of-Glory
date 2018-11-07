@@ -24,6 +24,9 @@ public class Ranger : Character {
 
 	private Vector3 temp;
 
+    public AudioClip shootSound;
+    private AudioSource source;
+
 	float h;
 
     public Ranger(string name, Status status, Weapon weapon, Armor armor)
@@ -39,6 +42,8 @@ public class Ranger : Character {
 		this.totalDef = this.armor.GetDef() + this.status.GetDef();
 
 		inputGamepad = this.GetComponent<PlayerInput>();
+
+		source = GetComponent<AudioSource>();
 	}
 	void Start () {
 
@@ -174,6 +179,8 @@ public class Ranger : Character {
 		anim.SetBool("attacking", true);
 		Invoke("stopShootingAnimation", getClipTime("Archer_Shooting"));
 		Invoke("ArrowInstantiate", getClipTime("Archer_Shooting") - 0.25f);
+		source.clip = shootSound;
+		source.PlayOneShot(shootSound, 0.7f);
 		//ArrowInstantiate();
 	}
 
