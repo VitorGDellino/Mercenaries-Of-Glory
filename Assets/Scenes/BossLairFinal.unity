@@ -153,6 +153,7 @@ MonoBehaviour:
   canvasRL: {fileID: 1004908007645858, guid: f031afdaf4d78cd46bca3e8e62c5a3d1, type: 2}
   kahalCanvas: {fileID: 1402339471383914, guid: e9af151c79472dc42bd7b3819496637c,
     type: 2}
+  timer: {fileID: 0}
 --- !u!4 &214182156
 Transform:
   m_ObjectHideFlags: 0
@@ -11833,7 +11834,7 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 526473101}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 337b1e105fb28454781a2af8748b001a, type: 3}
@@ -13973,6 +13974,68 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4777794, y: 0.7682071}
   m_EdgeRadius: 0
+--- !u!1 &1874626047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1874626050}
+  - component: {fileID: 1874626049}
+  - component: {fileID: 1874626048}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1874626048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1874626047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1874626049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1874626047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1874626050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1874626047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1922203359
 GameObject:
   m_ObjectHideFlags: 0
@@ -14217,16 +14280,16 @@ Prefab:
       propertyPath: KahalRHand
       value: 
       objectReference: {fileID: 61541384}
-    - target: {fileID: 50075095310472286, guid: f77d44a4f1cb00a47af71331c3dc5278,
+    - target: {fileID: 114843025629009608, guid: f77d44a4f1cb00a47af71331c3dc5278,
         type: 2}
-      propertyPath: m_UseFullKinematicContacts
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61826192961597006, guid: f77d44a4f1cb00a47af71331c3dc5278,
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 526473103}
+    - target: {fileID: 114843025629009608, guid: f77d44a4f1cb00a47af71331c3dc5278,
         type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: kahalSpit
+      value: 
+      objectReference: {fileID: 8300000, guid: 091ab3ce4efea4441bd7917949c59dd7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f77d44a4f1cb00a47af71331c3dc5278, type: 2}
   m_IsPrefabAsset: 0

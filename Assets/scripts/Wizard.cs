@@ -23,6 +23,7 @@ public class Wizard : Character {
 
 	public GameObject fireBall;
 	public GameObject clone;
+	
 
 
     public Wizard(string name, Status status, Weapon weapon, Armor armor)

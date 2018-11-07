@@ -6,7 +6,7 @@ public class Vulcan : MonoBehaviour {
 
 	public int damage = 5;
 	public float vulcanSpeed = 1;
-	private float time = 3.0f;
+	private float time = 5.0f;
 
 	private Transform myTransform;
 
@@ -19,7 +19,7 @@ public class Vulcan : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(time > 2.0f){
+		if(time > 2.0f && time < 3f){
 			myTransform.localScale += (new Vector3 (0, 1, 0) * vulcanSpeed * Time.deltaTime);
 			myTransform.Translate (new Vector3 (0.0f, 0.5f, 0.0f) * vulcanSpeed * Time.deltaTime);
 		}
