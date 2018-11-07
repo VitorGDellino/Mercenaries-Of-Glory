@@ -14224,6 +14224,78 @@ Prefab:
       propertyPath: camera
       value: 
       objectReference: {fileID: 526473103}
-    m_RemovedComponents: []
+    - target: {fileID: 212791533222729304, guid: f77d44a4f1cb00a47af71331c3dc5278,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d2f696b13c3a0bf4ca9546aa9a6f8764,
+        type: 3}
+    - target: {fileID: 4458678801154564, guid: f77d44a4f1cb00a47af71331c3dc5278, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.3884
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458678801154564, guid: f77d44a4f1cb00a47af71331c3dc5278, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.3884
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458678801154564, guid: f77d44a4f1cb00a47af71331c3dc5278, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.3884
+      objectReference: {fileID: 0}
+    - target: {fileID: 61826192961597006, guid: f77d44a4f1cb00a47af71331c3dc5278,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.027186632
+      objectReference: {fileID: 0}
+    - target: {fileID: 61826192961597006, guid: f77d44a4f1cb00a47af71331c3dc5278,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 61826192961597006, guid: f77d44a4f1cb00a47af71331c3dc5278,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 61826192961597006, guid: f77d44a4f1cb00a47af71331c3dc5278,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.0034928
+      objectReference: {fileID: 0}
+    - target: {fileID: 61826192961597006, guid: f77d44a4f1cb00a47af71331c3dc5278,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.003643781
+      objectReference: {fileID: 0}
+    - target: {fileID: 61826192961597006, guid: f77d44a4f1cb00a47af71331c3dc5278,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.9221383
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 95005325144320090, guid: f77d44a4f1cb00a47af71331c3dc5278, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: f77d44a4f1cb00a47af71331c3dc5278, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &2124387845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1833808752792896, guid: f77d44a4f1cb00a47af71331c3dc5278,
+    type: 2}
+  m_PrefabInternal: {fileID: 2124387844}
+--- !u!95 &2124387846
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2124387845}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af43644c9884ff94494a9571fac408ca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

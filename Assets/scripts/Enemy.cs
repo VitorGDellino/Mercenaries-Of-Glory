@@ -44,6 +44,13 @@ public class Enemy : MonoBehaviour {
 	private int maxHP = 1000;
 	private int[] playersDamage;
 
+	protected Rigidbody2D rb;   //Referencia o Personagem
+    protected SpriteRenderer sprite;
+    protected Transform t;
+    protected Animator anim;
+    protected RuntimeAnimatorController anC;
+ 
+
 	public AudioClip kahalScream;
 	public AudioClip kahalSpit;
     private AudioSource source;
@@ -62,6 +69,13 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
+		this.rb = GetComponent<Rigidbody2D>();
+		this.sprite = GetComponentInChildren<SpriteRenderer>();
+		this.t = GetComponent<Transform>();
+		this.anim = GetComponent<Animator>();
+
+		anC = anim.runtimeAnimatorController;
+
 		this.status = new Status(maxHP, 10, 10, 1.5f, 10.0f); //hp, attack, def, speed, respawn time
 		headPos = true;
 		playersDamage = new int[4];
@@ -81,15 +95,14 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(Timer<=0){
-			ataque = 3;//Random.Range(0,6);
-			
-
+			ataque = Random.Range(0,6);
 			if(ataque==0 && timeEarthquake <= 0){
 				quaking = true;
 				n = 0;
 				source.clip = kahalScream;
 				source.PlayOneShot(kahalScream, 0.7f);
 				timeEarthquake = cdEarthquake;
+				anim.SetBool("terremoto", true);
 				Invoke("Earthquake", 2.0f);
 			}
 
@@ -100,6 +113,8 @@ public class Enemy : MonoBehaviour {
 
 			if(ataque==2 && TimeMeteor <= 0){
 				TimeMeteor = cdMeteor;
+				anim.SetBool("meteoro", true);
+				Invoke("MeteorOff", 1.0f);
 				Meteor ();
 			}
 
@@ -163,6 +178,8 @@ public class Enemy : MonoBehaviour {
 			}
 			
 		}
+		anim.SetBool("terremoto", false);
+		Debug.Log("TerremotoParou");
 		quaking = false;
 	}
 
@@ -185,6 +202,11 @@ public class Enemy : MonoBehaviour {
        		float angle = Vector3.Angle(diference, frente);
 			Instantiate (meteor, startPosition, Quaternion.Euler (0, 0, -angle));
 		}
+	}
+
+	
+	void MeteorOff(){
+		anim.SetBool("meteoro", false);
 	}
 
 	//Metodo que implementa o golpe acido
