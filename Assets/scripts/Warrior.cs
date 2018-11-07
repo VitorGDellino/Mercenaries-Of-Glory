@@ -71,8 +71,11 @@ public class Warrior : Character{
         ScreamBuff = false;
         screaming = false;
 
+        jumping = jumpCheckpoint = attacking = false;
+        
+        anC = anim.runtimeAnimatorController;
+
         timeBasicAtk = 0.0f;
-        //Time1 = timeSmash = 0.0f;
         Time1 = timeScream = 0.0f;
         Time2 = timeGale = 0.0f;
 

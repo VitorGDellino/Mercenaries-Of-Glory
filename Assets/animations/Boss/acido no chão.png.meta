@@ -1,10 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 14877183b16597345a9d06612c05eae7
-TextureImporter:
-  fileIDToRecycleName: {}
-=======
-guid: 7cf945e301b151a4bb1d752bf69176b6
 TextureImporter:
   fileIDToRecycleName:
     21300000: "acido no ch\xE3o_0"
@@ -15,7 +10,6 @@ TextureImporter:
     21300010: "acido no ch\xE3o_5"
     21300012: "acido no ch\xE3o_6"
     21300014: "acido no ch\xE3o_7"
->>>>>>> origin/master
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -50,15 +44,11 @@ TextureImporter:
     mipBias: -100
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> origin/master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -87,28 +77,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-<<<<<<< HEAD
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
-    outline: []
-    physicsShape: []
-    bones: []
-    spriteID: 49a4662870ab85c4184f157ea581ce83
-=======
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -125,10 +95,10 @@ TextureImporter:
       name: "acido no ch\xE3o_0"
       rect:
         serializedVersion: 2
-        x: 72
+        x: 0
         y: 384
-        width: 48
-        height: 24
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,7 +106,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94e0dbfdedc8220499d441cb2f8cb7eb
+      spriteID: 39c98d76e1a44c54388cba527f41c761
       vertices: []
       indices: 
       edges: []
@@ -145,10 +115,10 @@ TextureImporter:
       name: "acido no ch\xE3o_1"
       rect:
         serializedVersion: 2
-        x: 258
+        x: 192
         y: 384
-        width: 60
-        height: 21
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,7 +126,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 612e5431e510f224988de18e229dd144
+      spriteID: 64aa97799f6fc634999f84088f6bb5aa
       vertices: []
       indices: 
       edges: []
@@ -165,10 +135,10 @@ TextureImporter:
       name: "acido no ch\xE3o_2"
       rect:
         serializedVersion: 2
-        x: 438
+        x: 384
         y: 384
-        width: 84
-        height: 36
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,7 +146,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1087e012b56147647ad6d0904ec8d13f
+      spriteID: 91d3f68c91611d04d82c829905f06508
       vertices: []
       indices: 
       edges: []
@@ -185,10 +155,10 @@ TextureImporter:
       name: "acido no ch\xE3o_3"
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 192
-        width: 96
-        height: 27
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,7 +166,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32e07afc2b7ed98408e52755d43e004f
+      spriteID: f76bd4c8451526a4ab51cb1bcb87518c
       vertices: []
       indices: 
       edges: []
@@ -205,10 +175,10 @@ TextureImporter:
       name: "acido no ch\xE3o_4"
       rect:
         serializedVersion: 2
-        x: 249
+        x: 192
         y: 192
-        width: 78
-        height: 12
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,7 +186,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 549badf93ac9f9541bdf6e079480094e
+      spriteID: 7aac67603b2468a49a5a844d168fdcdf
       vertices: []
       indices: 
       edges: []
@@ -225,10 +195,10 @@ TextureImporter:
       name: "acido no ch\xE3o_5"
       rect:
         serializedVersion: 2
-        x: 438
+        x: 384
         y: 192
-        width: 81
-        height: 9
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,7 +206,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3c68425d30743642b61b37184f8f279
+      spriteID: a4ef4354cc155074d86ea292e6c5e7f6
       vertices: []
       indices: 
       edges: []
@@ -245,10 +215,10 @@ TextureImporter:
       name: "acido no ch\xE3o_6"
       rect:
         serializedVersion: 2
-        x: 54
+        x: 0
         y: 0
-        width: 81
-        height: 9
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,7 +226,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59311a60e9bba344ba2f1899c4a7b2a9
+      spriteID: ce4da54bd720ba342b70c9823c32a24d
       vertices: []
       indices: 
       edges: []
@@ -265,10 +235,10 @@ TextureImporter:
       name: "acido no ch\xE3o_7"
       rect:
         serializedVersion: 2
-        x: 246
+        x: 192
         y: 0
-        width: 81
-        height: 9
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,7 +246,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ff24040af0332c4f9061abed5dd5292
+      spriteID: c975b0081af79cc42b935101ef1bc4f1
       vertices: []
       indices: 
       edges: []
@@ -284,8 +254,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7b6b63d184615f1459415f9a2744339b
->>>>>>> origin/master
+    spriteID: 8a5b87c8ed9f52d4ab59b8666d043a4d
     vertices: []
     indices: 
     edges: []

@@ -57,8 +57,8 @@ public class Enemy : MonoBehaviour {
 	void FixedUpdate () {
 
 		if(Timer<=0){
-			ataque = Random.Range(0,6);
-			//Debug.Log(ataque);
+			ataque = 3;//Random.Range(0,6);
+			Debug.Log(ataque);
 
 			if(ataque==0 && timeEarthquake <= 0){
 				timeEarthquake = cdEarthquake;
