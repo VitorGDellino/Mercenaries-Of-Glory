@@ -122,7 +122,7 @@ public class InputManager : MonoBehaviour{
             return false;
         }
 
-        GamePadState state = GamePad.GetState((PlayerIndex) (player -1));
+        GamePadState state = GamePad.GetState((PlayerIndex) (player));
 
         switch(_button){
             case menu.SUBMIT:

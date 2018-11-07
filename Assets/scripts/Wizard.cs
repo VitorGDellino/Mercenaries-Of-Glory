@@ -40,6 +40,16 @@ public class Wizard : Character {
 	}
     // Use this for initialization
     void Start () {
+		this.rb = GetComponent<Rigidbody2D>();
+        this.sprite = GetComponent<SpriteRenderer>();
+        this.t = GetComponent<Transform>();
+		this.anim = GetComponent<Animator>();
+
+
+		jumping = jumpCheckpoint = attacking = false;
+
+		anC = anim.runtimeAnimatorController;
+
 		cdBasicAtk = 1.0f;
 		cdBarrier = 15.0f;
 		cdBlizzard = 10.0f;
@@ -57,9 +67,7 @@ public class Wizard : Character {
 
 		RespawnTime = 10.0f;
 
-        this.rb = GetComponent<Rigidbody2D>();
-        this.sprite = GetComponent<SpriteRenderer>();
-        this.t = GetComponent<Transform>();
+        
 		blizzard = t.Find("Blizzard").gameObject;
 	}
 	
@@ -104,9 +112,10 @@ public class Wizard : Character {
 
 		if(cdRespawn<0.0f && status.IsDead()){
 			status.SetHp(10);
-            this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, 0.0f);
-			//gameObject.GetComponent<SpriteRenderer>().enabled = true;
-			//gameObject.GetComponent<BoxCollider2D>().enabled = true;
+			this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, -0.05448645f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            
 		}
 
 		tempoStun -= Time.deltaTime;

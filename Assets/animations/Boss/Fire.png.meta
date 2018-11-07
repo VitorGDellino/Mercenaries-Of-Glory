@@ -1,41 +1,11 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 14562e2e201c75a468fd14a4025c8283
 TextureImporter:
-  fileIDToRecycleName: {}
-=======
-guid: 0bfabb0461b84f146a3c11fa7321ba2a
-TextureImporter:
   fileIDToRecycleName:
-    21300000: Fire_2
+    21300000: Fire_0
     21300002: Fire_1
     21300004: Fire_2
     21300006: Fire_3
-    21300008: Fire_4
-    21300010: Fire_5
-    21300012: Fire_6
-    21300014: Fire_7
-    21300016: Fire_8
-    21300018: Fire_9
-    21300020: Fire_10
-    21300022: Fire_11
-    21300024: Fire_12
-    21300026: Fire_13
-    21300028: Fire_14
-    21300030: Fire_15
-    21300032: Fire_16
-    21300034: Fire_17
-    21300036: Fire_18
-    21300038: Fire_19
-    21300040: Fire_20
-    21300042: Fire_21
-    21300044: Fire_22
-    21300046: Fire_23
-    21300048: Fire_24
-    21300050: Fire_25
-    21300052: Fire_26
-    21300054: Fire_0
->>>>>>> origin/master
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -70,15 +40,11 @@ TextureImporter:
     mipBias: -100
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> origin/master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -107,28 +73,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-<<<<<<< HEAD
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
-    outline: []
-    physicsShape: []
-    bones: []
-    spriteID: c07ae6c6fcd286b44a080b2def611ec2
-=======
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -145,10 +91,10 @@ TextureImporter:
       name: Fire_0
       rect:
         serializedVersion: 2
-        x: 282
+        x: 0
         y: 768
-        width: 141
-        height: 705
+        width: 768
+        height: 768
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,7 +102,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcfb0f7a4b75e974e94a5cb5d704ed94
+      spriteID: b56033f6ed90e3049898b7a70b59a924
       vertices: []
       indices: 
       edges: []
@@ -165,10 +111,10 @@ TextureImporter:
       name: Fire_1
       rect:
         serializedVersion: 2
-        x: 1017
+        x: 768
         y: 768
-        width: 219
-        height: 726
+        width: 768
+        height: 768
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,7 +122,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5af67d7ffe2c2984f9a90cb91d726dca
+      spriteID: 42b649305f5b417489c02fc9604065c6
       vertices: []
       indices: 
       edges: []
@@ -185,10 +131,10 @@ TextureImporter:
       name: Fire_2
       rect:
         serializedVersion: 2
-        x: 240
+        x: 0
         y: 0
-        width: 210
-        height: 744
+        width: 768
+        height: 768
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2084f633d050fb47a6ddfaaf02d7049
+      spriteID: d0d0402f312b75e4fafec899807736d4
       vertices: []
       indices: 
       edges: []
@@ -205,10 +151,10 @@ TextureImporter:
       name: Fire_3
       rect:
         serializedVersion: 2
-        x: 1032
+        x: 768
         y: 0
-        width: 171
-        height: 564
+        width: 768
+        height: 768
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,7 +162,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c4f68535f6efcf4bab906ccc0dcd39e
+      spriteID: 2088c7897cfb46042a023526cc1e22ba
       vertices: []
       indices: 
       edges: []
@@ -224,8 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1d9d5cc793798c148822685d791a27a5
->>>>>>> origin/master
+    spriteID: 573548305e551f84ca390aa6f830758c
     vertices: []
     indices: 
     edges: []

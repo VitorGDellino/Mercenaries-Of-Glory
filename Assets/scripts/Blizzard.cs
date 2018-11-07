@@ -18,24 +18,28 @@ public class Blizzard : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D col){
 		//Debug.Log("Colidi");
-		if(col.gameObject.CompareTag("Player1")){
-			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
-			col.gameObject.SendMessageUpwards("takeStun", this.stun);
-		}
-		if(col.gameObject.CompareTag("Player2")){
-			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
-			col.gameObject.SendMessageUpwards("takeStun", this.stun);
-		}
-		if(col.gameObject.CompareTag("Player3")){
-			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
-			col.gameObject.SendMessageUpwards("takeStun", this.stun);
-		}
-		if(col.gameObject.CompareTag("Player4")){
-			col.gameObject.SendMessageUpwards("takeDamage", this.damage);
-			col.gameObject.SendMessageUpwards("takeStun", this.stun);
-		}
-		if(col.gameObject.CompareTag("Enemy")){
-			col.gameObject.SendMessageUpwards("takeDamage", this.atkInfo);
+		if(gameObject.tag != col.tag){
+			Debug.Log(gameObject.tag);
+			Debug.Log(col.tag);
+			if(col.gameObject.CompareTag("Player1")){
+				col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+				col.gameObject.SendMessageUpwards("takeStun", this.stun);
+			}
+			if(col.gameObject.CompareTag("Player2")){
+				col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+				col.gameObject.SendMessageUpwards("takeStun", this.stun);
+			}
+			if(col.gameObject.CompareTag("Player3")){
+				col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+				col.gameObject.SendMessageUpwards("takeStun", this.stun);
+			}
+			if(col.gameObject.CompareTag("Player4")){
+				col.gameObject.SendMessageUpwards("takeDamage", this.damage);
+				col.gameObject.SendMessageUpwards("takeStun", this.stun);
+			}
+			if(col.gameObject.CompareTag("Enemy")){
+				col.gameObject.SendMessageUpwards("takeDamage", this.atkInfo);
+			}
 		}
 	}
 }

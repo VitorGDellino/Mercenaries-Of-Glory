@@ -127,9 +127,10 @@ public class Ranger : Character {
 
 		if(cdRespawn<0.0f && status.IsDead()){
 			status.SetHp(10);
+			this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, -0.05448645f);
 			gameObject.GetComponent<SpriteRenderer>().enabled = true;
 			gameObject.GetComponent<BoxCollider2D>().enabled = true;
-            this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, -0.05448645f);
+            
 		}
 
 		tempoStun -= Time.deltaTime;

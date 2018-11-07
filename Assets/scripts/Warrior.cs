@@ -43,10 +43,15 @@ public class Warrior : Character{
         gale.enabled = false;
 
         inputGamepad = this.GetComponent<PlayerInput>();
-
     }
 
     void Start(){
+
+        this.rb = GetComponent<Rigidbody2D>();
+        this.sprite = GetComponent<SpriteRenderer>();
+        this.t = GetComponent<Transform>();
+        this.anim = GetComponent<Animator>();
+
         cdBasicAtk = 1.0f;
         cdSmash = 5.0f;
         cdScream = 10.0f;
@@ -55,8 +60,11 @@ public class Warrior : Character{
         ScreamBuff = false;
         screaming = false;
 
+        jumping = jumpCheckpoint = attacking = false;
+        
+        anC = anim.runtimeAnimatorController;
+
         timeBasicAtk = 0.0f;
-        //Time1 = timeSmash = 0.0f;
         Time1 = timeScream = 0.0f;
         Time2 = timeGale = 0.0f;
 
@@ -65,10 +73,6 @@ public class Warrior : Character{
 		tempoStun = 0.0f;
 
 		RespawnTime = 10.0f;
-
-        this.rb = GetComponent<Rigidbody2D>();
-        this.sprite = GetComponent<SpriteRenderer>();
-        this.t = GetComponent<Transform>();
 
         attackObject.tag = gameObject.tag;
     }
