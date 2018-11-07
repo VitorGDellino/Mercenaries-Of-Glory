@@ -59,8 +59,14 @@ public class CanvasManager : MonoBehaviour{
 
         var auxEnemy = GameManager.instance.kahal.transform.GetChild(0);
         var tempEnemy = auxEnemy.localScale;
-        tempEnemy[0] = scriptEnemy.status.GetHp()*0.2f;
+        var hpEnemy = scriptEnemy.status.GetHp();
+        if(hpEnemy <= 0){
+            hpEnemy = 0;
+        }
+        
+        tempEnemy[0] = hpEnemy * 0.2f;
         auxEnemy.localScale = tempEnemy;
+        
     }
 
     private void updateSkill(int i, int skill){

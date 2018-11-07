@@ -32,6 +32,8 @@ public class Warrior : Character{
     public AudioClip soundAttack;
     public AudioClip soundAttackGale;
     private AudioSource source;
+
+    private int hp;
     
 
     public Warrior(string name, Status status, Weapon weapon, Armor armor)
@@ -39,7 +41,8 @@ public class Warrior : Character{
     }
 
     void Awake(){
-        this.status = new Status(10, 10, 10, 3f, 10.0f);
+        this.hp = 70;
+        this.status = new Status(70, 10, 10, 3f, 10.0f);
 		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
 		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
 		this.totalAtk = this.weapon.GetAtk() + this.status.GetAtk();
@@ -134,7 +137,7 @@ public class Warrior : Character{
             timeGale = 0;
         }
 
-        if(timeBasicAtk <= 0.5f){
+        if(timeBasicAtk <= 0.8f){
             attack.enabled = false;
         }
 
@@ -155,7 +158,7 @@ public class Warrior : Character{
 			invincible = false;
         
         if(cdRespawn<0.0f && status.IsDead()){
-			status.SetHp(10);
+			status.SetHp(this.hp);
             this.t.position = new Vector3(Random.Range(-3.0f, 10.0f), 0.0f, -0.05448645f);
 			gameObject.GetComponent<SpriteRenderer>().enabled = true;
 			gameObject.GetComponent<BoxCollider2D>().enabled = true;
