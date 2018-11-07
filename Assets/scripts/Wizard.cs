@@ -24,8 +24,7 @@ public class Wizard : Character {
 	public GameObject fireBall;
 	public GameObject clone;
     public GameObject KaHal;
-
-
+	
     public Wizard(string name, Status status, Weapon weapon, Armor armor)
         : base(name, status, weapon, armor){
     }

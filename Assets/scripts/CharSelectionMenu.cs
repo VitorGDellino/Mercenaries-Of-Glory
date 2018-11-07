@@ -67,7 +67,7 @@ public class CharSelectionMenu : MonoBehaviour{
             }
         }
 
-        SceneManager.LoadScene("BossLairFinal");
+        SceneManager.LoadScene("PrepareToBattle");
     }
 
     private void Back(){

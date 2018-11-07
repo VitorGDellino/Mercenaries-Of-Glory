@@ -40,11 +40,23 @@ public class Enemy : MonoBehaviour {
 	private bool headPos;
 
 	private int ataque;
-	private int maxHP = 300;
+	private int maxHP = 1000;
 	private int[] playersDamage;
 
+	public AudioClip kahalScream;
+	public AudioClip kahalSpit;
+    private AudioSource source;
+
+	public Camera camera;
+
+	void Awake(){
+		source = GetComponent<AudioSource>();
+		
+		
+	}
 	// Use this for initialization
 	void Start () {
+		
 		this.status = new Status(maxHP, 10, 10, 1.5f, 10.0f); //hp, attack, def, speed, respawn time
 		headPos = true;
 		playersDamage = new int[4];
@@ -55,14 +67,15 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-
 		if(Timer<=0){
-			ataque = 3;//Random.Range(0,6);
-			Debug.Log(ataque);
+			ataque = Random.Range(0,6);
+			
 
 			if(ataque==0 && timeEarthquake <= 0){
+				source.clip = kahalScream;
+				source.PlayOneShot(kahalScream, 0.7f);
 				timeEarthquake = cdEarthquake;
-				Earthquake ();
+				Invoke("Earthquake", 2.0f);
 			}
 
 			if(ataque==1 && TimeVulcan <= 0){
@@ -76,6 +89,8 @@ public class Enemy : MonoBehaviour {
 			}
 
 			if(ataque==3 && TimeAcid <= 0){
+				source.clip = kahalSpit;
+				source.PlayOneShot(kahalSpit, 0.7f);
 				TimeAcid = cdAcid;
 				Acid ();
 			}
