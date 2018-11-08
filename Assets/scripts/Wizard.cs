@@ -149,7 +149,7 @@ public class Wizard : Character {
 	//Metodo que implementa a habilidade Nevasca
 	void Blizzard(){
 		timeBlizzard = cdBlizzard;
-		blizzard.tag = gameObject.tag;
+		//blizzard.tag = gameObject.tag;
 		blizzard.SetActive(true);
 		anim.SetBool("hab2", true);
 		Invoke("stopHab2Animation", 0.1f);
@@ -191,10 +191,10 @@ public class Wizard : Character {
 	void ArrowInstantiate(){
 		Vector3 temp = transform.position;
 		if(getDirection() == 1){
-            temp.x += 0.5f;
+            temp.x += 0.8f;
             clone = Instantiate(fireBall, temp, Quaternion.Euler (0, 0, 0));
         }else if(getDirection() == -1){
-            temp.x -= 0.5f;
+            temp.x -= 0.8f;
             clone = Instantiate(fireBall, temp, Quaternion.Euler (0, 0, 180));
         }
 		clone.tag = gameObject.tag;

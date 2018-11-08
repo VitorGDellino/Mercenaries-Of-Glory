@@ -42,4 +42,7 @@ public class Blizzard : MonoBehaviour {
 			}
 		}
 	}
+
+	public void takeDamage(int damage){
+	}
 }

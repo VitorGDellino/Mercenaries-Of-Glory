@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireBall : MonoBehaviour{
 
     public int damage = 30;
-    public float fireBallSpeed = 5;
+    public float fireBallSpeed = 8.0f;
     private float reach = 2.0f;
 
     private Vector3 pos;
