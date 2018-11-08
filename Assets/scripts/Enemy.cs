@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour {
     protected Animator anim;
     protected RuntimeAnimatorController anC;
  
+	public GameObject warningEarthquake;
 
 	public AudioClip kahalScream;
 	public AudioClip kahalSpit;
@@ -86,6 +87,8 @@ public class Enemy : MonoBehaviour {
 		for(int i=0; i<4; i++){
 			playersDamage[i] = 0;
 		}
+
+		//warningEarthquake = GameObject.Find("WarningEarthquake");
 	}
 
 	void Update(){
@@ -112,6 +115,7 @@ public class Enemy : MonoBehaviour {
 					source.PlayOneShot(kahalScream, 0.7f);
 					timeEarthquake = cdEarthquake;
 					anim.SetBool("terremoto", true);
+					Invoke("ShowWarningEarthquake", 1.0f);
 					Invoke("Earthquake", 2.0f);
 				}
 
@@ -186,11 +190,15 @@ public class Enemy : MonoBehaviour {
 					Players[0].SendMessageUpwards("takeStun", 2.0f);
 				}
 			}
-			
 		}
 		anim.SetBool("terremoto", false);
+		warningEarthquake.SetActive(false);
 		Debug.Log("TerremotoParou");
 		quaking = false;
+	}
+
+	void ShowWarningEarthquake(){
+		warningEarthquake.SetActive(true);
 	}
 
 	//Metodo que implementa o ataque vulcao
@@ -213,7 +221,6 @@ public class Enemy : MonoBehaviour {
 			Instantiate (meteor, startPosition, Quaternion.Euler (0, 0, -angle));
 		}
 	}
-
 	
 	void MeteorOff(){
 		anim.SetBool("meteoro", false);

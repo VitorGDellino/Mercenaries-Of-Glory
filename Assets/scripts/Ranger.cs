@@ -173,10 +173,10 @@ public class Ranger : Character {
 	void Trap(){
 		temp = transform.position;
 		if(this.getDirection() == -1){
-			temp.x -= 0.5f;
+			temp.x -= 0.9f;
 			clone = Instantiate (trap, temp, transform.localRotation);
 		}else if(this.getDirection() == 1){
-			temp.x += 0.5f;
+			temp.x += 0.9f;
 			clone = Instantiate (trap, temp, transform.localRotation);
 		}
 		clone.tag = gameObject.tag;

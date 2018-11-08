@@ -6,7 +6,7 @@ public class Arrow : MonoBehaviour {
 
 	private int damage = 10;
 	public float rotationSpeed = 100;
-	public float arrowSpeed = 5;
+	private float arrowSpeed;
 
 	private Transform myTransform;
     public InfAtk atkInfo;
@@ -25,6 +25,7 @@ public class Arrow : MonoBehaviour {
 		rotationSpeed = -100;
 		sprite = GetComponent<SpriteRenderer>();
         atkInfo = new InfAtk(damage, gameObject.tag);
+		arrowSpeed = 15.0f;
 	}
 	
 	// Update is called once per frame
@@ -55,6 +56,11 @@ public class Arrow : MonoBehaviour {
 			col.gameObject.SendMessageUpwards("takeDamage", this.atkInfo);
 			Destroy (gameObject);
 		}
-		Destroy (gameObject);
+		if(col.gameObject.CompareTag("LastGround")){
+			Destroy (gameObject);
+		}
+		if(col.gameObject.CompareTag("Parede")){
+			Destroy (gameObject);
+		}
 	}
 }

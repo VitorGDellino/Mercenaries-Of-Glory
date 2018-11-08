@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212791533222729304}
   - component: {fileID: 50075095310472286}
   - component: {fileID: 61826192961597006}
-  - component: {fileID: 95005325144320090}
   - component: {fileID: 82126199569551900}
   - component: {fileID: 114986510802256306}
+  - component: {fileID: 95562224561735944}
   m_Layer: 0
   m_Name: KaHal
   m_TagString: Enemy
@@ -40,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 1833808752792896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.63, y: 3.5, z: 0}
-  m_LocalScale: {x: 0.39, y: 0.39, z: 0.39}
+  m_LocalScale: {x: 1.4731859, y: 1.4731859, z: 1.4731859}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -77,18 +77,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010181904, y: 0.036993742}
+  m_Offset: {x: 0.0036055446, y: 0.017264262}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 3.2}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 0.8, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4259162, y: 2.6053429}
+  m_Size: {x: 0.9396075, y: 0.9217371}
   m_EdgeRadius: 0
 --- !u!82 &82126199569551900
 AudioSource:
@@ -185,7 +185,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &95005325144320090
+--- !u!95 &95562224561735944
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -194,7 +194,7 @@ Animator:
   m_GameObject: {fileID: 1833808752792896}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1d0f37975e6ec3c4686101118acdc053, type: 2}
+  m_Controller: {fileID: 9100000, guid: af43644c9884ff94494a9571fac408ca, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -221,8 +221,11 @@ MonoBehaviour:
   KahalLHand: {fileID: 0}
   KahalRHand: {fileID: 0}
   handSpeed: 1
+  warningEarthquake: {fileID: 0}
   kahalScream: {fileID: 8300000, guid: 60761c295af09634f8a92bf31b17a823, type: 3}
   kahalSpit: {fileID: 8300000, guid: 091ab3ce4efea4441bd7917949c59dd7, type: 3}
+  kahalDying: {fileID: 8300000, guid: daa46ad375afa8244ab8b96a386ac563, type: 3}
+  fanfare: {fileID: 8300000, guid: 222c1bedc51157e448341d22c0dd857b, type: 3}
   camera: {fileID: 0}
 --- !u!212 &212791533222729304
 SpriteRenderer:
@@ -259,7 +262,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ffa2e60cce9032144991900009329540, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d2f696b13c3a0bf4ca9546aa9a6f8764, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
