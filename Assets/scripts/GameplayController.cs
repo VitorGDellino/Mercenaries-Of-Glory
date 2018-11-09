@@ -17,6 +17,8 @@ public class GameplayController : MonoBehaviour{
     public GameObject canvasRL;
     public GameObject kahalCanvas;
 
+    public GameObject[] playerNum;
+
 
 
 
@@ -61,6 +63,10 @@ public class GameplayController : MonoBehaviour{
                         GameManager.instance.players[i].name = "Player" + (i+1);
                         GameManager.instance.players[i].tag = "Player" + (i+1);
                         GameManager.instance.playersUI[i].name = "Player"+ (i+1) + "Canvas";
+                        Vector3 posAux = GameManager.instance.players[i].transform.position;
+                        posAux.y += 0.8f;
+                        GameObject aux =  Instantiate(playerNum[i], posAux, Quaternion.Euler (0, 0, 0)) as GameObject;
+                        aux.transform.parent = GameManager.instance.players[i].transform;
                     }
                     
                 }

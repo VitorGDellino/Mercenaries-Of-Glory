@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour{
     public GameObject selectedSettings;
     public GameObject selectedControllers;
     public GameObject selectedQuit;
+    public GameObject selectedCredits;
     
 
     void Start(){
@@ -45,6 +46,8 @@ public class MainMenu : MonoBehaviour{
             this.showControls();
         }else if(selectedSettings.activeSelf){
             this.showSettings();
+        }else if(selectedCredits.activeSelf){
+            this.showCredits();
         }else if(selectedQuit.activeSelf){
             this.QuitGame();
         }
@@ -59,6 +62,9 @@ public class MainMenu : MonoBehaviour{
             selectedSettings.SetActive(true);
         }else if(selectedSettings.activeSelf){
             selectedSettings.SetActive(false);
+            selectedCredits.SetActive(true);
+        }else if(selectedCredits.activeSelf){
+            selectedCredits.SetActive(false);
             selectedQuit.SetActive(true);
         }else if(selectedQuit.activeSelf){
             selectedQuit.SetActive(false);
@@ -76,9 +82,12 @@ public class MainMenu : MonoBehaviour{
         }else if(selectedSettings.activeSelf){
             selectedSettings.SetActive(false);
             selectedControllers.SetActive(true);
+        }else if(selectedCredits.activeSelf){
+            selectedCredits.SetActive(false);
+            selectedSettings.SetActive(true);
         }else if(selectedQuit.activeSelf){
             selectedQuit.SetActive(false);
-            selectedSettings.SetActive(true);
+            selectedCredits.SetActive(true);
         }
     }
 

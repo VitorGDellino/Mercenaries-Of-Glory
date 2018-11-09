@@ -51,6 +51,8 @@ public class Character : MonoBehaviour{
     protected float Time2;
     protected float Time3;
 
+    protected int hitted;
+
     struct AtaqueInfo{
         public int damage;
         public string playerTag;
@@ -192,6 +194,7 @@ public class Character : MonoBehaviour{
                 Invoke("outOfScreen", 1.0f);
                 cdRespawn = RespawnTime;
             }
+            hitted = 5;
             //Debug.Log(damage);
             invincible = true;
             invincibleTime = 0.5f;

@@ -28,6 +28,8 @@ public class Ranger : Character {
     public AudioClip shootSound;
     private AudioSource source;
 
+	private SpriteRenderer charSprite;
+
 	float h;
 
 	private int hp;
@@ -39,6 +41,7 @@ public class Ranger : Character {
 
 	void Awake(){
 		this.hp = 50;
+		hitted = 0;
 		this.status = new Status(50, 10, 10, 3f, 10.0f);
 		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
 		this.armor = new Armor("Chain Mail", 5, "Hard Armor", "Heavy armor, but powerful", 4);
@@ -51,6 +54,7 @@ public class Ranger : Character {
 	}
 	void Start () {
 
+		charSprite =  gameObject.GetComponent<SpriteRenderer>();
 		this.rb = GetComponent<Rigidbody2D>();
 		this.sprite = GetComponentInChildren<SpriteRenderer>();
 		this.t = GetComponent<Transform>();
@@ -84,6 +88,16 @@ public class Ranger : Character {
 		
         KaHal = GameObject.Find("KaHal");
 
+	}
+
+	void Update(){
+		if(hitted > 0){
+			charSprite.color = Color.red;
+			hitted--;
+		}else{
+			charSprite.color = Color.white;
+			hitted = 0;
+		}		
 	}
 	
 	// Update is called once per frame

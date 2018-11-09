@@ -32,6 +32,8 @@ public class Wizard : Character {
     }
 
 	void Awake(){
+		hitted = 0;
+		sprite =  gameObject.GetComponent<SpriteRenderer>();
 		this.hp = 40;
 		this.status = new Status(40, 10, 10, 3f, 10.0f);
 		this.weapon = new Weapon("Long Sword", 5, "Melee", "A common sword", 4);
@@ -82,6 +84,15 @@ public class Wizard : Character {
 	
 	// Update is called once per frame
 	void Update () {
+		
+		if(hitted > 0){
+			sprite.color = Color.red;
+			hitted--;
+		}else{
+			sprite.color = Color.white;
+			hitted = 0;
+		}
+
 		if(tempoStun<=0.0f && !status.IsDead()){
 			this.Movement();
 
@@ -218,6 +229,7 @@ public class Wizard : Character {
                 Invoke("outOfScreen", 1.0f);
                 cdRespawn = RespawnTime;
             }
+			hitted = 5;
             //Debug.Log(damage);
             invincible = true;
             invincibleTime = 0.5f;

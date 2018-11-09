@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour {
 	private Vector3 hpos;
 
 	private int ataque;
-	private int maxHP = 10;
+	private int maxHP = 100;
 	private int[] playersDamage;
 
 	protected Rigidbody2D rb;   //Referencia o Personagem
@@ -65,8 +65,16 @@ public class Enemy : MonoBehaviour {
 	private int n = 0;
 
 	private bool dead;
+	private int hitted;
+
+	private int old;
+
+	private SpriteRenderer kahalSprite;
 
 	void Awake(){
+		old = -1;
+		kahalSprite = KahalHead.GetComponent<SpriteRenderer>();
+		hitted = 0;
 		dead = false;
 		source = GetComponent<AudioSource>();
 		hpos = camera.transform.position;
@@ -98,6 +106,14 @@ public class Enemy : MonoBehaviour {
 				shakeScream(n);
 				n++;
 			}
+
+			if(hitted > 0){
+				kahalSprite.color = Color.red;
+				hitted--;
+			}else{
+				kahalSprite.color = Color.white;
+				hitted = 0;
+			}
 		}
 	}
 	
@@ -106,7 +122,8 @@ public class Enemy : MonoBehaviour {
 		if(!dead){
 			if(Timer<=0){
 				ataque = Random.Range(0,6);
-				
+				while(ataque == old) ataque = Random.Range(0,6);
+				old = ataque;
 
 				if(ataque==0 && timeEarthquake <= 0){
 					quaking = true;
@@ -124,12 +141,12 @@ public class Enemy : MonoBehaviour {
 					Vulcan ();
 				}
 
-			if(ataque==2 && TimeMeteor <= 0){
-				TimeMeteor = cdMeteor;
-				anim.SetBool("meteoro", true);
-				Invoke("MeteorOff", 1.0f);
-				Meteor ();
-			}
+				if(ataque==2 && TimeMeteor <= 0){
+					TimeMeteor = cdMeteor;
+					anim.SetBool("meteoro", true);
+					Invoke("MeteorOff", 1.0f);
+					Meteor ();
+				}
 
 				if(ataque==3 && TimeAcid <= 0){
 					source.clip = kahalSpit;
@@ -276,6 +293,8 @@ public class Enemy : MonoBehaviour {
 			if(atkInfo.playerTag == "Player4"){
 				playersDamage[3] += atkInfo.damage;
 			}
+
+			hitted = 3;
 			if(status.GetHp() <= 0){
 				dead = true;
 				var aux = camera.GetComponent<AudioSource>();

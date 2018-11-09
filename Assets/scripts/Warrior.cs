@@ -33,6 +33,8 @@ public class Warrior : Character{
     public AudioClip soundAttackGale;
     private AudioSource source;
 
+    private SpriteRenderer charSprite;
+
     private int hp;
     
 
@@ -57,9 +59,10 @@ public class Warrior : Character{
     }
 
     void Start(){
-
+        hitted = 0;
         this.rb = GetComponent<Rigidbody2D>();
-		this.sprite = GetComponentInChildren<SpriteRenderer>();
+		charSprite =  gameObject.GetComponent<SpriteRenderer>();
+        this.sprite = GetComponentInChildren<SpriteRenderer>();
 		this.t = GetComponent<Transform>();
 		this.anim = GetComponent<Animator>();
 
@@ -94,6 +97,13 @@ public class Warrior : Character{
     }
 
     void Update(){
+        if(hitted > 0){
+			charSprite.color = Color.red;
+            hitted--;
+		}else{
+            hitted = 0;
+			charSprite.color = Color.white;
+		}	
         //InputManager.prevState = InputManager.state;
         if(!screaming && tempoStun<=0.0f && !status.IsDead()){
             this.Movement();
