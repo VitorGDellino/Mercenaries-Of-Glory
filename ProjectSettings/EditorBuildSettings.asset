@@ -12,12 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2ffcbe50670e3bb4583edb266720209c
   - enabled: 1
-    path: Assets/Scenes/Vitoria.unity
-    guid: 699a5f9f714754c4c8930dae940b9d7e
-  - enabled: 1
     path: Assets/Scenes/BossLairFinal.unity
     guid: 6caac7009b54d5d4dacc602052a74a71
   - enabled: 1
     path: Assets/Scenes/PrepareToBattle.unity
     guid: 7621b2020f0fd3c43961dc6b0e822263
+  - enabled: 1
+    path: Assets/Scenes/Vitoria.unity
+    guid: 699a5f9f714754c4c8930dae940b9d7e
   m_configObjects: {}

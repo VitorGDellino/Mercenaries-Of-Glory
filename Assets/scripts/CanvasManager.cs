@@ -52,7 +52,7 @@ public class CanvasManager : MonoBehaviour{
                 if(hp <= 0){
                     hp = 0;
                 }
-                temp[0] = hp*2;
+                temp[0] = hp;
                 aux.localScale = temp;
             }
         }

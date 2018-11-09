@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour {
 	private Vector3 hpos;
 
 	private int ataque;
-	private int maxHP = 1000;
+	private int maxHP = 10;
 	private int[] playersDamage;
 
 	protected Rigidbody2D rb;   //Referencia o Personagem
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour {
 	void Awake(){
 		dead = false;
 		source = GetComponent<AudioSource>();
-		hpos = KahalHead.transform.position;
+		hpos = camera.transform.position;
 	}
 	// Use this for initialization
 	void Start () {
@@ -93,9 +93,9 @@ public class Enemy : MonoBehaviour {
 
 	void Update(){
 		if(!dead){
-			KahalHead.transform.position = hpos;
+			camera.transform.position = hpos;
 			if(quaking){
-				shakeHead(n);
+				shakeScream(n);
 				n++;
 			}
 		}
@@ -295,10 +295,10 @@ public class Enemy : MonoBehaviour {
 		}
     }
 
-	void shakeHead(int n){
-		Vector3 pos = KahalHead.transform.position;
+	void shakeScream(int n){
+		Vector3 pos = camera.transform.position;
 		pos.x += Mathf.Pow(-1, n)*0.3f;
-		KahalHead.transform.position = pos;
+		camera.transform.position = pos;
 	}
 	void CarregarCenaVitoria(){
 			SceneManager.LoadScene("Vitoria");

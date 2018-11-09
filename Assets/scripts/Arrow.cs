@@ -6,7 +6,7 @@ public class Arrow : MonoBehaviour {
 
 	private int damage = 10;
 	public float rotationSpeed = 100;
-	private float arrowSpeed;
+	public float arrowSpeed;
 
 	private Transform myTransform;
     public InfAtk atkInfo;
@@ -21,6 +21,8 @@ public class Arrow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		damage = 15;
+		arrowSpeed = 15;
 		myTransform = transform;
 		rotationSpeed = -100;
 		sprite = GetComponent<SpriteRenderer>();
@@ -56,7 +58,7 @@ public class Arrow : MonoBehaviour {
 			col.gameObject.SendMessageUpwards("takeDamage", this.atkInfo);
 			Destroy (gameObject);
 		}
-		if(col.gameObject.CompareTag("LastGround")){
+		if(col.gameObject.CompareTag("Plataform") || col.gameObject.CompareTag("LastGround")){
 			Destroy (gameObject);
 		}
 		if(col.gameObject.CompareTag("Parede")){

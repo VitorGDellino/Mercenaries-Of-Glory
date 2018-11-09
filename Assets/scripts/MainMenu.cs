@@ -39,7 +39,6 @@ public class MainMenu : MonoBehaviour{
     }
 
     private void Submit(){
-
         if(selectedPlay.activeSelf){
             this.showCharacterSelection();
         }else if(selectedControllers.activeSelf){

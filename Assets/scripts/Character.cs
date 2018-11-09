@@ -85,6 +85,8 @@ public class Character : MonoBehaviour{
             this.t.localScale = temp;
            // this.sprite.flipX = false;
             this.direction = 1;
+        }else{
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
         if (move != 0){
