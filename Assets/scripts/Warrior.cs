@@ -75,7 +75,7 @@ public class Warrior : Character{
 
         cdBasicAtk = 1.0f;
         cdSmash = 5.0f;
-        cdScream = 10.0f;
+        cdScream = 15.0f;
         cdGale = 15.0f;
 
         ScreamBuff = false;
@@ -123,12 +123,12 @@ public class Warrior : Character{
                 BasicAtk();
             }
 
-            if(inputGamepad.GetSkill1() && timeSmash <= 0){
+            /* if(inputGamepad.GetSkill1() && timeSmash <= 0){
                 timeSmash = cdSmash;
                 Smash();
-            }
+            }*/
 
-            if(inputGamepad.GetSkill2()  && timeScream <= 0){
+            if(inputGamepad.GetSkill1()  && timeScream <= 0){
                 timeScream = cdScream;
                 Scream();
             }

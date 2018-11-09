@@ -70,7 +70,7 @@ public class Ranger : Character {
 		facingRight = true;
 
 		cdBasicAtk = 1.0f;
-		cdTrap = 5.0f;
+		cdTrap = 4.0f;
 		cdReinforceArrow = 5.0f;	//Cooldown da habilidade Reforçar flecha
 		cdLightFeet = 10.0f;
 

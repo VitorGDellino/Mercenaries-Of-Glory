@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WarriorAtk : MonoBehaviour {
 
-	private int damage = 30;
+	private int damage = 20;
 
     private float reach = 4.0f;
 

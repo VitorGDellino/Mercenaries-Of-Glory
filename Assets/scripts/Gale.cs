@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gale : MonoBehaviour{
-    private int damage = 30;
+    private int damage = 35;
     private float galeSpeed = 8.0f;
 
     private float reach = 4.0f;
