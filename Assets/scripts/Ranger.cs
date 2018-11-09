@@ -97,6 +97,16 @@ public class Ranger : Character {
 		}else{
 			charSprite.color = Color.white;
 			hitted = 0;
+		}
+
+		if(tempoStun > 0){
+			Color x = charSprite.color;
+			x.a = 0.6f;
+			charSprite.color = x;
+		}else{
+			Color x = charSprite.color;
+			x.a = 1f;
+			charSprite.color = x;
 		}		
 	}
 	

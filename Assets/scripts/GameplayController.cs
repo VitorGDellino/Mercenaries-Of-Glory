@@ -34,6 +34,7 @@ public class GameplayController : MonoBehaviour{
 
 
     void LevelFinishedLoading(){
+        float offset = 0f;
         //if(scene.name == "BossLairFinal"){
             if(MainMenuController.instance.winner == -1){
                 GameManager.instance.kahal = Instantiate(kahalCanvas, new Vector3(3.5f, 5.2f, 0f),  Quaternion.Euler (0, 0, 0));
@@ -46,25 +47,31 @@ public class GameplayController : MonoBehaviour{
                         if(i % 2 == 0){
                             if(MainMenuController.instance.classesChosen[i] == 0){
                                 GameManager.instance.playersUI[i] = Instantiate(canvasWaL, pos[i],  Quaternion.Euler (0, 0, 0)) as GameObject;
+                                offset = 0.4f;
                             }else if(MainMenuController.instance.classesChosen[i] == 1){
                                 GameManager.instance.playersUI[i] = Instantiate(canvasWiL, pos[i],  Quaternion.Euler (0, 0, 0)) as GameObject;
+                                offset = 0.5f;
                             }else if(MainMenuController.instance.classesChosen[i] == 2){
                                 GameManager.instance.playersUI[i] = Instantiate(canvasRL, pos[i],  Quaternion.Euler (0, 0, 0)) as GameObject;
+                                offset = 0.9f;
                             }
                         }else{
                             if(MainMenuController.instance.classesChosen[i] == 0){
                                 GameManager.instance.playersUI[i] = Instantiate(canvasWaR, pos[i],  Quaternion.Euler (0, 0, 0)) as GameObject;
+                                offset = 0.4f;
                             }else if(MainMenuController.instance.classesChosen[i] == 1){
                                 GameManager.instance.playersUI[i] = Instantiate(canvasWiR, pos[i],  Quaternion.Euler (0, 0, 0)) as GameObject;
+                                offset = 0.5f;
                             }else if(MainMenuController.instance.classesChosen[i] == 2){
                                 GameManager.instance.playersUI[i] = Instantiate(canvasRR, pos[i],  Quaternion.Euler (0, 0, 0)) as GameObject;
+                                offset = 0.9f;
                             } 
                         } 
                         GameManager.instance.players[i].name = "Player" + (i+1);
                         GameManager.instance.players[i].tag = "Player" + (i+1);
                         GameManager.instance.playersUI[i].name = "Player"+ (i+1) + "Canvas";
                         Vector3 posAux = GameManager.instance.players[i].transform.position;
-                        posAux.y += 0.8f;
+                        posAux.y += offset;
                         GameObject aux =  Instantiate(playerNum[i], posAux, Quaternion.Euler (0, 0, 0)) as GameObject;
                         aux.transform.parent = GameManager.instance.players[i].transform;
                     }

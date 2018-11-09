@@ -103,7 +103,17 @@ public class Warrior : Character{
 		}else{
             hitted = 0;
 			charSprite.color = Color.white;
-		}	
+		}
+
+        if(tempoStun > 0){
+			Color x = charSprite.color;
+			x.a = 0.6f;
+			charSprite.color = x;
+		}else{
+			Color x = charSprite.color;
+			x.a = 1f;
+			charSprite.color = x;
+		}		
         //InputManager.prevState = InputManager.state;
         if(!screaming && tempoStun<=0.0f && !status.IsDead()){
             this.Movement();

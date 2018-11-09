@@ -93,6 +93,16 @@ public class Wizard : Character {
 			hitted = 0;
 		}
 
+		if(tempoStun > 0){
+			Color x = sprite.color;
+			x.a = 0.6f;
+			sprite.color = x;
+		}else{
+			Color x = sprite.color;
+			x.a = 1f;
+			sprite.color = x;
+		}	
+
 		if(tempoStun<=0.0f && !status.IsDead()){
 			this.Movement();
 

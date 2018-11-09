@@ -38,7 +38,7 @@ public class Ranking : MonoBehaviour {
 			}
 		}
 
-		text.text = "Ranking\n\n\nVENCEDOR -> ";
+		text.text = "\n\n\nVENCEDOR -> ";
 
 		for(int i=0; i<4; i++){
 			text.text += i+1 + "º - " + playersNumber[i] + " ";
