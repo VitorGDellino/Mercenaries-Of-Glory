@@ -172,11 +172,12 @@ public class Ranger : Character {
 	//Metodo que implementa o ataque com suas adagas
 	void Trap(){
 		temp = transform.position;
+		temp.y += 0.3f;
 		if(this.getDirection() == -1){
-			temp.x -= 0.5f;
+			temp.x -= 0.8f;
 			clone = Instantiate (trap, temp, transform.localRotation);
 		}else if(this.getDirection() == 1){
-			temp.x += 0.5f;
+			temp.x += 0.8f;
 			clone = Instantiate (trap, temp, transform.localRotation);
 		}
 		clone.tag = gameObject.tag;

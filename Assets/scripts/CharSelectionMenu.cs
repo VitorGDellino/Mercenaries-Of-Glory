@@ -34,6 +34,12 @@ public class CharSelectionMenu : MonoBehaviour{
             
         }
 
+        if(input.GetSubmit()){
+            if(pressed){
+                selectChar();
+            }
+        }
+
         if(input.GetBack()){
             Back();
         }
@@ -71,16 +77,22 @@ public class CharSelectionMenu : MonoBehaviour{
     }
 
     private void Back(){
+        string name = "";
         if(pressed){
             if(ready){
                 ready = false;
                 if(playerPanelWa.activeSelf){
-                    playerPanelWa.GetComponent<Transform>().GetChild(6).GetComponent<Text>().text = "Press Start";
+                   name = playerPanelWa.name;
                 }else if(playerPanelWi.activeSelf){
-                    playerPanelWi.GetComponent<Transform>().GetChild(6).GetComponent<Text>().text = "Press Start";
+                    name = playerPanelWi.name;
                 }else if(playerPanelR.activeSelf){
-                    playerPanelR.GetComponent<Transform>().GetChild(6).GetComponent<Text>().text = "Press Start";
+                    name = playerPanelR.name;
                 }
+
+                var x = GameObject.Find(name);
+                x.transform.GetChild(3).gameObject.SetActive(true);
+                x.transform.GetChild(4).gameObject.SetActive(false);
+                x.transform.GetChild(5).gameObject.SetActive(true);
                 chosen = -1;
                 MainMenuController.instance.classesChosen[input.player] = chosen; 
                 MainMenuController.instance.status[input.player] = 1;
@@ -104,21 +116,6 @@ public class CharSelectionMenu : MonoBehaviour{
             playerPanelWa.SetActive(true);
             pressStartPanel.SetActive(false);
             MainMenuController.instance.status[input.player] = 1;
-        }else{
-            if(playerPanelWa.activeSelf){
-                playerPanelWa.GetComponent<Transform>().GetChild(6).GetComponent<Text>().text = "READY";
-                chosen = 0;
-            }else if(playerPanelWi.activeSelf){
-                playerPanelWi.GetComponent<Transform>().GetChild(6).GetComponent<Text>().text = "READY";
-                chosen = 1;
-            }else if(playerPanelR.activeSelf){
-                playerPanelR.GetComponent<Transform>().GetChild(6).GetComponent<Text>().text = "READY";
-                chosen = 2;
-            } 
-
-            MainMenuController.instance.classesChosen[input.player] = chosen;
-            MainMenuController.instance.status[input.player] = 2;
-            ready = true; 
         }
     }
 
@@ -150,5 +147,28 @@ public class CharSelectionMenu : MonoBehaviour{
                 playerPanelWi.SetActive(true);
             }
         }
+    }
+
+    private void selectChar(){
+        string name = "";
+        if(playerPanelWa.activeSelf){
+                name = playerPanelWa.name;
+                chosen = 0;
+            }else if(playerPanelWi.activeSelf){
+                name = playerPanelWi.name;
+                chosen = 1;
+            }else if(playerPanelR.activeSelf){
+                name = playerPanelR.name;
+                chosen = 2;
+            } 
+
+            var x = GameObject.Find(name);
+            x.transform.GetChild(3).gameObject.SetActive(false);
+            x.transform.GetChild(4).gameObject.SetActive(true);
+            x.transform.GetChild(5).gameObject.SetActive(false);
+
+            MainMenuController.instance.classesChosen[input.player] = chosen;
+            MainMenuController.instance.status[input.player] = 2;
+            ready = true; 
     }
 }

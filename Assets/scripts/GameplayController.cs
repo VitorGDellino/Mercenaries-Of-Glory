@@ -36,7 +36,7 @@ public class GameplayController : MonoBehaviour{
             if(MainMenuController.instance.winner == -1){
                 GameManager.instance.kahal = Instantiate(kahalCanvas, new Vector3(3.5f, 5.2f, 0f),  Quaternion.Euler (0, 0, 0));
                 GameManager.instance.kahal.name = "KahalCanvas";
-                Vector3[] pos = new [] { new Vector3(-2.5f,5.3f,0f), new Vector3(9.5f,5.3f,0f), new Vector3(-2.5f,-1.9f,0f), new Vector3(9.5f,-1.9f,0f) };
+                Vector3[] pos = new [] { new Vector3(-1.624391f,5.05922f,0f), new Vector3(8.756165f,5.105769f,0f), new Vector3(-1.7f,-1.67f,0f), new Vector3(8.76f,-1.72f,0f) };
                 
                 for(int i = 0; i < 4; i++){
                     if(MainMenuController.instance.classesChosen[i] != -1){
