@@ -365,7 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 61307812997205770}
   GroundCheck: {fileID: 4275852501421528}
-  dashspeed: 3
+  dashspeed: 5
   dashTime: 0
   tempoStun: 0
   invincible: 0

@@ -296,6 +296,7 @@ public class Enemy : MonoBehaviour {
 
 			hitted = 3;
 			if(status.GetHp() <= 0){
+				anim.SetBool("dead", true);
 				dead = true;
 				var aux = camera.GetComponent<AudioSource>();
 				aux.Stop();
