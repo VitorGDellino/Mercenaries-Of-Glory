@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour {
 	private Vector3 hpos;
 
 	private int ataque;
-	private int maxHP = 100;
+	private int maxHP = 1000;
 	private int[] playersDamage;
 
 	protected Rigidbody2D rb;   //Referencia o Personagem
