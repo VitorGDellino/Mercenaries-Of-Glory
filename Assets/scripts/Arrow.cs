@@ -21,7 +21,7 @@ public class Arrow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		damage = 15;
+		damage = 25;
 		arrowSpeed = 15;
 		myTransform = transform;
 		rotationSpeed = -100;
